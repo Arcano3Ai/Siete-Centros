@@ -146,7 +146,9 @@ export const DICTIONARY: Record<Language, Translations> = {
         'Quiero agendar por WhatsApp con Sofía'
       ],
       disclaimer: 'Espacio de orientación holística. Para reservas privadas, contacta directamente a Sofía.',
-      hoverGreeting: 'Namasté 🙏 Que tu respiración habite el presente. Pulsa para consultar al Oráculo'
+      hoverGreeting: 'Namasté 🙏 Que tu respiración habite el presente. Pulsa para consultar al Oráculo',
+      launcherLabel: '✦ Oráculo',
+      launcherSub: 'Guía Sagrada'
     }
   },
   en: {
@@ -223,7 +225,9 @@ export const DICTIONARY: Record<Language, Translations> = {
         'I want to book via WhatsApp with Sofia'
       ],
       disclaimer: 'Holistic guidance space. For private bookings, contact Sofia directly.',
-      hoverGreeting: 'Namaste 🙏 May your breath inhabit the present. Click to consult the Oracle'
+      hoverGreeting: 'Namaste 🙏 May your breath inhabit the present. Click to consult the Oracle',
+      launcherLabel: '✦ Oracle',
+      launcherSub: 'Sacred Guide'
     }
   }
 };

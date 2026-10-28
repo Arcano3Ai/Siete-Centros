@@ -1481,12 +1481,13 @@
 }
 
 /* ==========================================================================
-   BOT TÁNTRICO ORÁCULO DE LOS 7 CHAKRAS (COMPACT TALISMAN + HOVER GREETING)
+   BOT TÁNTRICO ORÁCULO DE LOS 7 CHAKRAS (TALISMÁN SAGRADO & HOVER GREETING)
    ========================================================================== */
 .tantric-bot-launcher-container {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 1.75rem;
+  left: 1.75rem;
+  right: auto;
   z-index: 9999;
 }
 
@@ -1494,26 +1495,28 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
-/* Tooltip de Saludo Holístico: Solo visible al pasar el mouse */
+/* Tooltip de Saludo Holístico: Solo visible al pasar el mouse en desktop */
 .bot-hover-tooltip {
   position: absolute;
-  bottom: calc(100% + 12px);
-  right: 0;
+  bottom: calc(100% + 14px);
+  left: 0;
+  right: auto;
   width: max-content;
-  max-width: 280px;
-  background: rgba(14, 10, 22, 0.95);
-  border: 1px solid rgba(223, 190, 144, 0.35);
-  border-radius: 12px;
-  padding: 0.65rem 0.95rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(223, 190, 144, 0.2);
-  backdrop-filter: blur(16px);
+  max-width: 300px;
+  background: rgba(14, 10, 22, 0.96);
+  border: 1px solid rgba(223, 190, 144, 0.45);
+  border-radius: 14px;
+  padding: 0.75rem 1.05rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(223, 190, 144, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   opacity: 0;
   visibility: hidden;
   transform: translateY(8px);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
   z-index: 10001;
 }
@@ -1528,78 +1531,141 @@
 .tooltip-inner {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .tooltip-symbol {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.2;
+  filter: drop-shadow(0 0 6px rgba(223, 190, 144, 0.6));
 }
 
 .tooltip-msg {
   font-family: var(--font-serif-editorial);
   font-style: italic;
-  font-size: 0.78rem;
-  line-height: 1.4;
+  font-size: 0.82rem;
+  line-height: 1.45;
   color: var(--text-ivory);
 }
 
 .tooltip-arrow {
   position: absolute;
   bottom: -6px;
-  right: 20px;
+  left: 24px;
+  right: auto;
   width: 10px;
   height: 10px;
-  background: rgba(14, 10, 22, 0.95);
-  border-right: 1px solid rgba(223, 190, 144, 0.35);
-  border-bottom: 1px solid rgba(223, 190, 144, 0.35);
+  background: rgba(14, 10, 22, 0.96);
+  border-right: 1px solid rgba(223, 190, 144, 0.45);
+  border-bottom: 1px solid rgba(223, 190, 144, 0.45);
   transform: rotate(45deg);
 }
 
-/* Botón Circular Compacto */
+/* Botón Talismán Sagrado Flotante de Alta Visibilidad */
 .tantric-bot-trigger-btn {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  padding: 0;
-  background: rgba(12, 8, 18, 0.92);
-  border: 1.5px solid rgba(223, 190, 144, 0.45);
-  border-radius: 50%;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(223, 190, 144, 0.25);
+  gap: 0.85rem;
+  padding: 0.35rem 1.15rem 0.35rem 0.4rem;
+  background: radial-gradient(circle at 35% 35%, rgba(36, 22, 58, 0.96) 0%, rgba(14, 10, 22, 0.95) 75%, rgba(6, 4, 10, 0.98) 100%);
+  border: 1.8px solid rgba(223, 190, 144, 0.55);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 10px 32px rgba(0, 0, 0, 0.85),
+    0 0 22px rgba(223, 190, 144, 0.45),
+    0 0 45px rgba(168, 85, 247, 0.3);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   color: var(--text-ivory);
+  animation: talismanFloat 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes talismanFloat {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.85), 0 0 20px rgba(223, 190, 144, 0.4), 0 0 40px rgba(168, 85, 247, 0.25);
+  }
+  100% {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(223, 190, 144, 0.65), 0 0 55px rgba(168, 85, 247, 0.45);
+  }
 }
 
 .tantric-bot-trigger-btn:hover {
-  transform: scale(1.08);
-  border-color: var(--gold-bright);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 25px rgba(223, 190, 144, 0.5);
-  background: rgba(18, 12, 28, 0.98);
+  transform: translateY(-8px) scale(1.04);
+  border-color: #FAF7F2;
+  box-shadow: 
+    0 18px 48px rgba(0, 0, 0, 0.95),
+    0 0 38px rgba(223, 190, 144, 0.8),
+    0 0 70px rgba(168, 85, 247, 0.6);
+  background: radial-gradient(circle at 35% 35%, rgba(48, 28, 76, 0.98) 0%, rgba(18, 12, 28, 0.98) 75%, rgba(8, 5, 14, 1) 100%);
 }
 
+/* Orbe Central del Talismán */
+.talisman-orb-core {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 6, 16, 0.95);
+  border: 1.5px solid rgba(223, 190, 144, 0.7);
+  box-shadow: inset 0 0 12px rgba(223, 190, 144, 0.25);
+}
+
+/* Halos Concéntricos Ondulantes */
 .trigger-aura-pulse {
   position: absolute;
-  inset: -4px;
   border-radius: 50%;
-  border: 1px solid rgba(223, 190, 144, 0.3);
-  animation: auraPulse 3s ease-in-out infinite;
   pointer-events: none;
 }
 
-@keyframes auraPulse {
-  0%, 100% { transform: scale(1); opacity: 0.2; }
-  50% { transform: scale(1.12); opacity: 0.65; }
+.trigger-aura-pulse.pulse-gold {
+  inset: -6px;
+  border: 1.5px solid rgba(223, 190, 144, 0.45);
+  animation: auraPulseGold 3s ease-in-out infinite;
+}
+
+.trigger-aura-pulse.pulse-violet {
+  inset: -12px;
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  animation: auraPulseViolet 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes auraPulseGold {
+  0%, 100% { transform: scale(1); opacity: 0.25; }
+  50% { transform: scale(1.15); opacity: 0.75; }
+}
+
+@keyframes auraPulseViolet {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.18); opacity: 0.6; }
+}
+
+/* Órbita Celestial Giratoria */
+.trigger-celestial-orbit {
+  position: absolute;
+  inset: -16px;
+  border: 1px dashed rgba(223, 190, 144, 0.28);
+  border-radius: 50%;
+  animation: celestialSpin 24s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes celestialSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .tantric-chakra-emblem {
-  width: 32px;
-  height: 32px;
-  filter: drop-shadow(0 0 8px rgba(223, 190, 144, 0.5));
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 8px rgba(223, 190, 144, 0.65));
   animation: subtleSpinYantra 24s linear infinite;
   transform-origin: center;
 }
@@ -1609,15 +1675,44 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Placa Tipográfica / Badge Pill */
+.talisman-badge-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1px;
+}
+
+.talisman-badge-title {
+  font-family: var(--font-serif-display);
+  font-size: 0.86rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: #FAF7F2;
+  text-shadow: 0 0 12px rgba(223, 190, 144, 0.6);
+  white-space: nowrap;
+}
+
+.talisman-badge-sub {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  opacity: 0.95;
+  white-space: nowrap;
+}
+
 .trigger-unread-ping {
   position: absolute;
-  top: 1px;
-  right: 1px;
-  width: 9px;
-  height: 9px;
+  top: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
   background: var(--gold-bright);
   border-radius: 50%;
-  box-shadow: 0 0 8px var(--gold-bright);
+  box-shadow: 0 0 10px var(--gold-bright);
   animation: pingDot 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
@@ -1628,20 +1723,37 @@
 /* Modal Window del Oráculo */
 .tantric-bot-modal-window {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.75rem;
+  left: 1.75rem;
+  right: auto;
   width: min(420px, calc(100vw - 2.5rem));
   height: min(620px, calc(100vh - 4.5rem));
-  background: linear-gradient(180deg, rgba(14, 10, 22, 0.96) 0%, rgba(8, 6, 12, 0.98) 100%);
-  border: 1px solid rgba(223, 190, 144, 0.35);
-  border-radius: 18px;
-  backdrop-filter: blur(24px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(223, 190, 144, 0.2);
+  background: linear-gradient(180deg, rgba(14, 10, 22, 0.97) 0%, rgba(8, 6, 12, 0.99) 100%);
+  border: 1px solid rgba(223, 190, 144, 0.4);
+  border-radius: 20px;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 40px rgba(223, 190, 144, 0.25);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   z-index: 10000;
   animation: botFadeUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bot-mobile-drag-bar {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0.65rem 0 0.2rem;
+  background: rgba(14, 10, 22, 0.97);
+}
+
+.drag-handle-pill {
+  width: 42px;
+  height: 4.5px;
+  border-radius: 3px;
+  background: rgba(223, 190, 144, 0.4);
 }
 
 @keyframes botFadeUp {
@@ -2026,4 +2138,145 @@
   color: var(--text-ivory-dim);
   opacity: 0.65;
 }
+
+/* ==========================================================================
+   OPTIMIZACIÓN MÓVIL PROFUNDA (SMARTPHONES & TABLETS <= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Botón Flotante del Bot en Móvil: Anclado seguro a la izquierda */
+  .tantric-bot-launcher-container {
+    bottom: 1rem !important;
+    left: 1rem !important;
+    right: auto !important;
+    z-index: 9999 !important;
+  }
+
+  .bot-hover-tooltip {
+    display: none !important; /* Desactivar hover en dispositivos táctiles */
+  }
+
+  .tantric-bot-trigger-btn {
+    padding: 0.22rem 0.75rem 0.22rem 0.22rem;
+    gap: 0.45rem;
+    border-width: 1.5px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9), 0 0 16px rgba(223, 190, 144, 0.5);
+  }
+
+  .talisman-orb-core {
+    width: 38px;
+    height: 38px;
+  }
+
+  .tantric-chakra-emblem {
+    width: 26px;
+    height: 26px;
+  }
+
+  .trigger-celestial-orbit {
+    inset: -9px;
+  }
+
+  .talisman-badge-title {
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+  }
+
+  .talisman-badge-sub {
+    display: none; /* En móvil dejamos únicamente el título radiante para máxima limpieza */
+  }
+
+  /* Modal del Bot transformado en Bottom Sheet / Drawer Nativo */
+  .tantric-bot-modal-window {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 86vh !important;
+    max-height: 86vh !important;
+    border-radius: 24px 24px 0 0 !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    margin: 0 !important;
+    z-index: 100000 !important;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.95), 0 0 30px rgba(223, 190, 144, 0.3) !important;
+  }
+
+  .bot-mobile-drag-bar {
+    display: flex !important;
+  }
+
+  .bot-header {
+    padding: 0.75rem 1.15rem;
+  }
+
+  .bot-header-controls .bot-close-btn {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bot-input-bar {
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .bot-input-field {
+    font-size: 16px !important; /* Estricto para evitar zoom intrusivo en iOS Safari */
+    padding: 0.65rem 1rem;
+  }
+
+  .bot-send-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .bot-chips-scroll {
+    gap: 0.5rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .bot-chip-btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.72rem;
+  }
+
+  /* Adaptación Responsiva de Breathwork en Pantallas Estrechas (360px - 414px) */
+  .breathwork-stage {
+    width: min(340px, 92vw);
+    height: auto;
+    min-height: 330px;
+    margin: 0.5rem auto 1rem;
+  }
+
+  .breathwork-yogi-viewport {
+    width: min(300px, 86vw);
+    height: min(330px, 90vw);
+  }
+
+  .breathwork-top-toolbar {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .breathwork-pattern-tabs {
+    justify-content: center;
+    gap: 0.45rem;
+  }
+
+  .breathwork-tab-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.68rem;
+  }
+
+  .fire-stage-wrapper {
+    width: min(280px, 82vw);
+    height: min(280px, 82vw);
+  }
+}
+
 

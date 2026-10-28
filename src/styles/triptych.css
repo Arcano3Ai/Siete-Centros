@@ -1061,56 +1061,16 @@ body {
     flex-direction: column;
   }
 
+  /* Ocultar flank-left en móvil para evitar colisión con el header fijo */
   .triptych-flank-left {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: auto;
-    padding: 0.85rem 1.25rem;
-    border-right: none;
-    border-bottom: 1px solid rgba(197, 168, 128, 0.18);
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 40;
-  }
-
-  .flank-brand-emblem-wrap {
-    width: 38px;
-    height: 38px;
-  }
-
-  .flank-chakra-nav {
-    flex-direction: row;
-    gap: 0.35rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  .flank-chakra-nav::before {
-    display: none;
-  }
-
-  .chakra-nav-label-wrap,
-  .chakra-nav-tooltip {
-    display: none;
-  }
-
-  .chakra-nav-node {
-    width: 22px;
-    height: 22px;
-  }
-
-  .flank-left-footer {
-    display: none;
+    display: none !important;
   }
 
   .triptych-spine-center {
     width: 100%;
     min-width: 100%;
     max-width: 520px;
-    margin: 4.5rem auto 5rem;
+    margin: 54px auto 5.5rem;
   }
 
   .spine-videos-stack {
@@ -1128,35 +1088,49 @@ body {
     height: 100%;
   }
 
+  /* En móvil, flank-right se transforma en un botón CTA flotante a la derecha,
+     dejando libre la esquina izquierda para el Bot Oráculo sin colisiones */
   .triptych-flank-right {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: auto;
-    height: auto;
-    padding: 0.85rem 1.25rem;
-    border-left: none;
-    border-top: 1px solid rgba(197, 168, 128, 0.18);
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 40;
+    position: fixed !important;
+    bottom: 1rem !important;
+    right: 1rem !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: calc(100vw - 190px) !important;
+    height: auto !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    z-index: 9990 !important;
+    box-shadow: none !important;
   }
 
   .flank-right-header,
-  .flank-chakra-card-display {
-    display: none;
+  .flank-chakra-card-display,
+  .flank-footer-sub-caption {
+    display: none !important;
   }
 
   .flank-right-footer {
-    padding: 0;
-    border: none;
-    width: 100%;
+    padding: 0 !important;
+    border: none !important;
+    width: auto !important;
+  }
+
+  .magnetic-btn-wrap {
+    width: auto !important;
   }
 
   .magnetic-circle-btn {
-    padding: 0.75rem 1.25rem;
+    padding: 0.55rem 1.1rem;
     font-size: 0.72rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(223, 190, 144, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 }
+
