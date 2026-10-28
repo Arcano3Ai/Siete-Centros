@@ -343,76 +343,81 @@ export const TantricConciergeBot: React.FC = () => {
 
   return (
     <>
-      {/* Botón Flotante con Emblema Tántrico Sagrado de los 7 Chakras */}
+      {/* Botón Flotante Reducido con Emblema Tántrico Sagrado de los 7 Chakras */}
       <div className="tantric-bot-launcher-container" id="tantric-bot-launcher-root">
         {!isOpen && (
-          <button
-            type="button"
-            className="tantric-bot-trigger-btn"
-            onClick={() => setIsOpen(true)}
-            aria-label={t.bot.title}
-            title={t.bot.title}
-          >
-            {/* Halo de Resplandor Místico */}
-            <div className="trigger-aura-pulse" aria-hidden="true" />
+          <div className="bot-launcher-relative-wrap">
+            {/* Mensaje Holístico Flotante: Solo visible al pasar el mouse */}
+            <div className="bot-hover-tooltip" role="tooltip">
+              <div className="tooltip-inner">
+                <span className="tooltip-symbol">🙏</span>
+                <span className="tooltip-msg">{t.bot.hoverGreeting}</span>
+              </div>
+              <div className="tooltip-arrow" aria-hidden="true" />
+            </div>
 
-            {/* Ícono Tántrico Sagrado de los 7 Chakras & Kundalini Spiral */}
-            <svg
-              className="tantric-chakra-emblem"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
+            <button
+              type="button"
+              className="tantric-bot-trigger-btn"
+              onClick={() => setIsOpen(true)}
+              aria-label={t.bot.title}
+              title={t.bot.title}
             >
-              <defs>
-                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FAF7F2" />
-                  <stop offset="50%" stopColor="#DFBE90" />
-                  <stop offset="100%" stopColor="#A8824B" />
-                </linearGradient>
-                <radialGradient id="binduGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#FFFFFF" />
-                  <stop offset="40%" stopColor="#DFBE90" />
-                  <stop offset="100%" stopColor="transparent" />
-                </radialGradient>
-              </defs>
+              {/* Halo de Resplandor Místico */}
+              <div className="trigger-aura-pulse" aria-hidden="true" />
 
-              {/* Anillo de Protección y 7 Puntos Sagrados de los Chakras */}
-              <circle cx="50" cy="50" r="46" stroke="url(#goldGradient)" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
-              <circle cx="50" cy="50" r="39" stroke="#DFBE90" strokeWidth="1.2" opacity="0.8" />
+              {/* Ícono Tántrico Sagrado de los 7 Chakras & Kundalini Spiral */}
+              <svg
+                className="tantric-chakra-emblem"
+                viewBox="0 0 100 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FAF7F2" />
+                    <stop offset="50%" stopColor="#DFBE90" />
+                    <stop offset="100%" stopColor="#A8824B" />
+                  </linearGradient>
+                  <radialGradient id="binduGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#FFFFFF" />
+                    <stop offset="40%" stopColor="#DFBE90" />
+                    <stop offset="100%" stopColor="transparent" />
+                  </radialGradient>
+                </defs>
 
-              {/* Geometría Sagrada Tántrica: Dos triángulos entrelazados (Yantra / Sello de Shiva-Shakti) */}
-              <polygon points="50,16 78,64 22,64" stroke="url(#goldGradient)" strokeWidth="1.4" fill="rgba(223, 190, 144, 0.08)" />
-              <polygon points="50,84 22,36 78,36" stroke="url(#goldGradient)" strokeWidth="1.4" fill="rgba(223, 190, 144, 0.08)" />
+                {/* Anillo de Protección y 7 Puntos Sagrados de los Chakras */}
+                <circle cx="50" cy="50" r="46" stroke="url(#goldGradient)" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
+                <circle cx="50" cy="50" r="39" stroke="#DFBE90" strokeWidth="1.2" opacity="0.8" />
 
-              {/* 7 Pétalos Circulares Radiantes de los Centros */}
-              <circle cx="50" cy="18" r="3.2" fill="#C084FC" /> {/* Corona */}
-              <circle cx="68" cy="27" r="2.8" fill="#818CF8" /> {/* 3er Ojo */}
-              <circle cx="77" cy="46" r="2.8" fill="#60A5FA" /> {/* Garganta */}
-              <circle cx="71" cy="69" r="2.8" fill="#34D399" /> {/* Corazón */}
-              <circle cx="50" cy="82" r="3.2" fill="#F87171" /> {/* Raíz */}
-              <circle cx="29" cy="69" r="2.8" fill="#FB923C" /> {/* Sacro */}
-              <circle cx="23" cy="46" r="2.8" fill="#FACC15" /> {/* Plexo */}
+                {/* Geometría Sagrada Tántrica: Dos triángulos entrelazados (Yantra / Sello de Shiva-Shakti) */}
+                <polygon points="50,16 78,64 22,64" stroke="url(#goldGradient)" strokeWidth="1.4" fill="rgba(223, 190, 144, 0.08)" />
+                <polygon points="50,84 22,36 78,36" stroke="url(#goldGradient)" strokeWidth="1.4" fill="rgba(223, 190, 144, 0.08)" />
 
-              {/* Espiral Kundalini Central & Punto Bindu */}
-              <path
-                d="M 50 50 m -12 0 a 12 12 0 1 0 24 0 a 12 12 0 1 0 -24 0 M 50 50 m -6 0 a 6 6 0 1 0 12 0 a 6 6 0 1 0 -12 0"
-                stroke="url(#goldGradient)"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                opacity="0.9"
-              />
-              <circle cx="50" cy="50" r="3.5" fill="url(#binduGlow)" />
-            </svg>
+                {/* 7 Pétalos Circulares Radiantes de los Centros */}
+                <circle cx="50" cy="18" r="3.2" fill="#C084FC" /> {/* Corona */}
+                <circle cx="68" cy="27" r="2.8" fill="#818CF8" /> {/* 3er Ojo */}
+                <circle cx="77" cy="46" r="2.8" fill="#60A5FA" /> {/* Garganta */}
+                <circle cx="71" cy="69" r="2.8" fill="#34D399" /> {/* Corazón */}
+                <circle cx="50" cy="82" r="3.2" fill="#F87171" /> {/* Raíz */}
+                <circle cx="29" cy="69" r="2.8" fill="#FB923C" /> {/* Sacro */}
+                <circle cx="23" cy="46" r="2.8" fill="#FACC15" /> {/* Plexo */}
 
-            {/* Badge de Texto Místico */}
-            <span className="trigger-text-badge">
-              <span className="trigger-pulse-dot" />
-              <span className="trigger-label">{t.bot.title}</span>
-            </span>
+                {/* Espiral Kundalini Central & Punto Bindu */}
+                <path
+                  d="M 50 50 m -12 0 a 12 12 0 1 0 24 0 a 12 12 0 1 0 -24 0 M 50 50 m -6 0 a 6 6 0 1 0 12 0 a 6 6 0 1 0 -12 0"
+                  stroke="url(#goldGradient)"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  opacity="0.9"
+                />
+                <circle cx="50" cy="50" r="3.5" fill="url(#binduGlow)" />
+              </svg>
 
-            {hasUnread && <span className="trigger-unread-ping" />}
-          </button>
+              {hasUnread && <span className="trigger-unread-ping" />}
+            </button>
+          </div>
         )}
       </div>
 

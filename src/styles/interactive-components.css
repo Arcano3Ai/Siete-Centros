@@ -180,6 +180,54 @@
   flex-wrap: wrap;
 }
 
+.breathwork-top-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto 0.75rem;
+}
+
+.breathwork-view-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(14, 10, 22, 0.75);
+  border: 1px solid rgba(197, 168, 128, 0.22);
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.35rem;
+  backdrop-filter: blur(8px);
+}
+
+.view-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-ivory-dim);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.view-switch-btn:hover {
+  color: var(--text-ivory);
+}
+
+.view-switch-btn.active {
+  background: rgba(223, 190, 144, 0.16);
+  border-color: var(--gold-bright);
+  color: var(--gold-bright);
+  box-shadow: 0 0 12px rgba(223, 190, 144, 0.25);
+}
+
 .meta-sub {
   font-family: var(--font-serif-editorial);
   font-style: italic;
@@ -203,12 +251,147 @@
 
 .breathwork-stage {
   position: relative;
-  width: 310px;
-  height: 310px;
+  width: 340px;
+  height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0.5rem auto 2rem;
+  margin: 0.5rem auto 1.5rem;
+}
+
+/* ==========================================================================
+   VISUALIZADOR YÓGUICO CON LOS 7 CHAKRAS
+   ========================================================================== */
+.breathwork-yogi-viewport {
+  position: relative;
+  width: 300px;
+  height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+  transition: transform 0.12s linear;
+  z-index: 5;
+}
+
+.yogi-sacred-silhouette-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.crown-lotus-aura {
+  transform-origin: 160px 52px;
+  transition: all 0.5s ease;
+}
+
+.crown-lotus-aura.pulsing-crown {
+  animation: crownRotatePulse 12s linear infinite;
+}
+
+@keyframes crownRotatePulse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.yogi-chakra-node-group:hover circle:first-child {
+  transform: scale(1.15);
+  transform-origin: center;
+}
+
+.yogi-chakra-hover-card {
+  position: absolute;
+  top: 10px;
+  right: -30px;
+  background: rgba(12, 8, 18, 0.95);
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 0.45rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  backdrop-filter: blur(16px);
+  z-index: 10;
+  pointer-events: none;
+  animation: fadeInChakraCard 0.2s ease-out;
+}
+
+@keyframes fadeInChakraCard {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-chakra-num {
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: var(--gold-bright);
+}
+
+.card-chakra-name {
+  font-family: var(--font-serif-display);
+  font-size: 0.85rem;
+  color: #FAF7F2;
+}
+
+.card-chakra-sanskrit {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 0.72rem;
+  color: var(--text-ivory-dim);
+}
+
+.card-chakra-hz {
+  font-size: 0.65rem;
+  color: #34D399;
+  font-weight: 600;
+}
+
+/* HUD Overlay de Respiración */
+.breathwork-hud-overlay {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 8;
+  background: rgba(10, 8, 16, 0.75);
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 1.15rem;
+  backdrop-filter: blur(8px);
+}
+
+.orbe-phase-badge {
+  font-family: var(--font-serif-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.orbe-seconds-display {
+  font-family: var(--font-sans);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #FAF7F2;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-shadow: 0 0 15px rgba(223, 190, 144, 0.4);
+}
+
+.orbe-sub-status {
+  font-size: 0.62rem;
+  font-style: italic;
+  color: var(--text-ivory-dim);
+  letter-spacing: 0.06em;
 }
 
 /* Ripples Pránicos de Expansión Concéntrica */
@@ -1298,42 +1481,111 @@
 }
 
 /* ==========================================================================
-   BOT TÁNTRICO ORÁCULO DE LOS 7 CHAKRAS (FLOATING WIDGET)
+   BOT TÁNTRICO ORÁCULO DE LOS 7 CHAKRAS (COMPACT TALISMAN + HOVER GREETING)
    ========================================================================== */
 .tantric-bot-launcher-container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 9999;
 }
 
+.bot-launcher-relative-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Tooltip de Saludo Holístico: Solo visible al pasar el mouse */
+.bot-hover-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  width: max-content;
+  max-width: 280px;
+  background: rgba(14, 10, 22, 0.95);
+  border: 1px solid rgba(223, 190, 144, 0.35);
+  border-radius: 12px;
+  padding: 0.65rem 0.95rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(223, 190, 144, 0.2);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 10001;
+}
+
+.bot-launcher-relative-wrap:hover .bot-hover-tooltip,
+.bot-launcher-relative-wrap:focus-within .bot-hover-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tooltip-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.tooltip-symbol {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.tooltip-msg {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-ivory);
+}
+
+.tooltip-arrow {
+  position: absolute;
+  bottom: -6px;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  background: rgba(14, 10, 22, 0.95);
+  border-right: 1px solid rgba(223, 190, 144, 0.35);
+  border-bottom: 1px solid rgba(223, 190, 144, 0.35);
+  transform: rotate(45deg);
+}
+
+/* Botón Circular Compacto */
 .tantric-bot-trigger-btn {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 1.25rem 0.6rem 0.8rem;
-  background: rgba(10, 8, 16, 0.88);
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  background: rgba(12, 8, 18, 0.92);
   border: 1.5px solid rgba(223, 190, 144, 0.45);
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   backdrop-filter: blur(16px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65), 0 0 20px rgba(223, 190, 144, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(223, 190, 144, 0.25);
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   color: var(--text-ivory);
 }
 
 .tantric-bot-trigger-btn:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: scale(1.08);
   border-color: var(--gold-bright);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(223, 190, 144, 0.45);
-  background: rgba(16, 12, 24, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 25px rgba(223, 190, 144, 0.5);
+  background: rgba(18, 12, 28, 0.98);
 }
 
 .trigger-aura-pulse {
   position: absolute;
   inset: -4px;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   border: 1px solid rgba(223, 190, 144, 0.3);
   animation: auraPulse 3s ease-in-out infinite;
   pointer-events: none;
@@ -1341,12 +1593,12 @@
 
 @keyframes auraPulse {
   0%, 100% { transform: scale(1); opacity: 0.2; }
-  50% { transform: scale(1.06); opacity: 0.65; }
+  50% { transform: scale(1.12); opacity: 0.65; }
 }
 
 .tantric-chakra-emblem {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   filter: drop-shadow(0 0 8px rgba(223, 190, 144, 0.5));
   animation: subtleSpinYantra 24s linear infinite;
   transform-origin: center;
@@ -1357,37 +1609,15 @@
   100% { transform: rotate(360deg); }
 }
 
-.trigger-text-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.trigger-pulse-dot {
-  width: 7px;
-  height: 7px;
-  background: #34D399;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #34D399;
-}
-
-.trigger-label {
-  font-family: var(--font-serif-display);
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
-  color: var(--text-ivory);
-  text-transform: uppercase;
-}
-
 .trigger-unread-ping {
   position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 10px;
-  height: 10px;
+  top: 1px;
+  right: 1px;
+  width: 9px;
+  height: 9px;
   background: var(--gold-bright);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--gold-bright);
+  box-shadow: 0 0 8px var(--gold-bright);
   animation: pingDot 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 

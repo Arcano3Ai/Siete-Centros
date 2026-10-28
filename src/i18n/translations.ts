@@ -67,6 +67,7 @@ export interface Translations {
     suggestionsTitle: string;
     chips: string[];
     disclaimer: string;
+    hoverGreeting: string;
   };
 }
 
@@ -144,7 +145,8 @@ export const DICTIONARY: Record<Language, Translations> = {
         '¿Cómo participar en los Círculos de Palabra?',
         'Quiero agendar por WhatsApp con Sofía'
       ],
-      disclaimer: 'Espacio de orientación holística. Para reservas privadas, contacta directamente a Sofía.'
+      disclaimer: 'Espacio de orientación holística. Para reservas privadas, contacta directamente a Sofía.',
+      hoverGreeting: 'Namasté 🙏 Que tu respiración habite el presente. Pulsa para consultar al Oráculo'
     }
   },
   en: {
@@ -220,7 +222,8 @@ export const DICTIONARY: Record<Language, Translations> = {
         'How to join the Word Circles?',
         'I want to book via WhatsApp with Sofia'
       ],
-      disclaimer: 'Holistic guidance space. For private bookings, contact Sofia directly.'
+      disclaimer: 'Holistic guidance space. For private bookings, contact Sofia directly.',
+      hoverGreeting: 'Namaste 🙏 May your breath inhabit the present. Click to consult the Oracle'
     }
   }
 };
