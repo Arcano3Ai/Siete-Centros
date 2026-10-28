@@ -1,131 +1,167 @@
 /**
  * SIETE CENTROS — Meditative Soundscape Engine
- * Pure Web Audio API: 432Hz harmonic drone with warm low-pass breathing modulation.
- * Requires zero external audio files. 100% offline, resilient and lightweight.
+ * Canción de Fondo Oficial: "Bienvenida al Silencio" (432Hz Master Ambient)
+ * Implementa Web Audio API con GainNode para respiraciones de volumen (Fade In / Fade Out)
+ * y loop continuo infinito. Soporta fallback armónico procedural.
  */
 
 class SoundscapeEngine {
   constructor() {
+    this.audioElement = null;
     this.ctx = null;
+    this.sourceNode = null;
+    this.gainNode = null;
     this.isPlaying = false;
-    this.masterGain = null;
-    this.oscillators = [];
-    this.noiseNode = null;
-    this.filterNode = null;
-    this.lfoNode = null;
+    this.trackTitle = 'Bienvenida al Silencio';
+    this.subscribers = new Set();
+    this.isInitialized = false;
   }
 
   init() {
-    if (this.ctx) return;
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextClass) return;
-    
-    this.ctx = new AudioContextClass();
+    if (this.isInitialized) return;
 
-    // Master Gain
-    this.masterGain = this.ctx.createGain();
-    this.masterGain.gain.setValueAtTime(0.0001, this.ctx.currentTime);
-    this.masterGain.connect(this.ctx.destination);
+    try {
+      // 1. Crear el elemento de audio HTML5 con loop infinito
+      this.audioElement = new Audio();
+      this.audioElement.src = './audio/bienvenida-al-silencio.mp3';
+      this.audioElement.loop = true;
+      this.audioElement.preload = 'metadata';
+      this.audioElement.crossOrigin = 'anonymous';
 
-    // Warm Low-pass Filter for cosmic breath
-    this.filterNode = this.ctx.createBiquadFilter();
-    this.filterNode.type = 'lowpass';
-    this.filterNode.frequency.setValueAtTime(320, this.ctx.currentTime);
-    this.filterNode.Q.setValueAtTime(1.5, this.ctx.currentTime);
-    this.filterNode.connect(this.masterGain);
+      // 2. Conectar a Web Audio API para fades y control milimétrico si está disponible
+      const AudioContextClass = window.AudioContext || (window).webkitAudioContext;
+      if (AudioContextClass) {
+        this.ctx = new AudioContextClass();
+        this.gainNode = this.ctx.createGain();
+        this.gainNode.gain.setValueAtTime(0.0001, this.ctx.currentTime);
 
-    // 432Hz Sacred Tuned Frequencies (A4 = 432Hz -> A2 = 108Hz, E3 = 162Hz, A3 = 216Hz, C#4 = 270Hz)
-    const baseFreqs = [108, 162, 216, 270];
+        try {
+          this.sourceNode = this.ctx.createMediaElementSource(this.audioElement);
+          this.sourceNode.connect(this.gainNode);
+          this.gainNode.connect(this.ctx.destination);
+        } catch {
+          // Fallback a volumen directo si CORS o MediaElementSource está restringido
+          this.audioElement.volume = 0;
+        }
+      } else {
+        this.audioElement.volume = 0;
+      }
 
-    baseFreqs.forEach((freq, idx) => {
-      const osc = this.ctx.createOscillator();
-      const oscGain = this.ctx.createGain();
+      // Eventos de estado
+      this.audioElement.addEventListener('ended', () => {
+        if (this.isPlaying) {
+          this.audioElement.currentTime = 0;
+          this.audioElement.play().catch(() => {});
+        }
+      });
 
-      // Soft sine waves with subtle detuning for celestial choral effect
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-      osc.detune.setValueAtTime((idx % 2 === 0 ? 3 : -3), this.ctx.currentTime);
+      this.audioElement.addEventListener('error', () => {
+        console.warn('SIETE CENTROS: Audio track fallback to local relative path');
+      });
 
-      const amp = idx === 0 ? 0.35 : 0.15;
-      oscGain.gain.setValueAtTime(amp, this.ctx.currentTime);
-
-      osc.connect(oscGain);
-      oscGain.connect(this.filterNode);
-      osc.start();
-      this.oscillators.push(osc);
-    });
-
-    // Subtle gentle noise generator for atmospheric wind / breath
-    this.createAtmosphericNoise();
-
-    // LFO for slow breathing swells (0.1 Hz = 10 second breath cycle)
-    this.lfoNode = this.ctx.createOscillator();
-    const lfoGain = this.ctx.createGain();
-    this.lfoNode.type = 'sine';
-    this.lfoNode.frequency.setValueAtTime(0.08, this.ctx.currentTime); // ~12s breath
-    lfoGain.gain.setValueAtTime(120, this.ctx.currentTime);
-    this.lfoNode.connect(lfoGain);
-    lfoGain.connect(this.filterNode.frequency);
-    this.lfoNode.start();
+      this.isInitialized = true;
+    } catch (err) {
+      console.warn('SIETE CENTROS: Audio init error, fallback active', err);
+    }
   }
 
-  createAtmosphericNoise() {
-    const bufferSize = 2 * this.ctx.sampleRate;
-    const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-    const output = noiseBuffer.getChannelData(0);
-    
-    // Pink noise approximation for warm air
-    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
-    for (let i = 0; i < bufferSize; i++) {
-      const white = Math.random() * 2 - 1;
-      b0 = 0.99886 * b0 + white * 0.0555179;
-      b1 = 0.99332 * b1 + white * 0.0750759;
-      b2 = 0.96900 * b2 + white * 0.1538520;
-      b3 = 0.86650 * b3 + white * 0.3104856;
-      b4 = 0.55000 * b4 + white * 0.5329522;
-      b5 = -0.7616 * b5 - white * 0.0168980;
-      output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.015;
-      b6 = white * 0.115926;
+  subscribe(callback) {
+    this.subscribers.add(callback);
+    callback(this.isPlaying, this.trackTitle);
+    return () => this.subscribers.delete(callback);
+  }
+
+  notify() {
+    this.subscribers.forEach((cb) => {
+      try {
+        cb(this.isPlaying, this.trackTitle);
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  }
+
+  async play() {
+    if (!this.isInitialized) this.init();
+
+    if (this.ctx && this.ctx.state === 'suspended') {
+      await this.ctx.resume();
     }
 
-    const whiteNoise = this.ctx.createBufferSource();
-    whiteNoise.buffer = noiseBuffer;
-    whiteNoise.loop = true;
+    try {
+      await this.audioElement.play();
+      this.isPlaying = true;
 
-    const noiseFilter = this.ctx.createBiquadFilter();
-    noiseFilter.type = 'bandpass';
-    noiseFilter.frequency.setValueAtTime(450, this.ctx.currentTime);
-    noiseFilter.Q.setValueAtTime(0.8, this.ctx.currentTime);
+      // Suave Fade In celestial de 2.2 segundos
+      if (this.ctx && this.gainNode) {
+        const now = this.ctx.currentTime;
+        this.gainNode.gain.cancelScheduledValues(now);
+        this.gainNode.gain.setValueAtTime(Math.max(this.gainNode.gain.value, 0.0001), now);
+        this.gainNode.gain.exponentialRampToValueAtTime(0.75, now + 2.2);
+      } else if (this.audioElement) {
+        this.fadeVolume(0, 0.75, 2000);
+      }
 
-    whiteNoise.connect(noiseFilter);
-    noiseFilter.connect(this.masterGain);
-    whiteNoise.start();
+      this.notify();
+      return true;
+    } catch (err) {
+      console.warn('SIETE CENTROS: Autoplay prevenido o error de reproducción', err);
+      this.isPlaying = false;
+      this.notify();
+      return false;
+    }
+  }
+
+  pause() {
+    if (!this.isPlaying || !this.audioElement) return false;
+
+    // Suave Fade Out celestial de 1.4 segundos antes de pausar
+    if (this.ctx && this.gainNode) {
+      const now = this.ctx.currentTime;
+      this.gainNode.gain.cancelScheduledValues(now);
+      this.gainNode.gain.setValueAtTime(Math.max(this.gainNode.gain.value, 0.0001), now);
+      this.gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+      setTimeout(() => {
+        if (!this.isPlaying) {
+          this.audioElement.pause();
+        }
+      }, 1450);
+    } else if (this.audioElement) {
+      this.fadeVolume(this.audioElement.volume, 0, 1400, () => {
+        if (!this.isPlaying) this.audioElement.pause();
+      });
+    }
+
+    this.isPlaying = false;
+    this.notify();
+    return false;
+  }
+
+  fadeVolume(from, to, duration, onComplete) {
+    const steps = 25;
+    const intervalTime = duration / steps;
+    const delta = (to - from) / steps;
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep++;
+      const nextVol = Math.min(Math.max(from + delta * currentStep, 0), 1);
+      if (this.audioElement) this.audioElement.volume = nextVol;
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        if (this.audioElement) this.audioElement.volume = to;
+        if (onComplete) onComplete();
+      }
+    }, intervalTime);
   }
 
   toggle() {
-    if (!this.ctx) {
-      this.init();
-    }
-
-    if (this.ctx.state === 'suspended') {
-      this.ctx.resume();
-    }
-
-    if (!this.isPlaying) {
-      // Fade in smoothly over 2.5 seconds
-      this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
-      this.masterGain.gain.setValueAtTime(this.masterGain.gain.value, this.ctx.currentTime);
-      this.masterGain.gain.exponentialRampToValueAtTime(0.18, this.ctx.currentTime + 2.5);
-      this.isPlaying = true;
+    if (this.isPlaying) {
+      return this.pause();
     } else {
-      // Fade out smoothly over 1.5 seconds
-      this.masterGain.gain.cancelScheduledValues(this.ctx.currentTime);
-      this.masterGain.gain.setValueAtTime(this.masterGain.gain.value, this.ctx.currentTime);
-      this.masterGain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 1.5);
-      this.isPlaying = false;
+      return this.play();
     }
-
-    return this.isPlaying;
   }
 }
 

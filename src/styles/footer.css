@@ -189,3 +189,35 @@
   font-size: 0.75rem;
   color: var(--gold-aged);
 }
+
+/* Developer Attribution — Agente Web */
+.footer-developer-credit {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  color: var(--text-ivory-dim);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.developer-link {
+  color: var(--gold-bright);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  border-bottom: 1px dotted rgba(223, 190, 144, 0.5);
+  padding-bottom: 1px;
+}
+
+.developer-link:hover {
+  color: #FAF7F2;
+  border-bottom-color: var(--gold-bright);
+  text-shadow: 0 0 12px rgba(223, 190, 144, 0.7);
+}
+

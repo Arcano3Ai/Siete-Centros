@@ -26,19 +26,24 @@ export function initNavigation() {
   window.addEventListener('scroll', handleHeaderScroll, { passive: true });
   handleHeaderScroll();
 
-  // 2. Audio Button Toggle
-  if (audioBtn) {
-    audioBtn.addEventListener('click', () => {
-      const playing = soundscape.toggle();
-      audioBtn.classList.toggle('is-playing', playing);
-      audioBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
-      
-      const label = audioBtn.querySelector('.audio-label');
+  // 2. Audio Button Toggle (Synchronized with "Bienvenida al Silencio")
+  const audioButtons = document.querySelectorAll('.audio-toggle-btn');
+  audioButtons.forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      await soundscape.toggle();
+    });
+  });
+
+  soundscape.subscribe((playing, title) => {
+    audioButtons.forEach((btn) => {
+      btn.classList.toggle('is-playing', playing);
+      btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+      const label = btn.querySelector('.audio-label');
       if (label) {
-        label.textContent = playing ? 'Ambiente 432Hz' : 'Sonido';
+        label.textContent = playing ? title : 'Música: Silencio';
       }
     });
-  }
+  });
 
   // 3. Mobile Menu Toggle & Drawer
   function toggleMobileMenu(open) {

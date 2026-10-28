@@ -748,6 +748,7 @@ export const BreathworkOrbe: React.FC = () => {
         >
           {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
           <span>{soundEnabled ? t.breathwork.soundOn : t.breathwork.soundOff}</span>
+          {soundEnabled && <span className="sound-active-dot" aria-hidden="true" />}
         </button>
       </div>
 

@@ -767,7 +767,37 @@
   line-height: 1.6;
   color: var(--text-ivory-muted);
   text-align: center;
-  padding: 1.5rem 0 2.5rem;
+  padding: 1.5rem 0 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
+
+.footer-developer-credit {
+  margin-top: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  color: var(--text-ivory-dim);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.developer-link {
+  color: var(--gold-bright);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  border-bottom: 1px dotted rgba(223, 190, 144, 0.5);
+  padding-bottom: 1px;
+}
+
+.developer-link:hover {
+  color: #FAF7F2;
+  border-bottom-color: var(--gold-bright);
+  text-shadow: 0 0 12px rgba(223, 190, 144, 0.7);
+}
+
 
