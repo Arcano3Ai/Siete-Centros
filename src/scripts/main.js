@@ -1,29 +1,26 @@
 /**
  * SIETE CENTROS — Master Frontend Application Controller
+ * Orchestrates 3-Column Triptych Layout, Sacred Geometry, Audio, & Modals
  */
 
-import { initCosmicCanvas } from './particles.js';
-import { initParallax } from './parallax.js';
 import { initNavigation } from './navigation.js';
 import { initModals } from './modals.js';
 import { injectSacredGeometries } from './geometry.js';
+import { initTriptych } from './triptych.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Inject hand-crafted sacred geometry vectors
   injectSacredGeometries();
 
-  // 2. Initialize cosmic dust canvas
-  initCosmicCanvas();
+  // 2. Initialize 3-Column Triptych Layout (Orillas, 520px Centro, Partículas, CTA Magnético)
+  initTriptych();
 
-  // 3. Initialize silky 60fps parallax engine & scroll tracking
-  initParallax();
-
-  // 4. Initialize navigation, audio engine trigger, and mobile drawer
+  // 3. Initialize navigation & 432Hz ambient audio
   initNavigation();
 
-  // 5. Initialize interactive modals, drawers, and agenda demos
+  // 4. Initialize interactive modals (Sofía, Terapias, Círculo)
   initModals();
 
-  // 6. Reveal entrance
+  // 5. Reveal entrance
   document.body.classList.add('is-loaded');
 });

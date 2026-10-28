@@ -5,11 +5,11 @@
  */
 
 :root {
-  /* Master Background Tones (Fondo Negro Puro \u0026 Profundo) */
-  --bg-void: #000000;
-  --bg-primary: #050308;
-  --bg-plum: #0c0511;
-  --bg-plum-card: rgba(12, 5, 17, 0.78);
+  /* Master Background Tones (Fondo Sagrado #050508) */
+  --bg-void: #050508;
+  --bg-primary: #050508;
+  --bg-plum: #0a0610;
+  --bg-plum-card: rgba(10, 6, 16, 0.78);
   --bg-night: #03050b;
   --bg-surface: rgba(255, 255, 255, 0.03);
   --bg-surface-elevated: rgba(255, 255, 255, 0.06);
