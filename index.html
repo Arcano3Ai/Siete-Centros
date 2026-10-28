@@ -20,6 +20,7 @@
   <!-- Core Stylesheets -->
   <link rel="stylesheet" href="/src/styles/tokens.css">
   <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/video-portals.css">
   <link rel="stylesheet" href="/src/styles/nav.css">
   <link rel="stylesheet" href="/src/styles/hero.css">
   <link rel="stylesheet" href="/src/styles/chakras.css">
@@ -140,14 +141,8 @@
   <!-- Main Content Flow -->
   <main id="main-content">
 
-    <!-- 1. HERO SECTION: FONDO DE VIDEO 1 PARALLAX SIN OPACIDAD + EMBLEMA DORADO -->
+    <!-- 1. HERO SECTION: PORTAL CINEMATOGRÁFICO I CENTRADO + EMBLEMA DORADO -->
     <section class="hero-section" id="inicio" aria-label="Hero de Siete Centros">
-      <!-- Video 1 de Fondo Parallax Sin Opacidad -->
-      <div class="hero-video-wrapper" aria-hidden="true">
-        <video class="hero-video-bg" src="/videos/1.mp4" autoplay loop muted playsinline></video>
-      </div>
-      <div class="hero-bottom-fade" aria-hidden="true"></div>
-      
       <!-- Luminous Alignment Halo and Vertical Chakra Nodes -->
       <div class="hero-chakra-alignment-halo" aria-hidden="true"></div>
       <div class="hero-spine-alignment" aria-hidden="true">
@@ -184,6 +179,19 @@
             <span>Descubrir los Siete Centros</span>
           </a>
         </div>
+
+        <!-- Portal Cinematográfico I (16:9 Nativo Centrado con Coordenadas Sagradas) -->
+        <div class="hero-portal-wrapper">
+          <div class="cinematic-portal-stage" aria-label="Portal de Entrada - El Umbral de la Conciencia">
+            <span class="portal-corner-accent portal-corner-tl"></span>
+            <span class="portal-corner-accent portal-corner-tr"></span>
+            <span class="portal-corner-accent portal-corner-bl"></span>
+            <span class="portal-corner-accent portal-corner-br"></span>
+            <div class="portal-stage-badge">Portal I · El Umbral</div>
+            <div class="portal-edge-vignette"></div>
+            <video class="portal-video" src="/videos/1.mp4" autoplay loop muted playsinline></video>
+          </div>
+        </div>
       </div>
 
       <!-- Scroll Indicator -->
@@ -193,17 +201,25 @@
       </a>
     </section>
 
-    <!-- 2. LOS SIETE CENTROS (CAPÍTULOS PARALLAX CON VIDEO 2 DE FONDO SIN OPACIDAD) -->
+    <!-- 2. LOS SIETE CENTROS (CAPÍTULOS PARALLAX CON PORTAL II CENTRADO) -->
     <section class="chakras-section" id="los-siete-centros" aria-label="Recorrido por los Siete Centros">
-      <!-- Video 2 de Fondo Parallax Sin Opacidad -->
-      <div class="chakras-video-wrapper" aria-hidden="true">
-        <video class="chakras-video-bg" src="/videos/2.mp4" autoplay loop muted playsinline></video>
-      </div>
-
       <div class="journey-intro">
         <div class="eyebrow">La Geografía Interior</div>
         <h2 class="intro-lead">Siete umbrales hacia la integración de tu energía vital</h2>
         <p>Una travesía vertical desde la densidad luminosa de la tierra hasta la inmensidad del silencio consciente.</p>
+      </div>
+
+      <!-- Portal Cinematográfico II (16:9 Nativo Centrado) -->
+      <div class="chakras-portal-container">
+        <div class="cinematic-portal-stage" aria-label="Portal II - Los Siete Centros de Conciencia">
+          <span class="portal-corner-accent portal-corner-tl"></span>
+          <span class="portal-corner-accent portal-corner-tr"></span>
+          <span class="portal-corner-accent portal-corner-bl"></span>
+          <span class="portal-corner-accent portal-corner-br"></span>
+          <div class="portal-stage-badge">Portal II · Los Siete Vórtices</div>
+          <div class="portal-edge-vignette"></div>
+          <video class="portal-video" src="/videos/2.mp4" autoplay loop muted playsinline></video>
+        </div>
       </div>
 
       <!-- CENTRO 01 — RAÍZ -->
@@ -511,18 +527,26 @@
       </div>
     </section>
 
-    <!-- 3. ÁREA DE SESIONES TERAPÉUTICAS CON SOFÍA (FONDO DE VIDEO 3 PARALLAX SIN OPACIDAD) -->
+    <!-- 3. ÁREA DE SESIONES TERAPÉUTICAS CON SOFÍA (PORTAL III CENTRADO) -->
     <section class="sessions-section" id="sesiones" aria-label="Sesiones Terapéuticas con Sofía">
-      <!-- Video 3 de Fondo Parallax Sin Opacidad -->
-      <div class="section-video-bg" aria-hidden="true">
-        <video class="sessions-video-bg" src="/videos/3.mp4" autoplay loop muted playsinline></video>
-      </div>
-
       <div class="container sessions-content-container">
         <div class="sessions-header">
           <div class="eyebrow">Espacio Sagrado de Sanación</div>
           <h2 class="sessions-title">SESIONES TERAPÉUTICAS INDIVIDUALES</h2>
           <div class="sessions-subtitle">«Un encuentro íntimo para desarmar corazas y habitar tu cuerpo en plenitud».</div>
+        </div>
+
+        <!-- Portal Cinematográfico III (16:9 Nativo Centrado) -->
+        <div class="sessions-portal-container">
+          <div class="cinematic-portal-stage" aria-label="Portal III - El Templo Somático">
+            <span class="portal-corner-accent portal-corner-tl"></span>
+            <span class="portal-corner-accent portal-corner-tr"></span>
+            <span class="portal-corner-accent portal-corner-bl"></span>
+            <span class="portal-corner-accent portal-corner-br"></span>
+            <div class="portal-stage-badge">Portal III · El Templo Somático</div>
+            <div class="portal-edge-vignette"></div>
+            <video class="portal-video" src="/videos/3.mp4" autoplay loop muted playsinline></video>
+          </div>
         </div>
 
         <!-- Showcase de la Terapeuta Sofía -->
@@ -870,12 +894,8 @@
       </div>
     </section>
 
-    <!-- 7. CIERRE CINEMATOGRÁFICO CON VIDEO 4 DE FONDO PARALLAX SIN OPACIDAD -->
+    <!-- 7. CIERRE CINEMATOGRÁFICO CON PORTAL IV CENTRADO -->
     <section class="finale-section" id="cierre" aria-label="Cierre Cinematográfico">
-      <!-- Video 4 de Fondo Parallax Sin Opacidad -->
-      <div class="finale-video-wrapper" aria-hidden="true">
-        <video class="finale-video-bg" src="/videos/4.mp4" autoplay loop muted playsinline></video>
-      </div>
       <div class="finale-halo-glow" aria-hidden="true"></div>
 
       <div class="finale-content">
@@ -884,6 +904,20 @@
         <p class="finale-text">
           «Haz una pausa. Respira. Explora lo que sucede cuando te das espacio para sentir».
         </p>
+
+        <!-- Portal Cinematográfico IV (16:9 Nativo Centrado) -->
+        <div class="finale-portal-container">
+          <div class="cinematic-portal-stage" aria-label="Portal IV - El Silencio Consciente">
+            <span class="portal-corner-accent portal-corner-tl"></span>
+            <span class="portal-corner-accent portal-corner-tr"></span>
+            <span class="portal-corner-accent portal-corner-bl"></span>
+            <span class="portal-corner-accent portal-corner-br"></span>
+            <div class="portal-stage-badge">Portal IV · El Silencio Consciente</div>
+            <div class="portal-edge-vignette"></div>
+            <video class="portal-video" src="/videos/4.mp4" autoplay loop muted playsinline></video>
+          </div>
+        </div>
+
         <div class="finale-actions">
           <a href="#inicio" class="btn btn-primary">
             <span>Descubre Siete Centros</span>

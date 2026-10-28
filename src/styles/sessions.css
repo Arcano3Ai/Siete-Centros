@@ -10,25 +10,12 @@
   min-height: 100vh;
 }
 
-/* Background Parallax Video Layer */
-.section-video-bg {
-  position: absolute;
-  top: -15%;
-  left: 0;
-  width: 100%;
-  height: 130%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.section-video-bg video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 1;
-  filter: contrast(1.06) brightness(0.95);
-  will-change: transform;
+.sessions-portal-container {
+  max-width: 1080px;
+  margin: 0 auto 5rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .sessions-content-container {

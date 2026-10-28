@@ -1,0 +1,101 @@
+/**
+ * SIETE CENTROS — Centered Cinematic Video Portals
+ * Preserves 100% native video sharpness, 16:9 ratio, centered stage on deep black void.
+ */
+
+.cinematic-portal-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(197, 168, 128, 0.32);
+  background: #020104;
+  box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.98), 
+              0 0 50px -10px var(--gold-glow);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.cinematic-portal-stage:hover {
+  border-color: var(--gold-bright);
+  box-shadow: 0 40px 100px -10px rgba(0, 0, 0, 1), 
+              0 0 70px -5px var(--gold-glow);
+}
+
+.portal-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  opacity: 1;
+  filter: contrast(1.04) brightness(0.98);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-portal-stage:hover .portal-video {
+  transform: scale(1.02);
+}
+
+/* Subtle Corner Accent Markers */
+.portal-corner-accent {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--gold-bright);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.portal-corner-tl { top: 12px; left: 12px; border-top: 1.5px solid; border-left: 1.5px solid; }
+.portal-corner-tr { top: 12px; right: 12px; border-top: 1.5px solid; border-right: 1.5px solid; }
+.portal-corner-bl { bottom: 12px; left: 12px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.portal-corner-br { bottom: 12px; right: 12px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+/* Floating Portal Badge */
+.portal-stage-badge {
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(4, 2, 6, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.portal-stage-badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 6px var(--gold-bright);
+}
+
+/* Subtle Film Vignette on Portal */
+.portal-edge-vignette {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  z-index: 2;
+}
