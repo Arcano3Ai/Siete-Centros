@@ -1,0 +1,126 @@
+/**
+ * SIETE CENTROS — Design Tokens
+ * Master Palette: Negro Ciruela, Azul Noche, Marfil Cálido, Oro Envejecido
+ * + Spectral accents for the 7 Chakras
+ */
+
+:root {
+  /* Master Background Tones (Fondo Negro Puro \u0026 Profundo) */
+  --bg-void: #000000;
+  --bg-primary: #050308;
+  --bg-plum: #0c0511;
+  --bg-plum-card: rgba(12, 5, 17, 0.78);
+  --bg-night: #03050b;
+  --bg-surface: rgba(255, 255, 255, 0.03);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.06);
+  --bg-surface-hover: rgba(255, 255, 255, 0.09);
+
+  /* Master Typography Tones */
+  --text-ivory: #FAF7F2;
+  --text-ivory-dim: #DCD4C6;
+  --text-ivory-muted: #9E9689;
+  --text-ivory-ghost: #5C554B;
+
+  /* Master Gold Accents (Aged Gold) */
+  --gold-aged: #C5A880;
+  --gold-bright: #DFBE90;
+  --gold-deep: #8E734F;
+  --gold-glow: rgba(197, 168, 128, 0.25);
+  --gold-border: rgba(197, 168, 128, 0.2);
+  --gold-border-highlight: rgba(197, 168, 128, 0.45);
+
+  /* The 7 Chakras Colors & Glows */
+  /* Centro 01: Raíz (Muladhara) */
+  --c1-name: "Raíz";
+  --c1-base: #B82234;
+  --c1-glow: rgba(184, 34, 52, 0.4);
+  --c1-bg-gradient: radial-gradient(circle at 50% 60%, rgba(184, 34, 52, 0.18) 0%, rgba(9, 6, 14, 0.95) 75%);
+
+  /* Centro 02: Sacro (Svadhisthana) */
+  --c2-name: "Sacro";
+  --c2-base: #E07A2B;
+  --c2-glow: rgba(224, 122, 43, 0.4);
+  --c2-bg-gradient: radial-gradient(circle at 50% 60%, rgba(224, 122, 43, 0.18) 0%, rgba(9, 6, 14, 0.95) 75%);
+
+  /* Centro 03: Poder (Manipura) */
+  --c3-name: "Poder";
+  --c3-base: #E5A91A;
+  --c3-glow: rgba(229, 169, 26, 0.45);
+  --c3-bg-gradient: radial-gradient(circle at 50% 60%, rgba(229, 169, 26, 0.18) 0%, rgba(9, 6, 14, 0.95) 75%);
+
+  /* Centro 04: Corazón (Anahata) */
+  --c4-name: "Corazón";
+  --c4-base: #1E8E62;
+  --c4-glow: rgba(30, 142, 98, 0.4);
+  --c4-bg-gradient: radial-gradient(circle at 50% 60%, rgba(30, 142, 98, 0.18) 0%, rgba(9, 6, 14, 0.95) 75%);
+
+  /* Centro 05: Voz (Vishuddha) */
+  --c5-name: "Voz";
+  --c5-base: #1FA2C4;
+  --c5-glow: rgba(31, 162, 196, 0.45);
+  --c5-bg-gradient: radial-gradient(circle at 50% 60%, rgba(31, 162, 196, 0.18) 0%, rgba(9, 6, 14, 0.95) 75%);
+
+  /* Centro 06: Visión (Ajna) */
+  --c6-name: "Visión";
+  --c6-base: #4F46E5;
+  --c6-glow: rgba(79, 70, 229, 0.45);
+  --c6-bg-gradient: radial-gradient(circle at 50% 60%, rgba(79, 70, 229, 0.18) 0%, rgba(9, 6, 14, 0.95) 75%);
+
+  /* Centro 07: Conciencia (Sahasrara) */
+  --c7-name: "Conciencia";
+  --c7-base: #A855F7;
+  --c7-glow: rgba(168, 85, 247, 0.5);
+  --c7-bg-gradient: radial-gradient(circle at 50% 60%, rgba(168, 85, 247, 0.22) 0%, rgba(9, 6, 14, 0.95) 75%);
+
+  /* Typography */
+  --font-serif-monumental: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-serif-editorial: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Spacing Scale */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4.5rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+
+  /* Layout */
+  --max-width-content: 1320px;
+  --max-width-editorial: 960px;
+  --max-width-narrow: 680px;
+  --header-height: 84px;
+
+  /* Border Radii */
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Glassmorphism & Shadows */
+  --glass-blur: blur(20px);
+  --glass-card: rgba(18, 12, 26, 0.65);
+  --glass-card-border: 1px solid rgba(197, 168, 128, 0.15);
+  --shadow-subtle: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 50px -10px var(--gold-glow);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-cinematic: 0.85s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-slow: 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+
+  /* Z-Index Hierarchy */
+  --z-canvas: 1;
+  --z-bg: 2;
+  --z-content: 10;
+  --z-hud: 50;
+  --z-header: 100;
+  --z-modal: 1000;
+}

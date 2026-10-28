@@ -1,0 +1,384 @@
+/**
+ * SIETE CENTROS — Navigation, Floating HUD & Header Styles
+ */
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, 
+    var(--c1-base), 
+    var(--c2-base), 
+    var(--c3-base), 
+    var(--c4-base), 
+    var(--c5-base), 
+    var(--c6-base), 
+    var(--c7-base)
+  );
+  z-index: calc(var(--z-header) + 10);
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 8px rgba(223, 190, 144, 0.6);
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: var(--z-header);
+  transition: background-color var(--transition-smooth), 
+              backdrop-filter var(--transition-smooth),
+              border-color var(--transition-smooth),
+              box-shadow var(--transition-smooth);
+  border-bottom: 1px solid transparent;
+}
+
+.site-header.is-scrolled {
+  background-color: rgba(9, 6, 14, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Brand Wordmark & Emblem */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.85rem;
+}
+
+.brand-emblem-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.45));
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.brand-logo:hover .brand-emblem-img {
+  transform: rotate(12deg) scale(1.08);
+  filter: drop-shadow(0 0 18px rgba(223, 190, 144, 0.8));
+}
+
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-title {
+  font-family: var(--font-serif-monumental);
+  font-size: 1.15rem;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  color: var(--text-ivory);
+  transition: color var(--transition-fast);
+}
+
+.brand-subtitle {
+  font-size: 0.58rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-aged);
+  font-weight: 300;
+}
+
+.brand-logo:hover .brand-title {
+  color: var(--gold-bright);
+}
+
+/* Desktop Navigation Menu */
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+  }
+}
+
+.nav-link {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-ivory-dim);
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-aged);
+  transition: width var(--transition-smooth);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-ivory);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Header Actions (Sound toggle + CTA) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* Ambient Audio Button */
+.audio-toggle-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(197, 168, 128, 0.22);
+  color: var(--text-ivory-dim);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.audio-toggle-btn:hover {
+  background: rgba(197, 168, 128, 0.12);
+  border-color: var(--gold-bright);
+  color: var(--text-ivory);
+}
+
+/* Sound Wave Animation Bars */
+.sound-bars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 12px;
+}
+
+.sound-bar {
+  width: 2px;
+  height: 4px;
+  background-color: var(--gold-aged);
+  border-radius: 1px;
+  transition: height 0.2s ease;
+}
+
+.audio-toggle-btn.is-playing .sound-bar:nth-child(1) {
+  animation: waveBar 0.9s ease-in-out infinite alternate;
+}
+
+.audio-toggle-btn.is-playing .sound-bar:nth-child(2) {
+  animation: waveBar 0.7s ease-in-out infinite 0.2s alternate;
+}
+
+.audio-toggle-btn.is-playing .sound-bar:nth-child(3) {
+  animation: waveBar 1.1s ease-in-out infinite 0.4s alternate;
+}
+
+@keyframes waveBar {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  z-index: calc(var(--z-header) + 2);
+}
+
+@media (min-width: 900px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background-color: var(--text-ivory);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.mobile-menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.mobile-menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Mobile Drawer Overlay */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  background: rgba(10, 6, 15, 0.96);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-left: 1px solid rgba(197, 168, 128, 0.2);
+  z-index: calc(var(--z-header) + 1);
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2.5rem 3rem;
+  transition: right var(--transition-cinematic);
+}
+
+.mobile-nav-drawer.is-open {
+  right: 0;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  list-style: none;
+  margin-bottom: auto;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-serif-monumental);
+  font-size: 1.25rem;
+  letter-spacing: 0.12em;
+  color: var(--text-ivory-dim);
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: var(--gold-bright);
+}
+
+.mobile-drawer-footer {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Floating Chakra Rail HUD (Desktop) */
+.chakra-rail-hud {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--z-hud);
+  display: none;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem 0.5rem;
+  background: rgba(18, 9, 25, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(197, 168, 128, 0.15);
+  border-radius: var(--radius-full);
+}
+
+@media (min-width: 1100px) {
+  .chakra-rail-hud {
+    display: flex;
+  }
+}
+
+.chakra-dot-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.chakra-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+
+.chakra-tooltip {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  background: rgba(9, 6, 14, 0.9);
+  border: 1px solid var(--gold-border);
+  color: var(--text-ivory);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.chakra-dot-btn:hover .chakra-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.chakra-dot-btn.active .chakra-dot {
+  transform: scale(1.4);
+}
+
+/* Individual Chakra Dot Glow Colors */
+.chakra-dot-btn[data-chakra="1"].active .chakra-dot { background: var(--c1-base); box-shadow: 0 0 10px var(--c1-glow); }
+.chakra-dot-btn[data-chakra="2"].active .chakra-dot { background: var(--c2-base); box-shadow: 0 0 10px var(--c2-glow); }
+.chakra-dot-btn[data-chakra="3"].active .chakra-dot { background: var(--c3-base); box-shadow: 0 0 10px var(--c3-glow); }
+.chakra-dot-btn[data-chakra="4"].active .chakra-dot { background: var(--c4-base); box-shadow: 0 0 10px var(--c4-glow); }
+.chakra-dot-btn[data-chakra="5"].active .chakra-dot { background: var(--c5-base); box-shadow: 0 0 10px var(--c5-glow); }
+.chakra-dot-btn[data-chakra="6"].active .chakra-dot { background: var(--c6-base); box-shadow: 0 0 10px var(--c6-glow); }
+.chakra-dot-btn[data-chakra="7"].active .chakra-dot { background: var(--c7-base); box-shadow: 0 0 10px var(--c7-glow); }

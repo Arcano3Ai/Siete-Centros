@@ -1,0 +1,180 @@
+/**
+ * SIETE CENTROS — Modal & Interactive Sheet Styles
+ */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 3, 8, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth);
+}
+
+.modal-backdrop.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  position: relative;
+  background: #0f0917;
+  border: 1px solid var(--gold-border-highlight);
+  border-radius: var(--radius-md);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px -10px var(--gold-glow);
+  transform: translateY(20px) scale(0.97);
+  transition: transform var(--transition-smooth);
+}
+
+.modal-backdrop.is-active .modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+/* Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-ivory);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: rgba(197, 168, 128, 0.2);
+  border-color: var(--gold-bright);
+  transform: rotate(90deg);
+}
+
+.modal-close-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Modal Content Header with Hero Image */
+.modal-hero-cover {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: var(--bg-void);
+}
+
+.modal-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+}
+
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, #0f0917 100%);
+}
+
+.modal-body {
+  padding: 2.25rem clamp(1.5rem, 4vw, 3rem) 3rem;
+}
+
+.modal-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-aged);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.modal-title {
+  font-family: var(--font-serif-monumental);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: 0.08em;
+  color: var(--text-ivory);
+  margin-bottom: 1rem;
+}
+
+.modal-lead {
+  font-family: var(--font-serif-editorial);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-bright);
+  margin-bottom: 1.75rem;
+  line-height: 1.4;
+}
+
+.modal-desc {
+  font-size: 1rem;
+  color: var(--text-ivory-dim);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.modal-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(197, 168, 128, 0.12);
+  border-radius: var(--radius-xs);
+}
+
+.modal-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-ivory-dim);
+}
+
+.modal-bullets svg {
+  width: 16px;
+  height: 16px;
+  color: var(--gold-aged);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Modal Form / Action Area (Demo UI) */
+.modal-demo-box {
+  background: rgba(197, 168, 128, 0.06);
+  border: 1px dashed rgba(197, 168, 128, 0.3);
+  border-radius: var(--radius-xs);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.modal-demo-box p {
+  font-size: 0.88rem;
+  color: var(--text-ivory-muted);
+  margin-bottom: 1rem;
+}
+
+.modal-demo-btn {
+  width: 100%;
+}

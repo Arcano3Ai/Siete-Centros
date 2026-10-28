@@ -1,0 +1,370 @@
+/**
+ * SIETE CENTROS — The 7 Centers (Chakras) Cinematic Parallax Chapters
+ */
+
+.chakras-section {
+  position: relative;
+  background-color: var(--bg-void);
+  z-index: var(--z-content);
+  padding-bottom: 6rem;
+}
+
+/* Background Video Parallax Layer for Chakras Section (Sin opacidad) */
+.chakras-video-wrapper {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.chakras-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1; /* Sin opacidad para máxima nitidez de parallax */
+  filter: contrast(1.05) brightness(0.92);
+  will-change: transform;
+}
+
+/* Journey Intro Header */
+.journey-intro {
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+  max-width: 860px;
+  margin: 4rem auto 3rem;
+  position: relative;
+  z-index: 2;
+  background: rgba(9, 6, 14, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 168, 128, 0.22);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+}
+
+.journey-intro .intro-lead {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-ivory);
+  line-height: 1.35;
+  margin-top: 1rem;
+}
+
+.journey-intro p {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-ivory-dim);
+}
+
+/* Single Chapter Container */
+.chakra-chapter {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(4rem, 8vh, 7rem) 0;
+  overflow: hidden;
+  transition: background var(--transition-slow);
+}
+
+/* Dynamic Ambient Glow Behind Chapter */
+.chakra-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75vw;
+  height: 75vh;
+  max-width: 900px;
+  max-height: 900px;
+  border-radius: var(--radius-full);
+  filter: blur(120px);
+  opacity: 0.16;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 1s ease;
+}
+
+/* Specific Chakra Ambient Color Definitions */
+.chakra-chapter[data-chakra="1"] .chakra-ambient-glow { background: var(--c1-base); opacity: 0.22; }
+.chakra-chapter[data-chakra="2"] .chakra-ambient-glow { background: var(--c2-base); opacity: 0.20; }
+.chakra-chapter[data-chakra="3"] .chakra-ambient-glow { background: var(--c3-base); opacity: 0.22; }
+.chakra-chapter[data-chakra="4"] .chakra-ambient-glow { background: var(--c4-base); opacity: 0.20; }
+.chakra-chapter[data-chakra="5"] .chakra-ambient-glow { background: var(--c5-base); opacity: 0.22; }
+.chakra-chapter[data-chakra="6"] .chakra-ambient-glow { background: var(--c6-base); opacity: 0.22; }
+.chakra-chapter[data-chakra="7"] .chakra-ambient-glow { background: var(--c7-base); opacity: 0.25; }
+
+/* Chapter Grid Layout */
+.chakra-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 960px) {
+  .chakra-grid {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 5rem;
+  }
+
+  /* Alternating layouts for cinematic visual rhythm */
+  .chakra-chapter:nth-child(even) .chakra-grid {
+    grid-template-columns: 1fr 1.05fr;
+  }
+
+  .chakra-chapter:nth-child(even) .chakra-visual-col {
+    order: 2;
+  }
+
+  .chakra-chapter:nth-child(even) .chakra-text-col {
+    order: 1;
+  }
+}
+
+/* Visual Column / Parallax Image Container */
+.chakra-visual-col {
+  position: relative;
+}
+
+.chakra-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(197, 168, 128, 0.15);
+  background: var(--bg-primary);
+}
+
+.chakra-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+  filter: contrast(1.05) brightness(0.92);
+  will-change: transform;
+}
+
+.chakra-image-wrapper:hover .chakra-img {
+  transform: scale(1.12);
+  filter: contrast(1.08) brightness(1);
+}
+
+/* Subtle Film Texture / Gradient Mask on Image */
+.chakra-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    rgba(9, 6, 14, 0.1) 60%, 
+    rgba(9, 6, 14, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+/* Floating Sacred Geometry Symbol */
+.chakra-symbol-float {
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 80px;
+  height: 80px;
+  background: rgba(14, 8, 20, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gold-border-highlight);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  animation: floatSacredSymbol 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatSacredSymbol {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(8deg); }
+}
+
+.chakra-symbol-float svg {
+  width: 44px;
+  height: 44px;
+  transition: transform 0.4s ease;
+}
+
+/* Text Column / Narrative Content */
+.chakra-text-col {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: rgba(12, 7, 18, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  border-radius: var(--radius-md);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.chakra-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.chakra-numeral {
+  font-family: var(--font-serif-monumental);
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  font-weight: 600;
+  color: var(--gold-aged);
+}
+
+.chakra-sanskrit-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-ivory-ghost);
+  font-family: var(--font-sans);
+}
+
+.chakra-title {
+  font-size: clamp(2.2rem, 4.2vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-ivory);
+  margin-bottom: 0.6rem;
+  line-height: 1.1;
+}
+
+/* Individual Chakra Accent Line */
+.chakra-accent-line {
+  width: 48px;
+  height: 2px;
+  margin-bottom: 1.5rem;
+  border-radius: 1px;
+}
+
+.chakra-chapter[data-chakra="1"] .chakra-accent-line { background: var(--c1-base); box-shadow: 0 0 10px var(--c1-glow); }
+.chakra-chapter[data-chakra="2"] .chakra-accent-line { background: var(--c2-base); box-shadow: 0 0 10px var(--c2-glow); }
+.chakra-chapter[data-chakra="3"] .chakra-accent-line { background: var(--c3-base); box-shadow: 0 0 10px var(--c3-glow); }
+.chakra-chapter[data-chakra="4"] .chakra-accent-line { background: var(--c4-base); box-shadow: 0 0 10px var(--c4-glow); }
+.chakra-chapter[data-chakra="5"] .chakra-accent-line { background: var(--c5-base); box-shadow: 0 0 10px var(--c5-glow); }
+.chakra-chapter[data-chakra="6"] .chakra-accent-line { background: var(--c6-base); box-shadow: 0 0 10px var(--c6-glow); }
+.chakra-chapter[data-chakra="7"] .chakra-accent-line { background: var(--c7-base); box-shadow: 0 0 10px var(--c7-glow); }
+
+/* Sacred Concept Tags */
+.chakra-concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.concept-pill {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-ivory-dim);
+  transition: all var(--transition-fast);
+}
+
+.concept-pill:hover {
+  border-color: var(--gold-border-highlight);
+  color: var(--text-ivory);
+  background: rgba(197, 168, 128, 0.08);
+}
+
+/* Quote Phrase */
+.chakra-quote {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--gold-bright);
+  margin-bottom: 1.5rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--gold-border);
+}
+
+.chakra-narrative {
+  font-size: 1.05rem;
+  color: var(--text-ivory-dim);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+/* Chapter Step Transition Indicator */
+.chapter-step-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-ivory-ghost);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color var(--transition-fast);
+}
+
+.chapter-step-badge:hover {
+  color: var(--gold-aged);
+}
+
+.chapter-step-badge svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-fast);
+}
+
+.chapter-step-badge:hover svg {
+  transform: translateY(3px);
+}
+
+/* Respectful Content Disclaimer Box */
+.chakras-disclaimer {
+  max-width: var(--max-width-editorial);
+  margin: 5rem auto 0;
+  padding: 2.25rem 2.5rem;
+  background: rgba(18, 9, 25, 0.45);
+  border: 1px solid rgba(197, 168, 128, 0.14);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.chakras-disclaimer h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  color: var(--gold-aged);
+  margin-bottom: 0.75rem;
+}
+
+.chakras-disclaimer p {
+  font-size: 0.92rem;
+  color: var(--text-ivory-muted);
+  line-height: 1.7;
+  margin: 0;
+}

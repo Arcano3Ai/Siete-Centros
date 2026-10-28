@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIETE CENTROS — Escuela de Conciencia y Experiencias Holísticas</title>
+  <meta name="description" content="Un viaje hacia el interior a través del cuerpo, la respiración, la energía, la presencia y la conexión humana. Recorrido cinematográfico por los siete centros de conciencia con Sofía y facilitadores expertos.">
+  <meta name="keywords" content="conciencia, tantra, kriya yoga, breathwork, meditación, círculos de palabra, transformación personal, chakras, retiros, Sofía terapeuta">
+  <meta name="author" content="SIETE CENTROS">
+  
+  <!-- Open Graph / Meta Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SIETE CENTROS — Experiencias de Conciencia & Recorrido Holístico">
+  <meta property="og:description" content="Explora nuevas formas de conectar contigo, habitar tu cuerpo y compartir experiencias que despiertan tu conciencia.">
+  <meta property="og:image" content="/images/emblema_dorado.png">
+
+  <!-- Favicon con el Emblema Dorado Oficial -->
+  <link rel="icon" type="image/png" href="/images/emblema_dorado.png">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/tokens.css">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/nav.css">
+  <link rel="stylesheet" href="/src/styles/hero.css">
+  <link rel="stylesheet" href="/src/styles/chakras.css">
+  <link rel="stylesheet" href="/src/styles/sessions.css">
+  <link rel="stylesheet" href="/src/styles/experiences.css">
+  <link rel="stylesheet" href="/src/styles/community.css">
+  <link rel="stylesheet" href="/src/styles/upcoming.css">
+  <link rel="stylesheet" href="/src/styles/finale.css">
+  <link rel="stylesheet" href="/src/styles/footer.css">
+  <link rel="stylesheet" href="/src/styles/modal.css">
+</head>
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Top Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Ambient Cosmic Particle Canvas -->
+  <canvas id="cosmic-canvas" aria-hidden="true"></canvas>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <!-- Brand Logo con Emblema Dorado -->
+      <a href="#inicio" class="brand-logo" aria-label="SIETE CENTROS - Inicio">
+        <img src="/images/emblema_dorado.png" alt="Emblema Dorado Siete Centros" class="brand-emblem-img">
+        <div class="brand-text-group">
+          <span class="brand-title">SIETE CENTROS</span>
+          <span class="brand-subtitle">Escuela de Conciencia</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-link active">Inicio</a>
+        <a href="#los-siete-centros" class="nav-link">Los Siete Centros</a>
+        <a href="#sesiones" class="nav-link">Sesiones con Sofía</a>
+        <a href="#experiencias" class="nav-link">Experiencias</a>
+        <a href="#comunidad" class="nav-link">Comunidad</a>
+        <a href="#proximas-experiencias" class="nav-link">Agenda</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Procedural 432Hz Ambient Audio -->
+        <button type="button" class="audio-toggle-btn" id="audio-toggle-btn" aria-pressed="false" aria-label="Activar atmósfera sonora 432 Hz">
+          <div class="sound-bars" aria-hidden="true">
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+          </div>
+          <span class="audio-label">Sonido</span>
+        </button>
+
+        <!-- CTA in Header -->
+        <a href="#sesiones" class="btn btn-secondary" style="padding: 0.55rem 1.25rem; font-size: 0.72rem; display: none; @media(min-width: 600px){display: inline-flex;}">
+          Agendar Sesión
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button type="button" class="mobile-menu-toggle" id="mobile-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-drawer" aria-label="Menú móvil">
+    <ul class="mobile-nav-links">
+      <li><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
+      <li><a href="#los-siete-centros" class="mobile-nav-link">Los Siete Centros</a></li>
+      <li><a href="#sesiones" class="mobile-nav-link">Sesiones con Sofía</a></li>
+      <li><a href="#experiencias" class="mobile-nav-link">Experiencias</a></li>
+      <li><a href="#comunidad" class="mobile-nav-link">Comunidad</a></li>
+      <li><a href="#proximas-experiencias" class="mobile-nav-link">Agenda</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <a href="#sesiones" class="btn btn-primary" style="width: 100%;">Sesiones Terapéuticas</a>
+    </div>
+  </div>
+
+  <!-- Floating Chakra Rail HUD (Desktop Navigation) -->
+  <aside class="chakra-rail-hud" aria-label="Navegador de los Siete Centros">
+    <button type="button" class="chakra-dot-btn active" data-chakra="1" aria-label="Ir a Centro 01 Raíz">
+      <span class="chakra-dot"></span>
+      <span class="chakra-tooltip">I · Raíz</span>
+    </button>
+    <button type="button" class="chakra-dot-btn" data-chakra="2" aria-label="Ir a Centro 02 Sacro">
+      <span class="chakra-dot"></span>
+      <span class="chakra-tooltip">II · Sacro</span>
+    </button>
+    <button type="button" class="chakra-dot-btn" data-chakra="3" aria-label="Ir a Centro 03 Poder">
+      <span class="chakra-dot"></span>
+      <span class="chakra-tooltip">III · Poder</span>
+    </button>
+    <button type="button" class="chakra-dot-btn" data-chakra="4" aria-label="Ir a Centro 04 Corazón">
+      <span class="chakra-dot"></span>
+      <span class="chakra-tooltip">IV · Corazón</span>
+    </button>
+    <button type="button" class="chakra-dot-btn" data-chakra="5" aria-label="Ir a Centro 05 Voz">
+      <span class="chakra-dot"></span>
+      <span class="chakra-tooltip">V · Voz</span>
+    </button>
+    <button type="button" class="chakra-dot-btn" data-chakra="6" aria-label="Ir a Centro 06 Visión">
+      <span class="chakra-dot"></span>
+      <span class="chakra-tooltip">VI · Visión</span>
+    </button>
+    <button type="button" class="chakra-dot-btn" data-chakra="7" aria-label="Ir a Centro 07 Conciencia">
+      <span class="chakra-dot"></span>
+      <span class="chakra-tooltip">VII · Conciencia</span>
+    </button>
+  </aside>
+
+  <!-- Main Content Flow -->
+  <main id="main-content">
+
+    <!-- 1. HERO SECTION: FONDO DE VIDEO 1 PARALLAX SIN OPACIDAD + EMBLEMA DORADO -->
+    <section class="hero-section" id="inicio" aria-label="Hero de Siete Centros">
+      <!-- Video 1 de Fondo Parallax Sin Opacidad -->
+      <div class="hero-video-wrapper" aria-hidden="true">
+        <video class="hero-video-bg" src="/videos/1.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="hero-bottom-fade" aria-hidden="true"></div>
+      
+      <!-- Luminous Alignment Halo and Vertical Chakra Nodes -->
+      <div class="hero-chakra-alignment-halo" aria-hidden="true"></div>
+      <div class="hero-spine-alignment" aria-hidden="true">
+        <span class="hero-spine-orb"></span>
+        <span class="hero-spine-orb"></span>
+        <span class="hero-spine-orb"></span>
+        <span class="hero-spine-orb"></span>
+        <span class="hero-spine-orb"></span>
+        <span class="hero-spine-orb"></span>
+        <span class="hero-spine-orb"></span>
+      </div>
+
+      <div class="container hero-content">
+        <!-- Emblema Dorado Central de los Siete Centros -->
+        <div class="hero-emblem-container">
+          <img src="/images/emblema_dorado.png" alt="Emblema Dorado de los Siete Centros" class="hero-emblem-large">
+        </div>
+
+        <div class="hero-tag">Escuela de Conciencia y Presencia</div>
+        <h1 class="hero-title">
+          <span>SIETE</span>
+          <span>CENTROS</span>
+        </h1>
+        <div class="hero-tagline">Un viaje hacia tu interior.</div>
+        <p class="hero-description">
+          «Explora nuevas formas de conectar contigo, habitar tu cuerpo y compartir experiencias que despiertan tu conciencia».
+        </p>
+
+        <div class="hero-actions">
+          <a href="#sesiones" class="btn btn-primary">
+            <span>Sesiones con Sofía</span>
+          </a>
+          <a href="#los-siete-centros" class="btn btn-secondary">
+            <span>Descubrir los Siete Centros</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#los-siete-centros" class="hero-scroll-cue" aria-label="Deslizar para comenzar el recorrido">
+        <span class="scroll-text">Desliza para iniciar el viaje</span>
+        <div class="scroll-indicator-line"></div>
+      </a>
+    </section>
+
+    <!-- 2. LOS SIETE CENTROS (CAPÍTULOS PARALLAX CON VIDEO 2 DE FONDO SIN OPACIDAD) -->
+    <section class="chakras-section" id="los-siete-centros" aria-label="Recorrido por los Siete Centros">
+      <!-- Video 2 de Fondo Parallax Sin Opacidad -->
+      <div class="chakras-video-wrapper" aria-hidden="true">
+        <video class="chakras-video-bg" src="/videos/2.mp4" autoplay loop muted playsinline></video>
+      </div>
+
+      <div class="journey-intro">
+        <div class="eyebrow">La Geografía Interior</div>
+        <h2 class="intro-lead">Siete umbrales hacia la integración de tu energía vital</h2>
+        <p>Una travesía vertical desde la densidad luminosa de la tierra hasta la inmensidad del silencio consciente.</p>
+      </div>
+
+      <!-- CENTRO 01 — RAÍZ -->
+      <article class="chakra-chapter" id="centro-01" data-chakra="1" aria-label="Centro 01 Raíz">
+        <div class="chakra-ambient-glow" aria-hidden="true"></div>
+        <div class="container">
+          <div class="chakra-grid">
+            <div class="chakra-visual-col">
+              <div class="chakra-image-wrapper">
+                <img src="/images/chakra_1_raiz.jpg" alt="Centro Raíz: raíces ancestrales, tierra volcánica y figura en quietud" class="chakra-img" loading="lazy">
+                <div class="chakra-image-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="chakra-symbol-float" data-chakra="1" aria-hidden="true"></div>
+            </div>
+            <div class="chakra-text-col">
+              <div class="chakra-header-meta">
+                <span class="chakra-numeral">CENTRO 01</span>
+                <span class="chakra-sanskrit-tag">Muladhara</span>
+              </div>
+              <h3 class="chakra-title">RAÍZ</h3>
+              <div class="chakra-accent-line"></div>
+              <div class="chakra-concepts">
+                <span class="concept-pill">Presencia</span>
+                <span class="concept-pill">Estabilidad</span>
+                <span class="concept-pill">Cuerpo</span>
+                <span class="concept-pill">Conexión con la Tierra</span>
+              </div>
+              <blockquote class="chakra-quote">
+                «Encuentra tu centro. Habita el presente».
+              </blockquote>
+              <p class="chakra-narrative">
+                El cimiento donde reposa la existencia. Sentir los pies firmes sobre el suelo, liberar el peso de la mente y recordar que el cuerpo es el templo primordial. La raíz nos devuelve a la seguridad biológica y a la pertenencia con la vida.
+              </p>
+              <div>
+                <a href="#centro-02" class="chapter-step-badge">
+                  <span>Avanzar al Centro Sacro</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CENTRO 02 — SACRO -->
+      <article class="chakra-chapter" id="centro-02" data-chakra="2" aria-label="Centro 02 Sacro">
+        <div class="chakra-ambient-glow" aria-hidden="true"></div>
+        <div class="container">
+          <div class="chakra-grid">
+            <div class="chakra-visual-col">
+              <div class="chakra-image-wrapper">
+                <img src="/images/chakra_2_sacro.jpg" alt="Centro Sacro: aguas fluidas, sedas ambarinas y movimiento libre" class="chakra-img" loading="lazy">
+                <div class="chakra-image-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="chakra-symbol-float" data-chakra="2" aria-hidden="true"></div>
+            </div>
+            <div class="chakra-text-col">
+              <div class="chakra-header-meta">
+                <span class="chakra-numeral">CENTRO 02</span>
+                <span class="chakra-sanskrit-tag">Svadhisthana</span>
+              </div>
+              <h3 class="chakra-title">SACRO</h3>
+              <div class="chakra-accent-line"></div>
+              <div class="chakra-concepts">
+                <span class="concept-pill">Creatividad</span>
+                <span class="concept-pill">Sensibilidad</span>
+                <span class="concept-pill">Movimiento</span>
+                <span class="concept-pill">Emoción Consciente</span>
+              </div>
+              <blockquote class="chakra-quote">
+                «Permítete sentir y fluir».
+              </blockquote>
+              <p class="chakra-narrative">
+                El océano interior de las aguas primordiales. Aquí reside el pulso de la creación, la sensualidad devocional y la danza de las emociones. Mover la pelvis, soltar la rigidez del juicio y permitir que la corriente del goce sagrado recorra la piel.
+              </p>
+              <div>
+                <a href="#centro-03" class="chapter-step-badge">
+                  <span>Avanzar al Centro Poder</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CENTRO 03 — PODER -->
+      <article class="chakra-chapter" id="centro-03" data-chakra="3" aria-label="Centro 03 Poder">
+        <div class="chakra-ambient-glow" aria-hidden="true"></div>
+        <div class="container">
+          <div class="chakra-grid">
+            <div class="chakra-visual-col">
+              <div class="chakra-image-wrapper">
+                <img src="/images/chakra_3_poder.jpg" alt="Centro Poder: amanecer solar, silueta firme en montaña y luz dorada" class="chakra-img" loading="lazy">
+                <div class="chakra-image-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="chakra-symbol-float" data-chakra="3" aria-hidden="true"></div>
+            </div>
+            <div class="chakra-text-col">
+              <div class="chakra-header-meta">
+                <span class="chakra-numeral">CENTRO 03</span>
+                <span class="chakra-sanskrit-tag">Manipura</span>
+              </div>
+              <h3 class="chakra-title">PODER</h3>
+              <div class="chakra-accent-line"></div>
+              <div class="chakra-concepts">
+                <span class="concept-pill">Voluntad</span>
+                <span class="concept-pill">Confianza</span>
+                <span class="concept-pill">Identidad</span>
+                <span class="concept-pill">Acción Consciente</span>
+              </div>
+              <blockquote class="chakra-quote">
+                «Reconoce la fuerza que habita en ti».
+              </blockquote>
+              <p class="chakra-narrative">
+                El fuego alquímico del plexo solar. La brasa que transmuta la inercia en dirección clara. No es imposición sobre otros, sino soberanía interior sobre la propia energía: la dignidad de habitar tu lugar en el cosmos con valentía y serenidad.
+              </p>
+              <div>
+                <a href="#centro-04" class="chapter-step-badge">
+                  <span>Avanzar al Centro Corazón</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CENTRO 04 — CORAZÓN -->
+      <article class="chakra-chapter" id="centro-04" data-chakra="4" aria-label="Centro 04 Corazón">
+        <div class="chakra-ambient-glow" aria-hidden="true"></div>
+        <div class="container">
+          <div class="chakra-grid">
+            <div class="chakra-visual-col">
+              <div class="chakra-image-wrapper">
+                <img src="/images/chakra_4_corazon.jpg" alt="Centro Corazón: manos que se encuentran bajo la luz del bosque esmeralda" class="chakra-img" loading="lazy">
+                <div class="chakra-image-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="chakra-symbol-float" data-chakra="4" aria-hidden="true"></div>
+            </div>
+            <div class="chakra-text-col">
+              <div class="chakra-header-meta">
+                <span class="chakra-numeral">CENTRO 04</span>
+                <span class="chakra-sanskrit-tag">Anahata</span>
+              </div>
+              <h3 class="chakra-title">CORAZÓN</h3>
+              <div class="chakra-accent-line"></div>
+              <div class="chakra-concepts">
+                <span class="concept-pill">Apertura</span>
+                <span class="concept-pill">Compasión</span>
+                <span class="concept-pill">Conexión</span>
+                <span class="concept-pill">Vínculos Humanos</span>
+              </div>
+              <blockquote class="chakra-quote">
+                «Abre espacio para conectar».
+              </blockquote>
+              <p class="chakra-narrative">
+                El puente sagrado entre la tierra y el cielo. En el centro del pecho florece el sonido no percutido del amor incondicional. El espacio donde las corazas defensivas se disuelven para dar paso a la ternura compasiva y a los encuentros reales.
+              </p>
+              <div>
+                <a href="#centro-05" class="chapter-step-badge">
+                  <span>Avanzar al Centro Voz</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CENTRO 05 — VOZ -->
+      <article class="chakra-chapter" id="centro-05" data-chakra="5" aria-label="Centro 05 Voz">
+        <div class="chakra-ambient-glow" aria-hidden="true"></div>
+        <div class="container">
+          <div class="chakra-grid">
+            <div class="chakra-visual-col">
+              <div class="chakra-image-wrapper">
+                <img src="/images/chakra_5_voz.jpg" alt="Centro Voz: ondas en agua turquesa, niebla serena y figura expresiva" class="chakra-img" loading="lazy">
+                <div class="chakra-image-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="chakra-symbol-float" data-chakra="5" aria-hidden="true"></div>
+            </div>
+            <div class="chakra-text-col">
+              <div class="chakra-header-meta">
+                <span class="chakra-numeral">CENTRO 05</span>
+                <span class="chakra-sanskrit-tag">Vishuddha</span>
+              </div>
+              <h3 class="chakra-title">VOZ</h3>
+              <div class="chakra-accent-line"></div>
+              <div class="chakra-concepts">
+                <span class="concept-pill">Expresión</span>
+                <span class="concept-pill">Escucha</span>
+                <span class="concept-pill">Autenticidad</span>
+                <span class="concept-pill">Comunicación</span>
+              </div>
+              <blockquote class="chakra-quote">
+                «Escucha tu verdad. Encuentra tu voz».
+              </blockquote>
+              <p class="chakra-narrative">
+                El umbral de la purificación y la resonancia armónica. La garganta es el instrumento donde el silencio se convierte en verbo y la vibración teje realidades. Hablar con honestidad radical y aprender a escuchar con reverente quietud.
+              </p>
+              <div>
+                <a href="#centro-06" class="chapter-step-badge">
+                  <span>Avanzar al Centro Visión</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CENTRO 06 — VISIÓN -->
+      <article class="chakra-chapter" id="centro-06" data-chakra="6" aria-label="Centro 06 Visión">
+        <div class="chakra-ambient-glow" aria-hidden="true"></div>
+        <div class="container">
+          <div class="chakra-grid">
+            <div class="chakra-visual-col">
+              <div class="chakra-image-wrapper">
+                <img src="/images/chakra_6_vision.jpg" alt="Centro Visión: cielo estrellado índigo, geometría luminosa y contemplación" class="chakra-img" loading="lazy">
+                <div class="chakra-image-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="chakra-symbol-float" data-chakra="6" aria-hidden="true"></div>
+            </div>
+            <div class="chakra-text-col">
+              <div class="chakra-header-meta">
+                <span class="chakra-numeral">CENTRO 06</span>
+                <span class="chakra-sanskrit-tag">Ajna</span>
+              </div>
+              <h3 class="chakra-title">VISIÓN</h3>
+              <div class="chakra-accent-line"></div>
+              <div class="chakra-concepts">
+                <span class="concept-pill">Introspección</span>
+                <span class="concept-pill">Observación</span>
+                <span class="concept-pill">Intuición</span>
+                <span class="concept-pill">Perspectiva</span>
+              </div>
+              <blockquote class="chakra-quote">
+                «Mira más allá de lo evidente».
+              </blockquote>
+              <p class="chakra-narrative">
+                El tercer ojo que no depende de la luz solar para ver. El portal de la sabiduría intuitiva, la geometría sagrada de la mente y la capacidad de contemplar el teatro de la vida desde una perspectiva serena, clara e imperturbable.
+              </p>
+              <div>
+                <a href="#centro-07" class="chapter-step-badge">
+                  <span>Avanzar al Centro Conciencia</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CENTRO 07 — CONCIENCIA -->
+      <article class="chakra-chapter" id="centro-07" data-chakra="7" aria-label="Centro 07 Conciencia">
+        <div class="chakra-ambient-glow" aria-hidden="true"></div>
+        <div class="container">
+          <div class="chakra-grid">
+            <div class="chakra-visual-col">
+              <div class="chakra-image-wrapper">
+                <img src="/images/chakra_7_conciencia.jpg" alt="Centro Conciencia: figura flotante bajo mandala de luz violeta y dorada" class="chakra-img" loading="lazy">
+                <div class="chakra-image-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="chakra-symbol-float" data-chakra="7" aria-hidden="true"></div>
+            </div>
+            <div class="chakra-text-col">
+              <div class="chakra-header-meta">
+                <span class="chakra-numeral">CENTRO 07</span>
+                <span class="chakra-sanskrit-tag">Sahasrara</span>
+              </div>
+              <h3 class="chakra-title">CONCIENCIA</h3>
+              <div class="chakra-accent-line"></div>
+              <div class="chakra-concepts">
+                <span class="concept-pill">Contemplación</span>
+                <span class="concept-pill">Integración</span>
+                <span class="concept-pill">Silencio</span>
+                <span class="concept-pill">Conexión Interior</span>
+              </div>
+              <blockquote class="chakra-quote">
+                «Integra el camino. Vuelve a ti».
+              </blockquote>
+              <p class="chakra-narrative">
+                La corona del loto de mil pétalos donde la dualidad se disuelve en luz pura. El reconocimiento de que el buscador y lo buscado son la misma presencia. La integración absoluta del viaje: volver al mundo con los ojos del asombro y la devoción.
+              </p>
+              <div>
+                <a href="#sesiones" class="chapter-step-badge">
+                  <span>Conocer a la Terapeuta Sofía</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Respectful Content Note / Disclaimer -->
+      <div class="container">
+        <div class="chakras-disclaimer">
+          <h4>Nota de Contenido y Ética</h4>
+          <p>
+            Presentamos los siete centros como una interpretación inspirada en la tradición milenaria de los vórtices energéticos, orientada al autoconocimiento, la exploración somática y la presencia consciente. Nuestras prácticas no constituyen diagnóstico, promesa médica ni sustituto de tratamiento terapéutico o psicológico.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ÁREA DE SESIONES TERAPÉUTICAS CON SOFÍA (FONDO DE VIDEO 3 PARALLAX SIN OPACIDAD) -->
+    <section class="sessions-section" id="sesiones" aria-label="Sesiones Terapéuticas con Sofía">
+      <!-- Video 3 de Fondo Parallax Sin Opacidad -->
+      <div class="section-video-bg" aria-hidden="true">
+        <video class="sessions-video-bg" src="/videos/3.mp4" autoplay loop muted playsinline></video>
+      </div>
+
+      <div class="container sessions-content-container">
+        <div class="sessions-header">
+          <div class="eyebrow">Espacio Sagrado de Sanación</div>
+          <h2 class="sessions-title">SESIONES TERAPÉUTICAS INDIVIDUALES</h2>
+          <div class="sessions-subtitle">«Un encuentro íntimo para desarmar corazas y habitar tu cuerpo en plenitud».</div>
+        </div>
+
+        <!-- Showcase de la Terapeuta Sofía -->
+        <div class="therapist-showcase">
+          <div class="therapist-grid">
+            <div class="therapist-media">
+              <img src="/images/sofia.jpg" alt="Sofía, terapeuta y facilitadora de Siete Centros" class="therapist-img" loading="lazy">
+              <div class="therapist-badge-floating">
+                <span class="therapist-badge-title">Sofía</span>
+                <span class="therapist-badge-sub">Guía Somática & Terapeuta</span>
+              </div>
+            </div>
+            <div class="therapist-body">
+              <div class="eyebrow" style="margin-bottom: 0.75rem;">Acompañamiento Integral</div>
+              <h3 class="therapist-name">SOFÍA</h3>
+              <div class="therapist-role">Facilitadora de Procesos de Conciencia & Sanación Energética</div>
+              <blockquote class="therapist-quote">
+                «El cuerpo guarda la memoria de todo lo vivido; a través del tacto consciente, la respiración y la presencia, abrimos el espacio sagrado para liberar y florecer».
+              </blockquote>
+              <p class="therapist-bio">
+                Dedicada al servicio de la transformación interior, Sofía combina técnicas ancestrales de alineación de chakras, tantra sagrado y breathwork somático. Su enfoque se centra en crear un contenedor de seguridad incondicional donde cada individuo puede reconectar con su verdad esencial y disolver tensiones psicosomáticas arraigadas.
+              </p>
+              <div class="therapist-credentials">
+                <span class="cred-pill">Tantra Terapéutico</span>
+                <span class="cred-pill">Kriya Somático</span>
+                <span class="cred-pill">Desbloqueo de Chakras</span>
+                <span class="cred-pill">Contención Emocional</span>
+              </div>
+              <div>
+                <button type="button" class="btn btn-primary" data-session="sofia">
+                  <span>Conocer Más sobre Sofía</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid de las 4 Sesiones con Archivos Oficiales (terapia1, terapia2, terapia3, terapia4) -->
+        <div class="therapy-sessions-grid">
+          <article class="therapy-card">
+            <div class="therapy-card-media">
+              <span class="therapy-tag-badge">Terapia Corporal</span>
+              <img src="/images/terapia1.jpg" alt="Armonización Somática y Desbloqueo de Chakras" class="therapy-card-img" loading="lazy">
+            </div>
+            <div class="therapy-card-body">
+              <span class="therapy-card-num">SESIÓN 01</span>
+              <h4 class="therapy-card-title">Armonización Somática</h4>
+              <p class="therapy-card-desc">Diagnóstico pránico y liberación de centros bloqueados mediante imposición de manos sutil y aromaterapia sagrada.</p>
+              <button type="button" class="therapy-card-btn" data-session="terapia1">
+                <span>Consultar Sesión</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="therapy-card">
+            <div class="therapy-card-media">
+              <span class="therapy-tag-badge">Respiración Guiada</span>
+              <img src="/images/terapia2.jpg" alt="Kriya Breathwork & Reprogramación Celular" class="therapy-card-img" loading="lazy">
+            </div>
+            <div class="therapy-card-body">
+              <span class="therapy-card-num">SESIÓN 02</span>
+              <h4 class="therapy-card-title">Kriya Breathwork</h4>
+              <p class="therapy-card-desc">Viaje respiratorio profundo para descargar el sistema nervioso, serenar el cortisol y despertar estados lúcidos.</p>
+              <button type="button" class="therapy-card-btn" data-session="terapia2">
+                <span>Consultar Sesión</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="therapy-card">
+            <div class="therapy-card-media">
+              <span class="therapy-tag-badge">Polaridad Consciente</span>
+              <img src="/images/terapia3.jpg" alt="Tantra Terapéutico & Sanación del Vínculo" class="therapy-card-img" loading="lazy">
+            </div>
+            <div class="therapy-card-body">
+              <span class="therapy-card-num">SESIÓN 03</span>
+              <h4 class="therapy-card-title">Tantra Terapéutico</h4>
+              <p class="therapy-card-desc">Sanación de heridas afectivas y reconexión con la energía vital y la inocencia corporal en estricta contención.</p>
+              <button type="button" class="therapy-card-btn" data-session="terapia3">
+                <span>Consultar Sesión</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="therapy-card">
+            <div class="therapy-card-media">
+              <span class="therapy-tag-badge">Transición & Renacer</span>
+              <img src="/images/terapia4.jpg" alt="Integración del Silencio & Cierre de Ciclos" class="therapy-card-img" loading="lazy">
+            </div>
+            <div class="therapy-card-body">
+              <span class="therapy-card-num">SESIÓN 04</span>
+              <h4 class="therapy-card-title">Integración del Silencio</h4>
+              <p class="therapy-card-desc">Ceremonia personalizada para integrar procesos de cambio vital, duelos y apertura a nuevos horizontes del ser.</p>
+              <button type="button" class="therapy-card-btn" data-session="terapia4">
+                <span>Consultar Sesión</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SECCIÓN DE EXPERIENCIAS GRUPALES -->
+    <section class="experiences-section" id="experiencias" aria-label="Experiencias para Conectar">
+      <div class="container">
+        <div class="experiences-header">
+          <div class="eyebrow">Prácticas Vivas</div>
+          <h2 class="experiences-title">EXPERIENCIAS PARA CONECTAR</h2>
+          <div class="experiences-subtitle">«Diferentes caminos. Una invitación a estar más presentes».</div>
+        </div>
+
+        <div class="experiences-grid">
+          <!-- Card 1: Tantra -->
+          <article class="exp-card">
+            <div class="exp-media">
+              <span class="exp-category-badge">Presencia & Polaridad</span>
+              <img src="/images/exp_tantra.jpg" alt="Tantra y conexión consciente en ambiente íntimo" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="exp-body">
+              <h3 class="exp-name">Tantra y Conexión Consciente</h3>
+              <p class="exp-desc">Prácticas de presencia, polaridad y mirada profunda para honrar la energía vital y el encuentro sagrado.</p>
+              <button type="button" class="exp-btn" data-exp="tantra" aria-label="Explorar experiencia de Tantra y conexión consciente">
+                <span>Explorar experiencia</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 2: Kriya Yoga -->
+          <article class="exp-card">
+            <div class="exp-media">
+              <span class="exp-category-badge">Tradición Ancestral</span>
+              <img src="/images/exp_kriya.jpg" alt="Kriya Yoga en postura alineada y serena" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="exp-body">
+              <h3 class="exp-name">Kriya Yoga</h3>
+              <p class="exp-desc">Técnicas ancestrales de alineación espinal, respiración y silencio que serenizan la mente hacia la quietud.</p>
+              <button type="button" class="exp-btn" data-exp="kriya" aria-label="Explorar experiencia de Kriya Yoga">
+                <span>Explorar experiencia</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 3: Breathwork -->
+          <article class="exp-card">
+            <div class="exp-media">
+              <span class="exp-category-badge">Liberación Somática</span>
+              <img src="/images/exp_breathwork.jpg" alt="Breathwork y respiración consciente con bruma y calma" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="exp-body">
+              <h3 class="exp-name">Breathwork y Respiración</h3>
+              <p class="exp-desc">Sesiones somáticas de respiración circular para liberar memorias celulares y despertar estados expandidos.</p>
+              <button type="button" class="exp-btn" data-exp="breathwork" aria-label="Explorar experiencia de Breathwork">
+                <span>Explorar experiencia</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 4: Meditación -->
+          <article class="exp-card">
+            <div class="exp-media">
+              <span class="exp-category-badge">Vacío Fértil</span>
+              <img src="/images/exp_meditacion.jpg" alt="Meditación y contemplación en quietud total" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="exp-body">
+              <h3 class="exp-name">Meditación y Presencia</h3>
+              <p class="exp-desc">Espacios de contemplación guiada y vacío fértil para desidentificarte del ruido mental y anclarte en el ahora.</p>
+              <button type="button" class="exp-btn" data-exp="meditacion" aria-label="Explorar experiencia de Meditación y presencia">
+                <span>Explorar experiencia</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 5: Círculos de Palabra -->
+          <article class="exp-card">
+            <div class="exp-media">
+              <span class="exp-category-badge">Escucha Sagrada</span>
+              <img src="/images/exp_circulos.jpg" alt="Círculo de palabra y presencia comunitaria en calma" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="exp-body">
+              <h3 class="exp-name">Círculos de Palabra</h3>
+              <p class="exp-desc">Encuentros donde la escucha sin juicio y el compartir genuino tejen comunidad y alivian el alma.</p>
+              <button type="button" class="exp-btn" data-exp="circulos" aria-label="Explorar experiencia de Círculos de palabra">
+                <span>Explorar experiencia</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 6: Retiros -->
+          <article class="exp-card">
+            <div class="exp-media">
+              <span class="exp-category-badge">Inmersión en la Naturaleza</span>
+              <img src="/images/exp_retiros.jpg" alt="Retiros en reservas naturales y santuarios" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="exp-body">
+              <h3 class="exp-name">Retiros y Encuentros</h3>
+              <p class="exp-desc">Inmersiones de varios días en santuarios naturales para desconectar del exterior y profundizar en el ser.</p>
+              <button type="button" class="exp-btn" data-exp="retiros" aria-label="Explorar experiencia de Retiros y encuentros grupales">
+                <span>Explorar experiencia</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SECCIÓN DE COMUNIDAD -->
+    <section class="community-section" id="comunidad" aria-label="Comunidad de Siete Centros">
+      <div class="container">
+        <div class="community-card-shell">
+          <div class="community-grid">
+            <div class="community-media">
+              <img src="/images/community_circle.jpg" alt="Comunidad en círculo íntimo, velas y presencia compartida" class="community-img" loading="lazy">
+              <div class="community-media-vignette" aria-hidden="true"></div>
+            </div>
+            <div class="community-narrative">
+              <div class="eyebrow">Pertenencia Consciente</div>
+              <h2 class="community-title">NO TIENES QUE RECORRER EL CAMINO A SOLAS</h2>
+              <p class="community-text">
+                «Creamos espacios para encontrarnos, escucharnos y compartir experiencias con presencia y respeto. Un lugar donde diferentes caminos pueden reunirse en comunidad».
+              </p>
+
+              <div class="community-pillars">
+                <div class="pillar-item">
+                  <span class="pillar-name">Presencia</span>
+                  <p class="pillar-desc">Llegar sin máscaras para habitar el momento presente.</p>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-name">Respeto</span>
+                  <p class="pillar-desc">Honrar los ritmos y procesos singulares de cada ser.</p>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-name">Vulnerabilidad</span>
+                  <p class="pillar-desc">La valentía de mostrar la verdad que habita en ti.</p>
+                </div>
+                <div class="pillar-item">
+                  <span class="pillar-name">Contención</span>
+                  <p class="pillar-desc">Un tejido seguro donde cada experiencia es sostenida.</p>
+                </div>
+              </div>
+
+              <div>
+                <button type="button" class="btn btn-primary" id="btn-community-open">
+                  <span>Quiero Conocer la Comunidad</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PRÓXIMAS EXPERIENCIAS (AGENDA DEMO) -->
+    <section class="upcoming-section" id="proximas-experiencias" aria-label="Próximas Experiencias">
+      <div class="container">
+        <div class="upcoming-header">
+          <div class="eyebrow">Calendario de Convocatorias</div>
+          <h2 class="upcoming-title">PRÓXIMAS EXPERIENCIAS</h2>
+          <div class="upcoming-subtitle">«Espacios programados para profundizar en la presencia».</div>
+        </div>
+
+        <div class="events-list">
+          <!-- Event 01 -->
+          <div class="event-row-card">
+            <div class="event-meta-col">
+              <div class="event-date">14 — 16 NOV</div>
+              <div class="event-location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Valle de Bravo · Naturaleza</span>
+              </div>
+            </div>
+            <div class="event-info-col">
+              <span class="event-discipline">Retiro de Inmersión</span>
+              <h3 class="event-name">Los Siete Portales · Recorrido Integral</h3>
+              <p class="event-desc">Tres días de silencio, Kriya Yoga, respiración circular y ceremonias de integración en bosque de niebla.</p>
+            </div>
+            <div class="event-action-col">
+              <button type="button" class="btn btn-secondary" data-agenda="1" data-event-title="Retiro Los Siete Portales" data-event-date="14 al 16 de Noviembre" data-event-loc="Valle de Bravo">
+                <span>Más Información</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Event 02 -->
+          <div class="event-row-card">
+            <div class="event-meta-col">
+              <div class="event-date">28 NOV</div>
+              <div class="event-location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Espacio Siete Centros</span>
+              </div>
+            </div>
+            <div class="event-info-col">
+              <span class="event-discipline">Taller Intensivo</span>
+              <h3 class="event-name">Tantra & Polaridad del Corazón</h3>
+              <p class="event-desc">Encuentro de un día con Sofía para explorar límites claros, polaridad consciente y apertura del centro Anahata.</p>
+            </div>
+            <div class="event-action-col">
+              <button type="button" class="btn btn-secondary" data-agenda="2" data-event-title="Taller Tantra & Polaridad del Corazón" data-event-date="28 de Noviembre" data-event-loc="Espacio Siete Centros">
+                <span>Más Información</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Event 03 -->
+          <div class="event-row-card">
+            <div class="event-meta-col">
+              <div class="event-date">05 DIC</div>
+              <div class="event-location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Ceremonia Nocturna</span>
+              </div>
+            </div>
+            <div class="event-info-col">
+              <span class="event-discipline">Círculo de Palabra & Sonido</span>
+              <h3 class="event-name">Círculo de Luna Fría & Breathwork</h3>
+              <p class="event-desc">Alquimia respiratoria con frecuencia 432 Hz, té botánico de apertura y palabra honesta en ronda íntima.</p>
+            </div>
+            <div class="event-action-col">
+              <button type="button" class="btn btn-secondary" data-agenda="3" data-event-title="Círculo de Luna Fría & Breathwork" data-event-date="05 de Diciembre" data-event-loc="Ceremonia Nocturna">
+                <span>Más Información</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="upcoming-demo-notice">
+          Módulo de agenda en fase demostrativa · Las convocatorias oficiales se coordinan de forma personalizada
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CIERRE CINEMATOGRÁFICO CON VIDEO 4 DE FONDO PARALLAX SIN OPACIDAD -->
+    <section class="finale-section" id="cierre" aria-label="Cierre Cinematográfico">
+      <!-- Video 4 de Fondo Parallax Sin Opacidad -->
+      <div class="finale-video-wrapper" aria-hidden="true">
+        <video class="finale-video-bg" src="/videos/4.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="finale-halo-glow" aria-hidden="true"></div>
+
+      <div class="finale-content">
+        <div class="eyebrow">El Retorno al Origen</div>
+        <h2 class="finale-title">EL VIAJE COMIENZA DENTRO DE TI</h2>
+        <p class="finale-text">
+          «Haz una pausa. Respira. Explora lo que sucede cuando te das espacio para sentir».
+        </p>
+        <div class="finale-actions">
+          <a href="#inicio" class="btn btn-primary">
+            <span>Descubre Siete Centros</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Luxury Minimalist Footer con Emblema Dorado Oficial y Dedicatoria Épica -->
+  <footer class="site-footer">
+    <div class="container">
+      <!-- Monumental Epic Dedication Card -->
+      <section class="footer-dedication-card" aria-label="Dedicatoria de Sergio a Sofía">
+        <img src="/images/emblema_dorado.png" alt="Emblema Dorado Siete Centros" class="dedication-ornament" aria-hidden="true">
+        <blockquote class="dedication-quote">
+          «Hay presencias que no compiten con el entorno porque su sola frecuencia <span class="gold-emphasis">reescribe las reglas del juego</span>. No se trata de encajar, sino de sostener un pulso que impone su propia ley en la creación».
+        </blockquote>
+        <p class="dedication-body">
+          «Sofía, lo digital corre por mi cuenta y de eso me encargo yo; tú encárgate de reinar en tu propia frecuencia, de no negociar jamás el peso de tu visión y de seguir arrasando con todo lo que imaginas. Que los caminos sigan colisionando donde solo vibran los grandes».
+        </p>
+        <div class="dedication-signature">
+          — Sergio
+        </div>
+      </section>
+
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-header">
+            <img src="/images/emblema_dorado.png" alt="Emblema Dorado Siete Centros" class="footer-emblem-img">
+            <span class="footer-brand-title">SIETE CENTROS</span>
+          </div>
+          <p class="footer-brand-desc">
+            Escuela de conciencia, tantra, kriya yoga, respiración somática y conexión humana. Un espacio de presencia para recordar quién eres.
+          </p>
+        </div>
+
+        <ul class="footer-nav">
+          <li><a href="#inicio" class="footer-nav-link">Inicio</a></li>
+          <li><a href="#los-siete-centros" class="footer-nav-link">Los Siete Centros</a></li>
+          <li><a href="#sesiones" class="footer-nav-link">Sesiones con Sofía</a></li>
+          <li><a href="#experiencias" class="footer-nav-link">Experiencias</a></li>
+          <li><a href="#comunidad" class="footer-nav-link">Comunidad</a></li>
+          <li><a href="#proximas-experiencias" class="footer-nav-link">Agenda</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal-note">
+          © SIETE CENTROS. Todos los derechos reservados. Las experiencias y contenidos compartidos están destinados a la exploración personal, la presencia y el bienestar consciente sin fines terapéuticos clínicos.
+        </div>
+        <div>
+          Diseñado con excelencia cinematográfica y geometría sagrada.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Dynamic Editorial Modal -->
+  <div class="modal-backdrop" id="interactive-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" aria-label="Cerrar ventana">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-hero-cover">
+        <img src="/images/hero_cosmic_dawn.jpg" alt="" class="modal-hero-img">
+        <div class="modal-hero-overlay"></div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-tag">Siete Centros</div>
+        <h3 class="modal-title">Título de la Experiencia</h3>
+        <div class="modal-lead">Subtítulo editorial</div>
+        <p class="modal-desc">Descripción detallada</p>
+        <ul class="modal-bullets"></ul>
+
+        <div class="modal-demo-box"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Orchestrator -->
+  <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>
