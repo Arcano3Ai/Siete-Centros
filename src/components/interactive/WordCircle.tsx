@@ -1,55 +1,92 @@
 import React, { useState, useEffect } from 'react';
 import { Flame, Users, Sparkles, MessageCircle, ArrowRight, Quote } from 'lucide-react';
+import { getStoredLanguage, Language } from '../../i18n/translations';
 
 interface VoiceTestimonial {
   id: number;
   author: string;
-  role: string;
+  role: { es: string; en: string };
   location: string;
-  text: string;
-  highlight: string;
+  text: { es: string; en: string };
+  highlight: { es: string; en: string };
 }
 
 const VOICES: VoiceTestimonial[] = [
   {
     id: 1,
     author: 'Camila Rosales',
-    role: 'Participante Círculo de Luna',
+    role: { es: 'Participante Círculo de Luna', en: 'Moon Circle Participant' },
     location: 'Tepoztlán, Morelos',
-    text: 'Entrar a la ronda fue desarmarme por completo. Frente al fuego sagrado y con la contención que sostiene Sofía, pude nombrar dolores que nunca antes tuvieron voz sin sentirme juzgada ni una sola vez.',
-    highlight: '«Un antes y un después en mi relación con el cuerpo y la presencia»'
+    text: {
+      es: 'Entrar a la ronda fue desarmarme por completo. Frente al fuego sagrado y con la contención que sostiene Sofía, pude nombrar dolores que nunca antes tuvieron voz sin sentirme juzgada ni una sola vez.',
+      en: 'Stepping into the circle stripped away all pretense. Before the sacred fire and held in Sofia\'s immaculate presence, I could name wounds that never had a voice without experiencing a shred of judgment.'
+    },
+    highlight: {
+      es: '«Un antes y un después en mi relación con el cuerpo y la presencia»',
+      en: '«A profound turning point in my intimacy with my body and presence»'
+    }
   },
   {
     id: 2,
     author: 'Mateo Valenzuela',
-    role: 'Retiro Alquimia de los Siete Vórtices',
+    role: { es: 'Retiro Alquimia de los Siete Vórtices', en: 'Seven Vortices Alchemy Retreat' },
     location: 'CDMX',
-    text: 'Como hombre, los espacios para abrir la vulnerabilidad son escasos. En Siete Centros encontré una fraternidad sobria, devocional y profundamente enraizada que me devolvió a mi centro.',
-    highlight: '«Pude soltar corazas que cargaba por años sin saberlo»'
+    text: {
+      es: 'Como hombre, los espacios para abrir la vulnerabilidad son escasos. En Siete Centros encontré una fraternidad sobria, devocional y profundamente enraizada que me devolvió a mi centro.',
+      en: 'As a man, true spaces for somatic vulnerability are exceedingly rare. At Siete Centros I found a grounded, devotionally rooted brotherhood that returned me to my center.'
+    },
+    highlight: {
+      es: '«Pude soltar corazas que cargaba por años sin saberlo»',
+      en: '«I released armoring I had carried for years without knowing it»'
+    }
   },
   {
     id: 3,
     author: 'Elena Domínguez',
-    role: 'Sesión Somática & Círculo de Palabra',
+    role: { es: 'Sesión Somática & Círculo de Palabra', en: 'Somatic Session & Word Circle' },
     location: 'Guadalajara, Jalisco',
-    text: 'La palabra dicha en presencia compartida alumbra rincones que el intelecto no alcanza. Cada encuentro es una medicina del silencio y la escucha.',
-    highlight: '«La palabra dicha sin juicio alumbra lo que el intelecto no alcanza»'
+    text: {
+      es: 'La palabra dicha en presencia compartida alumbra rincones que el intelecto no alcanza. Cada encuentro es una medicina del silencio y la escucha.',
+      en: 'The spoken truth in shared presence illuminates recesses that the intellect cannot touch. Every gathering is a deep medicine of silence and pure listening.'
+    },
+    highlight: {
+      es: '«La palabra dicha sin juicio alumbra lo que el intelecto no alcanza»',
+      en: '«Spoken truth without judgment illuminates what the intellect cannot reach»'
+    }
   },
   {
     id: 4,
     author: 'Sebastián Morales',
-    role: 'Inmersión Kriya & Breathwork',
+    role: { es: 'Inmersión Kriya & Breathwork', en: 'Kriya & Breathwork Immersion' },
     location: 'Valle de Bravo',
-    text: 'El fuego nos iguala a todos. En esa ronda no hay jerarquías ni máscaras sociales, solo almas respirando al unísono y recordando la inocencia primordial.',
-    highlight: '«Una experiencia de verdad descarnada y sagrada»'
+    text: {
+      es: 'El fuego nos iguala a todos. En esa ronda no hay jerarquías ni máscaras sociales, solo almas respirando al unísono y recordando la inocencia primordial.',
+      en: 'The fire equals us all. In that sacred circle there are no hierarchies or social masks—only souls breathing in unison and remembering original innocence.'
+    },
+    highlight: {
+      es: '«Una experiencia de verdad descarnada y sagrada»',
+      en: '«An experience of raw, sacred, and grounded truth»'
+    }
   }
 ];
 
 export const WordCircle: React.FC = () => {
   const [activeVoiceId, setActiveVoiceId] = useState<number>(1);
   const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
+  const [currentLang, setCurrentLang] = useState<Language>(getStoredLanguage());
 
   const activeVoice = VOICES.find((v) => v.id === activeVoiceId) || VOICES[0];
+
+  useEffect(() => {
+    const handleLangChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ lang: Language }>;
+      if (customEvent.detail?.lang) {
+        setCurrentLang(customEvent.detail.lang);
+      }
+    };
+    window.addEventListener('siete-centros-lang-changed', handleLangChange);
+    return () => window.removeEventListener('siete-centros-lang-changed', handleLangChange);
+  }, []);
 
   // Auto-rotate every 6 seconds unless paused by user interaction
   useEffect(() => {
@@ -68,11 +105,19 @@ export const WordCircle: React.FC = () => {
       <div className="word-circle-header">
         <div className="word-circle-badge">
           <Flame size={14} className="gold-flame" />
-          <span>El Fuego Sagrado · Ronda de Palabra</span>
+          <span>
+            {currentLang === 'es'
+              ? 'El Fuego Sagrado · Ronda de Palabra'
+              : 'The Sacred Fire · Word Circle Council'}
+          </span>
         </div>
         <div className="word-circle-capacity">
           <Users size={14} />
-          <span>Contenedor Íntimo · Máx 12 Presencias</span>
+          <span>
+            {currentLang === 'es'
+              ? 'Contenedor Íntimo · Máx 12 Presencias'
+              : 'Intimate Vessel · Max 12 Presences'}
+          </span>
         </div>
       </div>
 
@@ -94,16 +139,16 @@ export const WordCircle: React.FC = () => {
           </div>
           <div className="fire-label">
             <Flame size={18} className="center-flame-icon" />
-            <span>Fuego Central</span>
+            <span>{currentLang === 'es' ? 'Fuego Central' : 'Sacred Fire'}</span>
           </div>
         </div>
 
         {/* 4 Gathering Seats Surrounding the Fire */}
         {VOICES.map((voice, idx) => {
           const isCurrent = voice.id === activeVoiceId;
-          const angles = [0, 90, 180, 270]; // 4 cardinals around the circle
+          const angles = [0, 90, 180, 270];
           const angleRad = (angles[idx] * Math.PI) / 180;
-          const radius = 110; // px
+          const radius = 110;
           const x = Math.cos(angleRad) * radius;
           const y = Math.sin(angleRad) * radius;
 
@@ -119,7 +164,7 @@ export const WordCircle: React.FC = () => {
                 setActiveVoiceId(voice.id);
                 setIsAutoPlaying(false);
               }}
-              aria-label={`Escuchar voz de ${voice.author}`}
+              aria-label={`Voz de ${voice.author}`}
             >
               <span className="seat-orb" />
               <span className="seat-name">{voice.author.split(' ')[0]}</span>
@@ -135,13 +180,13 @@ export const WordCircle: React.FC = () => {
           <div className="voice-author-group">
             <h4 className="voice-author-name">{activeVoice.author}</h4>
             <div className="voice-author-meta">
-              <span>{activeVoice.role}</span> · <span>{activeVoice.location}</span>
+              <span>{activeVoice.role[currentLang]}</span> · <span>{activeVoice.location}</span>
             </div>
           </div>
         </div>
 
-        <div className="voice-highlight-quote">{activeVoice.highlight}</div>
-        <p className="voice-full-text">«{activeVoice.text}»</p>
+        <div className="voice-highlight-quote">{activeVoice.highlight[currentLang]}</div>
+        <p className="voice-full-text">«{activeVoice.text[currentLang]}»</p>
 
         {/* Voice Selector Indicators */}
         <div className="voice-pills-row">
@@ -169,7 +214,11 @@ export const WordCircle: React.FC = () => {
           className="btn btn-primary circle-action-btn"
         >
           <MessageCircle size={16} />
-          <span>Reservar Lugar en el Próximo Círculo</span>
+          <span>
+            {currentLang === 'es'
+              ? 'Reservar Lugar en el Próximo Círculo'
+              : 'Reserve Seat in Upcoming Circle'}
+          </span>
           <ArrowRight size={15} />
         </a>
       </div>

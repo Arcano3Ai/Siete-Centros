@@ -1,86 +1,117 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Play, Pause, RotateCcw, Volume2, VolumeX, Sparkles, Heart, Compass, Wind } from 'lucide-react';
+import { Play, Pause, RotateCcw, Volume2, VolumeX, Sparkles, Wind, CheckCircle2 } from 'lucide-react';
+import { getStoredLanguage, DICTIONARY, Language } from '../../i18n/translations';
 
-export type BreathPattern = 'coherence' | 'box' | 'kriya';
+export type BreathPattern = 'trilogy' | 'box' | 'kriya';
+export type BreathPhase = 'Inhala' | 'Sostiene' | 'Exhala' | 'Vacío';
 
 interface PatternConfig {
   id: BreathPattern;
-  name: string;
-  sub: string;
+  name: { es: string; en: string };
+  sub: { es: string; en: string };
   inhale: number;
-  holdIn?: number;
+  holdIn: number;
   exhale: number;
   holdOut?: number;
   color: string;
   glowColor: string;
-  description: string;
-  element: string;
+  description: { es: string; en: string };
   targetHz: string;
 }
 
 const PATTERNS: Record<BreathPattern, PatternConfig> = {
-  coherence: {
-    id: 'coherence',
-    name: 'Coherencia Cardíaca',
-    sub: '0.1 Hz · Resonancia Cardiovascular',
-    inhale: 5.5,
-    exhale: 5.5,
-    color: '#34D399', // Anahata Green
-    glowColor: 'rgba(52, 211, 153, 0.35)',
-    description: 'Sincroniza la variabilidad de la frecuencia cardíaca (VFC) con el sistema nervioso parasimpático, disolviendo el cortisol en sangre.',
-    element: 'Aire & Compasión',
-    targetHz: '0.1 Hz Coherente'
+  trilogy: {
+    id: 'trilogy',
+    name: {
+      es: 'Trilogía Pránica (Inhala · Sostiene · Exhala)',
+      en: 'Pranic Trilogy (Inhale · Hold · Exhale)'
+    },
+    sub: {
+      es: '4s Inhala · 4s Sostiene · 6s Exhala · Parasimpático Profundo',
+      en: '4s Inhale · 4s Hold · 6s Exhale · Deep Parasympathetic Tone'
+    },
+    inhale: 4,
+    holdIn: 4,
+    exhale: 6,
+    color: '#DFBE90', // Sacred Gold
+    glowColor: 'rgba(223, 190, 144, 0.45)',
+    description: {
+      es: 'La secuencia fundamental de regulación somática: oxigena tejidos, sostiene la atención en presencia quieta y prolonga la exhalación para activar el nervio vago y disolver la sobrecarga nerviosa.',
+      en: 'The core somatic sequence: deeply oxygenates tissues, holds pure awareness in stillness, and elongates the exhale to stimulate the vagus nerve and clear stress.'
+    },
+    targetHz: '0.1 Hz Resonancia Cardíaca'
   },
   box: {
     id: 'box',
-    name: 'Caja Pránica (Sama Vritti)',
-    sub: '4 · 4 · 4 · 4 · Foco & Soberanía Mental',
+    name: {
+      es: 'Caja Pránica (Sama Vritti 4x4)',
+      en: 'Pranic Box (Sama Vritti 4x4)'
+    },
+    sub: {
+      es: '4s Inhala · 4s Sostiene · 4s Exhala · 4s Vacío · Foco Mental',
+      en: '4s Inhale · 4s Hold · 4s Exhale · 4s Void · Sovereign Focus'
+    },
     inhale: 4,
     holdIn: 4,
     exhale: 4,
     holdOut: 4,
-    color: '#DFBE90', // Sacred Gold
-    glowColor: 'rgba(223, 190, 144, 0.4)',
-    description: 'Arquitectura pránica cuádruple de máxima estabilidad. Equilibra los hemisferios cerebrales y asienta la mente en calma imperturbable.',
-    element: 'Tierra & Fuego',
+    color: '#34D399', // Anahata Green
+    glowColor: 'rgba(52, 211, 153, 0.4)',
+    description: {
+      es: 'Arquitectura pránica cuádruple de los antiguos yoguis. Equilibra simétricamente ambos hemisferios cerebrales y restaura el control soberano sobre la mente.',
+      en: 'Symmetrical 4-part pranayama of ancient yogis. Balances both brain hemispheres and anchors the mind in unwavering equanimity.'
+    },
     targetHz: 'Ondas Alfa 10 Hz'
   },
   kriya: {
     id: 'kriya',
-    name: 'Kriya 4-7-8 Transmutación',
-    sub: '4 · 7 · 8 · Sueño Profundo & Éxtasis',
+    name: {
+      es: 'Kriya 4-7-8 Transmutación',
+      en: 'Kriya 4-7-8 Transmutation'
+    },
+    sub: {
+      es: '4s Inhala · 7s Sostiene · 8s Exhala · Reposo Celular',
+      en: '4s Inhale · 7s Hold · 8s Exhale · Cellular Rest'
+    },
     inhale: 4,
     holdIn: 7,
     exhale: 8,
     color: '#C084FC', // Sahasrara Violet
-    glowColor: 'rgba(192, 132, 252, 0.4)',
-    description: 'Viaje respiratorio tántrico para calmar el nervio vago y facilitar el tránsito a estados alterados de conciencia y reposo celular profundo.',
-    element: 'Éter & Luz',
+    glowColor: 'rgba(192, 132, 252, 0.45)',
+    description: {
+      es: 'Viaje respiratorio de transmutación tántrica. La retención prolongada permite la absorción del prana sutil y la exhalación lenta induce relajación somática absoluta.',
+      en: 'Tantric transmutation practice. Extended retention facilitates subtle prana absorption while elongated exhalation unlocks profound rest.'
+    },
     targetHz: 'Ondas Theta 5 Hz'
   }
 };
 
-type BreathPhase = 'Inhala' | 'Sostén' | 'Exhala' | 'Vacío';
-
-const PHRASES: Record<BreathPhase, string> = {
-  Inhala: 'Llena tus pulmones... expande el corazón en 360°',
-  Sostén: 'Habita el silencio quieto de tu templo interior',
-  Exhala: 'Suelta todo el peso... ríndete al sostén de la tierra',
-  Vacío: 'Descansa en el vacío fértil donde renace tu ser'
-};
-
 export const BreathworkOrbe: React.FC = () => {
-  const [selectedPattern, setSelectedPattern] = useState<BreathPattern>('coherence');
+  const [selectedPattern, setSelectedPattern] = useState<BreathPattern>('trilogy');
   const [isActive, setIsActive] = useState<boolean>(false);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   const [phase, setPhase] = useState<BreathPhase>('Inhala');
   const [phaseProgress, setPhaseProgress] = useState<number>(0); // 0 to 1 smooth
-  const [secondsLeft, setSecondsLeft] = useState<number>(5.5);
+  const [secondsLeft, setSecondsLeft] = useState<number>(4);
   const [completedCycles, setCompletedCycles] = useState<number>(0);
+  const [currentLang, setCurrentLang] = useState<Language>(getStoredLanguage());
 
   const pattern = PATTERNS[selectedPattern];
+  const t = DICTIONARY[currentLang];
 
-  // Web Audio Context for Procedural Tibetan Singing Bowl (432 Hz)
+  // Global language synchronization
+  useEffect(() => {
+    const handleLangChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ lang: Language }>;
+      if (customEvent.detail?.lang) {
+        setCurrentLang(customEvent.detail.lang);
+      }
+    };
+    window.addEventListener('siete-centros-lang-changed', handleLangChange);
+    return () => window.removeEventListener('siete-centros-lang-changed', handleLangChange);
+  }, []);
+
+  // Web Audio Context for Procedural Tibetan Singing Bowl
   const audioCtxRef = useRef<AudioContext | null>(null);
 
   const playSingingBowl = useCallback((frequency: number = 432) => {
@@ -102,7 +133,7 @@ export const BreathworkOrbe: React.FC = () => {
       osc1.type = 'sine';
       osc1.frequency.setValueAtTime(frequency, now);
 
-      // Harmonic Oscillator (Octave + Shimmer)
+      // Harmonic Oscillator (Harmonic shimmer)
       const osc2 = ctx.createOscillator();
       const gain2 = ctx.createGain();
       osc2.type = 'sine';
@@ -127,11 +158,10 @@ export const BreathworkOrbe: React.FC = () => {
       osc1.stop(now + 3.0);
       osc2.stop(now + 2.2);
     } catch {
-      // Audio not permitted or unsupported, fails gracefully
+      // Gracefully silent if audio context restricted
     }
   }, [soundEnabled]);
 
-  // RequestAnimationFrame continuous physics engine for ultra-smooth 60fps breathing
   const animRef = useRef<number | null>(null);
   const phaseStartTimeRef = useRef<number>(0);
   const currentPhaseDurationRef = useRef<number>(pattern.inhale);
@@ -139,27 +169,27 @@ export const BreathworkOrbe: React.FC = () => {
   const getDurationForPhase = useCallback((p: BreathPhase, cfg: PatternConfig): number => {
     switch (p) {
       case 'Inhala': return cfg.inhale;
-      case 'Sostén': return cfg.holdIn || 4;
+      case 'Sostiene': return cfg.holdIn;
       case 'Exhala': return cfg.exhale;
       case 'Vacío': return cfg.holdOut || 4;
     }
   }, []);
 
   const getNextPhase = useCallback((currentP: BreathPhase, cfg: PatternConfig): { nextPhase: BreathPhase; completed: boolean } => {
-    if (cfg.id === 'coherence') {
-      return currentP === 'Inhala'
-        ? { nextPhase: 'Exhala', completed: false }
-        : { nextPhase: 'Inhala', completed: true };
+    if (cfg.id === 'trilogy') {
+      if (currentP === 'Inhala') return { nextPhase: 'Sostiene', completed: false };
+      if (currentP === 'Sostiene') return { nextPhase: 'Exhala', completed: false };
+      return { nextPhase: 'Inhala', completed: true };
     }
     if (cfg.id === 'box') {
-      if (currentP === 'Inhala') return { nextPhase: 'Sostén', completed: false };
-      if (currentP === 'Sostén') return { nextPhase: 'Exhala', completed: false };
+      if (currentP === 'Inhala') return { nextPhase: 'Sostiene', completed: false };
+      if (currentP === 'Sostiene') return { nextPhase: 'Exhala', completed: false };
       if (currentP === 'Exhala') return { nextPhase: 'Vacío', completed: false };
       return { nextPhase: 'Inhala', completed: true };
     }
     // kriya (4-7-8)
-    if (currentP === 'Inhala') return { nextPhase: 'Sostén', completed: false };
-    if (currentP === 'Sostén') return { nextPhase: 'Exhala', completed: false };
+    if (currentP === 'Inhala') return { nextPhase: 'Sostiene', completed: false };
+    if (currentP === 'Sostiene') return { nextPhase: 'Exhala', completed: false };
     return { nextPhase: 'Inhala', completed: true };
   }, []);
 
@@ -191,8 +221,8 @@ export const BreathworkOrbe: React.FC = () => {
 
         // Play bowl sound on phase shift
         if (nextPhase === 'Inhala') playSingingBowl(432);
-        else if (nextPhase === 'Sostén') playSingingBowl(528); // Miracles frequency
-        else if (nextPhase === 'Exhala') playSingingBowl(396); // Release frequency
+        else if (nextPhase === 'Sostiene') playSingingBowl(528); // 528Hz Transformation
+        else if (nextPhase === 'Exhala') playSingingBowl(396); // 396Hz Release
         else playSingingBowl(285);
 
         setPhase(nextPhase);
@@ -229,7 +259,7 @@ export const BreathworkOrbe: React.FC = () => {
     setCompletedCycles(0);
   };
 
-  // Compute organic smooth scale and glow based on smooth progress
+  // Organic smooth scaling and glowing dynamics
   let dynamicScale = 1;
   let haloOpacity = 0.3;
 
@@ -237,29 +267,52 @@ export const BreathworkOrbe: React.FC = () => {
     dynamicScale = 1;
     haloOpacity = 0.25;
   } else if (phase === 'Inhala') {
-    // Smooth Sine curve expansion 1.0 -> 1.55
+    // Smooth Sine curve expansion 1.0 -> 1.62
     const eased = Math.sin((phaseProgress * Math.PI) / 2);
-    dynamicScale = 1.0 + eased * 0.55;
-    haloOpacity = 0.25 + eased * 0.55;
-  } else if (phase === 'Sostén') {
-    // Sostén: Full expansion with micro breathing heartbeat pulse
-    const heartbeat = Math.sin(phaseProgress * Math.PI * 4) * 0.03;
-    dynamicScale = 1.55 + heartbeat;
-    haloOpacity = 0.8;
+    dynamicScale = 1.0 + eased * 0.62;
+    haloOpacity = 0.25 + eased * 0.60;
+  } else if (phase === 'Sostiene') {
+    // Sostiene: Full expansion with alive subtle heartbeat
+    const heartbeat = Math.sin(phaseProgress * Math.PI * 4) * 0.035;
+    dynamicScale = 1.62 + heartbeat;
+    haloOpacity = 0.85;
   } else if (phase === 'Exhala') {
-    // Smooth contraction 1.55 -> 0.90
+    // Smooth gentle contraction 1.62 -> 0.92
     const eased = Math.sin((phaseProgress * Math.PI) / 2);
-    dynamicScale = 1.55 - eased * 0.65;
-    haloOpacity = 0.8 - eased * 0.55;
+    dynamicScale = 1.62 - eased * 0.70;
+    haloOpacity = 0.85 - eased * 0.60;
   } else {
-    // Vacío: Soft crystalline stillness
+    // Vacío: Still stillness
     const still = Math.sin(phaseProgress * Math.PI * 2) * 0.015;
-    dynamicScale = 0.9 + still;
-    haloOpacity = 0.2;
+    dynamicScale = 0.92 + still;
+    haloOpacity = 0.22;
   }
 
-  // SVG Circular progress stroke calculations (radius = 45 -> circumference = 2 * PI * 45 = 282.74)
+  // SVG Circular progress stroke calculations
   const strokeDashoffset = 283 - 283 * phaseProgress;
+
+  // Localized phase titles and descriptions
+  const getPhaseTitle = (p: BreathPhase) => {
+    switch (p) {
+      case 'Inhala': return t.breathwork.phaseInhale;
+      case 'Sostiene': return t.breathwork.phaseHold;
+      case 'Exhala': return t.breathwork.phaseExhale;
+      case 'Vacío': return t.breathwork.phaseHoldEmpty;
+    }
+  };
+
+  const getPhaseInstruction = (p: BreathPhase) => {
+    switch (p) {
+      case 'Inhala': return t.breathwork.inhaleDesc;
+      case 'Sostiene': return t.breathwork.holdDesc;
+      case 'Exhala': return t.breathwork.exhaleDesc;
+      case 'Vacío': return t.breathwork.holdEmptyDesc;
+    }
+  };
+
+  const stepsList: BreathPhase[] = selectedPattern === 'box'
+    ? ['Inhala', 'Sostiene', 'Exhala', 'Vacío']
+    : ['Inhala', 'Sostiene', 'Exhala'];
 
   return (
     <div className="breathwork-container">
@@ -287,22 +340,48 @@ export const BreathworkOrbe: React.FC = () => {
               }}
             >
               <span className="tab-dot" style={{ backgroundColor: p.color, boxShadow: `0 0 8px ${p.color}` }} />
-              <span>{p.name}</span>
+              <span>{p.name[currentLang]}</span>
             </button>
           );
         })}
       </div>
 
       <div className="breathwork-pattern-meta">
-        <span className="meta-sub">{pattern.sub}</span>
+        <span className="meta-sub">{pattern.sub[currentLang]}</span>
         <span className="meta-hz" style={{ color: pattern.color }}>
           <Sparkles size={11} /> {pattern.targetHz}
         </span>
       </div>
 
+      {/* PIPELINE DE PASOS CLARO: 1. INHALA -> 2. SOSTIENE -> 3. EXHALA */}
+      <div className="breathwork-phases-pipeline" aria-label="Fases del ciclo respiratorio">
+        {stepsList.map((stepKey, idx) => {
+          const isCurrent = isActive && phase === stepKey;
+          return (
+            <div
+              key={stepKey}
+              className={`pipeline-step-node ${isCurrent ? 'active' : ''}`}
+              style={{
+                borderColor: isCurrent ? pattern.color : 'rgba(197, 168, 128, 0.16)',
+                backgroundColor: isCurrent ? 'rgba(223, 190, 144, 0.12)' : 'rgba(10, 10, 14, 0.6)',
+                boxShadow: isCurrent ? `0 0 16px ${pattern.glowColor}` : 'none'
+              }}
+            >
+              <span className="pipeline-step-num" style={{ color: isCurrent ? pattern.color : 'rgba(197, 168, 128, 0.5)' }}>
+                0{idx + 1}
+              </span>
+              <span className="pipeline-step-name" style={{ color: isCurrent ? '#FAF7F2' : 'rgba(250, 247, 242, 0.6)' }}>
+                {getPhaseTitle(stepKey)}
+              </span>
+              {isCurrent && <span className="pipeline-step-live-dot" style={{ backgroundColor: pattern.color }} />}
+            </div>
+          );
+        })}
+      </div>
+
       {/* Escenario Central: Orbe Orgánico Bioluminiscente con Geometría Sagrada */}
       <div className="breathwork-stage" aria-label="Orbe de respiración interactivo">
-        {/* Ripple Pránico 1 (Onda Externa) */}
+        {/* Ripple Pránico 1 */}
         <div
           className="prana-ripple prana-ripple-1"
           style={{
@@ -312,7 +391,7 @@ export const BreathworkOrbe: React.FC = () => {
           }}
         />
 
-        {/* Ripple Pránico 2 (Onda Media) */}
+        {/* Ripple Pránico 2 */}
         <div
           className="prana-ripple prana-ripple-2"
           style={{
@@ -349,7 +428,7 @@ export const BreathworkOrbe: React.FC = () => {
             cy="50"
             r="45"
             stroke={pattern.color}
-            strokeWidth="2.4"
+            strokeWidth="2.6"
             fill="none"
             strokeDasharray="283"
             strokeDashoffset={strokeDashoffset}
@@ -366,128 +445,105 @@ export const BreathworkOrbe: React.FC = () => {
           style={{
             transform: `scale(${dynamicScale})`,
             borderColor: `${pattern.color}99`,
-            boxShadow: `0 0 45px ${pattern.glowColor}, inset 0 0 30px ${pattern.color}33`
+            boxShadow: `0 0 50px ${pattern.glowColor}, inset 0 0 35px ${pattern.color}33`
           }}
         >
-          {/* Mandala Geométrico de Respiración (Loto de 8 Pétalos que respira) */}
-          <div
-            className="sacred-breathing-mandala"
-            style={{
-              transform: `rotate(${phaseProgress * 45}deg)`,
-              opacity: isActive ? 0.75 : 0.45
-            }}
-          >
-            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-              <span
-                key={deg}
-                className="mandala-petal"
-                style={{
-                  transform: `rotate(${deg}deg) translateY(-22px)`,
-                  backgroundColor: pattern.color
-                }}
-              />
-            ))}
+          {/* Geometría Sagrada Interna (Yantra de Respiración) */}
+          <div className="breathwork-sacred-geometry-lines" aria-hidden="true">
+            <svg viewBox="0 0 120 120" className="core-yantra-svg">
+              <circle cx="60" cy="60" r="50" stroke={pattern.color} strokeWidth="0.8" opacity="0.45" strokeDasharray="2 3" />
+              <polygon points="60,18 96,78 24,78" stroke={pattern.color} strokeWidth="1" fill="none" opacity="0.5" />
+              <polygon points="60,102 24,42 96,42" stroke={pattern.color} strokeWidth="1" fill="none" opacity="0.5" />
+              <circle cx="60" cy="60" r="16" stroke={pattern.color} strokeWidth="1.2" opacity="0.75" />
+            </svg>
           </div>
 
-          {/* Núcleo Estelar Central */}
-          <div
-            className="orbe-sacred-center"
-            style={{
-              backgroundColor: pattern.color,
-              boxShadow: `0 0 20px ${pattern.color}, 0 0 40px ${pattern.color}`
-            }}
-          />
-        </div>
-
-        {/* Textos Centrales: Fase, Contador y Guía */}
-        <div className="breathwork-center-text">
-          <span className="phase-label" style={{ color: pattern.color }}>
-            {isActive ? phase : 'Respira'}
-          </span>
-          <span className="seconds-count">
-            {isActive ? `${secondsLeft.toFixed(1)}s` : 'Iniciar'}
-          </span>
-          {completedCycles > 0 && (
-            <span className="cycle-badge">
-              <Sparkles size={10} /> Ciclo {completedCycles}
+          {/* Texto Central de Fase & Contador Dinámico */}
+          <div className="breathwork-orbe-content">
+            <span className="orbe-phase-badge" style={{ color: pattern.color }}>
+              <Wind size={13} />
+              {isActive ? getPhaseTitle(phase) : (currentLang === 'es' ? 'PRESENCIA' : 'PRESENCE')}
             </span>
-          )}
+
+            <span className="orbe-seconds-display">
+              {isActive ? secondsLeft.toFixed(1) : `${pattern.inhale}s`}
+            </span>
+
+            <span className="orbe-sub-status">
+              {isActive ? (currentLang === 'es' ? 'segundos' : 'seconds') : (currentLang === 'es' ? 'Listo para iniciar' : 'Ready to begin')}
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Guía Somática Consciente en Tiempo Real */}
-      <div className="breathwork-guidance-box">
-        <p className="guidance-phrase" style={{ color: isActive ? '#FAF7F2' : 'rgba(250, 247, 242, 0.7)' }}>
-          {isActive ? PHRASES[phase] : 'Selecciona tu frecuencia pránica y pulsa Iniciar para armonizar tu respiración.'}
+      {/* Instrucción Sensorial Dinámica de la Fase Activa */}
+      <div className="breathwork-instruction-panel">
+        <p className="instruction-lead-text">
+          {isActive ? getPhaseInstruction(phase) : pattern.description[currentLang]}
         </p>
+
+        {isActive && (
+          <div className="breathwork-phase-indicator-pill" style={{ borderColor: pattern.color }}>
+            <span className="indicator-phase-name" style={{ color: pattern.color }}>
+              {getPhaseTitle(phase)}
+            </span>
+            <span className="indicator-sep">·</span>
+            <span className="indicator-time">
+              {Math.ceil(secondsLeft)} {currentLang === 'es' ? 'segundos restantes' : 'seconds left'}
+            </span>
+          </div>
+        )}
       </div>
 
-      {/* Descripción Científico-Espiritual del Patrón */}
-      <p className="breathwork-desc">{pattern.description}</p>
-
-      {/* Panel de Controles: Iniciar/Pausar, Reiniciar y Sonido 432 Hz */}
-      <div className="breathwork-controls">
+      {/* Panel de Controles: Iniciar/Pausar, Reiniciar y Sonido */}
+      <div className="breathwork-controls-bar">
         <button
           type="button"
-          className="btn btn-primary breathwork-main-btn"
+          className={`breathwork-main-cta ${isActive ? 'is-active' : ''}`}
           onClick={handleToggle}
-          style={{ minWidth: '190px', gap: '0.65rem' }}
+          style={{
+            borderColor: pattern.color,
+            boxShadow: isActive ? `0 0 25px ${pattern.glowColor}` : 'none'
+          }}
         >
-          {isActive ? (
-            <>
-              <Pause size={16} />
-              <span>Pausar Respiración</span>
-            </>
-          ) : (
-            <>
-              <Play size={16} />
-              <span>Iniciar Alquimia</span>
-            </>
-          )}
+          {isActive ? <Pause size={17} /> : <Play size={17} fill="currentColor" />}
+          <span>{isActive ? t.breathwork.pauseBtn : t.breathwork.startBtn}</span>
         </button>
 
         <button
           type="button"
-          className="btn btn-secondary breathwork-icon-btn"
+          className="breathwork-secondary-btn"
           onClick={handleReset}
-          title="Reiniciar práctica"
-          aria-label="Reiniciar práctica"
+          title={t.breathwork.resetBtn}
+          aria-label={t.breathwork.resetBtn}
         >
           <RotateCcw size={16} />
+          <span>{t.breathwork.resetBtn}</span>
         </button>
 
         <button
           type="button"
-          className={`btn btn-secondary breathwork-icon-btn ${soundEnabled ? 'active-sound' : ''}`}
-          onClick={() => setSoundEnabled(!soundEnabled)}
-          title={soundEnabled ? 'Cuenco Tibetano 432 Hz Activado' : 'Sonido Silenciado'}
-          aria-label={soundEnabled ? 'Cuenco Tibetano 432 Hz Activado' : 'Sonido Silenciado'}
+          className={`breathwork-secondary-btn ${soundEnabled ? 'sound-active' : ''}`}
+          onClick={() => {
+            const nextSound = !soundEnabled;
+            setSoundEnabled(nextSound);
+            if (nextSound) playSingingBowl(432);
+          }}
+          title={soundEnabled ? t.breathwork.soundOn : t.breathwork.soundOff}
+          aria-label={soundEnabled ? t.breathwork.soundOn : t.breathwork.soundOff}
         >
-          {soundEnabled ? <Volume2 size={16} style={{ color: 'var(--gold-bright)' }} /> : <VolumeX size={16} />}
+          {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
+          <span>{soundEnabled ? t.breathwork.soundOn : t.breathwork.soundOff}</span>
         </button>
       </div>
 
-      {/* Llamada Directa y Contextual a WhatsApp para Breathwork Privado */}
-      <div className="breathwork-footer-cta">
-        <a
-          href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20agendar%20una%20sesi%C3%B3n%20individual%20de%20Breathwork%20y%20Liberaci%C3%B3n%20Som%C3%A1tica%20en%20Siete%20Centros"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="whatsapp-niche-link"
-        >
-          {/* Icono Sagrado del Nicho: Loto con Geometría de Resonancia */}
-          <span className="niche-icon-wrap" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="niche-sacred-icon">
-              <circle cx="12" cy="12" r="9" stroke="currentColor" strokeDasharray="2 3" opacity="0.6" />
-              <path d="M12 3C8 8 7 13 12 21C17 13 16 8 12 3Z" fill="currentColor" fillOpacity="0.15" />
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-            </svg>
-          </span>
-          <div className="niche-link-text">
-            <span className="niche-link-title">Agendar Inmersión Somática de Breathwork</span>
-            <span className="niche-link-sub">Atención personalizada con Sofía vía WhatsApp</span>
-          </div>
-        </a>
+      {/* Contador de Ciclos Completados */}
+      <div className="breathwork-stats-footer">
+        <div className="stat-pill">
+          <CheckCircle2 size={14} color="#34D399" />
+          <span>{t.breathwork.cycleCount}:</span>
+          <strong className="stat-value">{completedCycles}</strong>
+        </div>
       </div>
     </div>
   );

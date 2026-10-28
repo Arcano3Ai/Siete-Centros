@@ -52,36 +52,48 @@
       <nav class="top-nav-links" aria-label="Navegación principal">
         <a href="#corona" class="top-nav-link">
           <span class="nav-link-num">01</span>
-          <span>Chakras</span>
+          <span data-i18n="nav-chakras">Chakras</span>
         </a>
         <a href="/breathwork.html" class="top-nav-link">
           <span class="nav-link-num">02</span>
-          <span>Breathwork</span>
+          <span data-i18n="nav-breathwork">Breathwork</span>
         </a>
         <a href="/kriya-yoga.html" class="top-nav-link">
           <span class="nav-link-num">03</span>
-          <span>Kriya Yoga</span>
+          <span data-i18n="nav-kriya">Kriya Yoga</span>
         </a>
         <a href="/tantra.html" class="top-nav-link">
           <span class="nav-link-num">04</span>
-          <span>Tantra</span>
+          <span data-i18n="nav-tantra">Tantra</span>
         </a>
         <a href="/circulos-de-palabra.html" class="top-nav-link">
           <span class="nav-link-num">05</span>
-          <span>Círculos</span>
+          <span data-i18n="nav-circulos">Círculos</span>
         </a>
         <a href="/retiros.html" class="top-nav-link">
           <span class="nav-link-num">06</span>
-          <span>Retiros 2026</span>
+          <span data-i18n="nav-retiros">Retiros 2026</span>
         </a>
         <a href="#sesiones-sofia" class="top-nav-link">
           <span class="nav-link-num">07</span>
-          <span>Sofía</span>
+          <span data-i18n="nav-sofia">Sofía</span>
         </a>
       </nav>
 
-      <!-- Quick Action Right: WhatsApp Sagrado con Icono del Nicho -->
+      <!-- Quick Action Right: Idioma ES/EN + WhatsApp Sagrado con Icono del Nicho -->
       <div class="top-nav-cta-wrap">
+        <button
+          type="button"
+          class="lang-switcher-global-btn"
+          id="lang-switcher-global-btn"
+          aria-label="Cambiar idioma / Switch language"
+          title="Cambiar idioma (Español / English)"
+        >
+          <span class="lang-opt-es active">ES</span>
+          <span class="lang-divider">|</span>
+          <span class="lang-opt-en">EN</span>
+        </button>
+
         <a
           href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20informaci%C3%B3n%20sobre%20las%20sesiones%20y%20retiros%20de%20Siete%20Centros"
           target="_blank"
@@ -94,7 +106,7 @@
             <path d="M12 3C8 8 7 13 12 21C17 13 16 8 12 3Z" fill="currentColor" fill-opacity="0.2" />
             <circle cx="12" cy="12" r="3" fill="currentColor" />
           </svg>
-          <span class="top-nav-cta-text">WhatsApp Sagrado</span>
+          <span class="top-nav-cta-text" data-i18n="nav-whatsapp">WhatsApp Sagrado</span>
         </a>
       </div>
     </div>
@@ -215,18 +227,6 @@
           </div>
         </button>
       </nav>
-
-      <!-- Footer de Orilla Izquierda: Audio Procedural 432 Hz -->
-      <div class="flank-left-footer">
-        <button type="button" class="audio-toggle-btn" id="audio-toggle-btn" aria-pressed="false" aria-label="Activar atmósfera sonora 432 Hz">
-          <div class="sound-bars" aria-hidden="true">
-            <span class="sound-bar"></span>
-            <span class="sound-bar"></span>
-            <span class="sound-bar"></span>
-          </div>
-          <span class="audio-label">Atmósfera 432 Hz</span>
-        </button>
-      </div>
     </aside>
 
     <!-- ====================================================================

@@ -7,9 +7,12 @@ import { initNavigation } from './navigation.js';
 import { initModals } from './modals.js';
 import { injectSacredGeometries } from './geometry.js';
 import { initTriptych } from './triptych.js';
-import { mountInteractiveServices } from '../interactive-mount';
+import { initDomI18n } from './i18n-dom.js';
+import { mountInteractiveServices, mountTantricBot } from '../interactive-mount';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Initialize bilingual internationalization (ES / EN)
+  initDomI18n();
   // 1. Inject hand-crafted sacred geometry vectors
   injectSacredGeometries();
 
@@ -18,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Mount React Interactive Services Hub (Breathwork, Kriya, Tantra, Word Circle, Retreats)
   mountInteractiveServices();
+
+  // 4. Mount Tantric Concierge Bot (Oráculo de los 7 Chakras)
+  mountTantricBot();
 
   // 4. Initialize navigation & 432Hz ambient audio
   initNavigation();
