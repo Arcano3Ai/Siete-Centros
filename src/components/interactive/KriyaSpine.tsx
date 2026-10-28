@@ -346,7 +346,7 @@ export const KriyaSpine: React.FC = () => {
             {/* Action CTA preconfigured to WhatsApp */}
             <div className="kriya-card-footer">
               <a
-                href={`https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20profundizar%20en%20el%20alineamiento%20del%20Centro%20${activeChakra.numeral}%20${activeChakra.name.es}%20mediante%20Kriya%20Yoga`}
+                href={`https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20profundizar%20en%20el%20alineamiento%20del%20Centro%20${activeChakra.numeral}%20${activeChakra.name.es}%20en%20Siete%20Centros%20Escuela%20de%20Conciencia`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary kriya-action-btn"

@@ -208,7 +208,7 @@ export const WordCircle: React.FC = () => {
       {/* WhatsApp Preconfigured CTA */}
       <div className="word-circle-cta">
         <a
-          href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20unirme%20al%20pr%C3%B3ximo%20C%C3%ADrculo%20de%20Palabra%20y%20Presencia%20en%20Siete%20Centros"
+          href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20unirme%20al%20pr%C3%B3ximo%20C%C3%ADrculo%20de%20Palabra%20y%20Presencia%20en%20Siete%20Centros%20Escuela%20de%20Conciencia"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary circle-action-btn"

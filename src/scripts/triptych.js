@@ -210,7 +210,7 @@ export function initTriptych() {
         return;
       }
       e.preventDefault();
-      window.open('https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20siento%20el%20llamado%20a%20entrar%20al%20c%C3%ADrculo%20sagrado%20de%20Siete%20Centros', '_blank');
+      window.open('https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia', '_blank');
     });
   }
 

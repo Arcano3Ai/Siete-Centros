@@ -289,7 +289,7 @@ export const TantraPolarity: React.FC = () => {
       {/* WhatsApp Booking CTA */}
       <div className="tantra-cta-box">
         <a
-          href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20consultar%20sobre%20las%20sesiones%20de%20Tantra%20Terap%C3%A9utico%20en%20Siete%20Centros"
+          href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20consultar%20sobre%20las%20sesiones%20de%20Tantra%20Terap%C3%A9utico%20en%20Siete%20Centros%20Escuela%20de%20Conciencia"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary tantra-btn"

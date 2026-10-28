@@ -54,8 +54,8 @@ const RETREATS: RetreatItem[] = [
       ]
     },
     waMessage: {
-      es: 'Hola Sofía, deseo postularme para reservar uno de los últimos 3 lugares en el Retiro Silencio & Renacer Somático en Tepoztlán.',
-      en: 'Hello Sofia, I would like to apply for one of the last 3 spots for the Silence & Somatic Rebirth Retreat in Tepoztlan.'
+      es: 'Hola Sofía, deseo postularme para reservar uno de los últimos 3 lugares en el Retiro Silencio & Renacer Somático de Siete Centros Escuela de Conciencia en Tepoztlán.',
+      en: 'Hello Sofia, I would like to apply for one of the last 3 spots for the Silence & Somatic Rebirth Retreat at Siete Centros Escuela de Conciencia in Tepoztlan.'
     }
   },
   {
@@ -95,8 +95,8 @@ const RETREATS: RetreatItem[] = [
       ]
     },
     waMessage: {
-      es: 'Hola Sofía, deseo solicitar información y reservar mi espacio para la Inmersión de Tantra & Polaridad en Valle de Bravo.',
-      en: 'Hello Sofia, I would like to inquire and reserve my place for the Tantra & Heart Polarity Immersion in Valle de Bravo.'
+      es: 'Hola Sofía, deseo solicitar información y reservar mi espacio para la Inmersión de Tantra & Polaridad de Siete Centros Escuela de Conciencia en Valle de Bravo.',
+      en: 'Hello Sofia, I would like to inquire and reserve my place for the Tantra & Heart Polarity Immersion at Siete Centros Escuela de Conciencia in Valle de Bravo.'
     }
   },
   {
@@ -136,8 +136,8 @@ const RETREATS: RetreatItem[] = [
       ]
     },
     waMessage: {
-      es: 'Hola Sofía, me interesa unirme al Retiro Portal Ouroboros en Tulum.',
-      en: 'Hello Sofia, I am interested in joining the Ouroboros Portal Retreat in Tulum.'
+      es: 'Hola Sofía, me interesa unirme al Retiro Portal Ouroboros de Siete Centros Escuela de Conciencia en Tulum.',
+      en: 'Hello Sofia, I am interested in joining the Ouroboros Portal Retreat at Siete Centros Escuela de Conciencia in Tulum.'
     }
   }
 ];
