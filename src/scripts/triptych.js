@@ -361,4 +361,32 @@ export function initTriptych() {
 
     animateParticles();
   }
+
+  // Initialize FAQ Accordion for Sanctuary Questions
+  const faqButtons = document.querySelectorAll('.faq-question-btn');
+  faqButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const parentItem = btn.closest('.faq-item');
+      if (!parentItem) return;
+      const isOpen = parentItem.classList.contains('is-open');
+
+      // Close all other open FAQ items for a clean single-accordion feel
+      document.querySelectorAll('.faq-item.is-open').forEach((item) => {
+        if (item !== parentItem) {
+          item.classList.remove('is-open');
+          const itemBtn = item.querySelector('.faq-question-btn');
+          if (itemBtn) itemBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        parentItem.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        parentItem.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 }
+
