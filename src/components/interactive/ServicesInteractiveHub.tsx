@@ -48,6 +48,14 @@ const TABS: TabConfig[] = [
   }
 ];
 
+const PAGE_URLS: Record<ServiceTab, { url: string; label: string }> = {
+  breathwork: { url: '/breathwork.html', label: 'Abrir Página Separada de Breathwork' },
+  kriya: { url: '/kriya-yoga.html', label: 'Abrir Página Separada de Kriya Yoga' },
+  tantra: { url: '/tantra.html', label: 'Abrir Página Separada de Tantra' },
+  circulos: { url: '/circulos-de-palabra.html', label: 'Abrir Página Separada de Círculos' },
+  retiros: { url: '/retiros.html', label: 'Abrir Página Separada de Retiros 2026' }
+};
+
 export const ServicesInteractiveHub: React.FC = () => {
   const [activeTab, setActiveTab] = useState<ServiceTab>('breathwork');
 
@@ -89,6 +97,28 @@ export const ServicesInteractiveHub: React.FC = () => {
             );
           })}
         </div>
+      </div>
+
+      {/* Botón Destacado para Entrar a la Página Separada Dedicada */}
+      <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+        <a
+          href={PAGE_URLS[activeTab].url}
+          className="btn btn-secondary"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.65rem',
+            fontSize: '0.78rem',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            padding: '0.6rem 1.4rem',
+            borderColor: 'var(--gold-border-highlight)',
+            background: 'rgba(18, 12, 26, 0.85)'
+          }}
+        >
+          <span>{PAGE_URLS[activeTab].label}</span>
+          <span style={{ color: 'var(--gold-bright)' }}>↗</span>
+        </a>
       </div>
 
       {/* Main Dynamic Interactive Stage Container */}

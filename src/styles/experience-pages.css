@@ -1,0 +1,383 @@
+/**
+ * SIETE CENTROS — Dedicated Experience Pages Styles
+ * Arquitectura Editorial & Mística para las Páginas Independientes
+ */
+
+.experience-page-body {
+  background-color: #050508;
+  color: var(--text-ivory);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  padding-top: 54px; /* Compensación del Navbar superior */
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background Atmosphere Glows */
+.experience-bg-glow {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--exp-accent-glow, rgba(223, 190, 144, 0.15)) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.experience-page-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 3.5rem 1.75rem 6rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Breadcrumb Navigation */
+.experience-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-ivory-dim);
+  margin-bottom: 2rem;
+}
+
+.experience-breadcrumb a {
+  color: var(--text-ivory-dim);
+  text-decoration: none;
+  transition: color var(--transition-smooth);
+}
+
+.experience-breadcrumb a:hover {
+  color: var(--gold-bright);
+}
+
+.experience-breadcrumb .separator {
+  color: var(--gold-aged);
+  opacity: 0.5;
+}
+
+.experience-breadcrumb .current {
+  color: var(--gold-bright);
+}
+
+/* Hero Section of the Dedicated Page */
+.experience-hero {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.experience-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--exp-accent-color, var(--gold-border));
+  color: var(--exp-accent-color, var(--gold-bright));
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.experience-main-title {
+  font-family: var(--font-serif-display);
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--text-ivory);
+  margin: 0 0 1rem;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95), 0 0 25px var(--exp-accent-glow, rgba(223, 190, 144, 0.25));
+}
+
+.experience-tagline {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  color: var(--gold-bright);
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.5;
+}
+
+.experience-meta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--text-ivory-dim);
+  letter-spacing: 0.12em;
+}
+
+.meta-pill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.meta-pill-item span.highlight {
+  color: var(--gold-bright);
+  font-weight: 600;
+}
+
+/* Interactive Component Stage Box */
+.experience-interactive-sandbox {
+  background: rgba(10, 6, 16, 0.82);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(197, 168, 128, 0.08);
+  margin-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Editorial Depth Sections: Grid Layout */
+.experience-editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 850px) {
+  .experience-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.editorial-column-card {
+  background: rgba(12, 8, 18, 0.65);
+  border: 1px solid rgba(197, 168, 128, 0.18);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75);
+}
+
+.editorial-card-title {
+  font-family: var(--font-serif-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  color: var(--gold-bright);
+  margin: 0 0 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.editorial-card-text {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-ivory-dim);
+  margin: 0 0 1.25rem;
+}
+
+.editorial-card-text:last-child {
+  margin-bottom: 0;
+}
+
+.editorial-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.editorial-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--text-ivory-dim);
+  line-height: 1.55;
+}
+
+.editorial-bullet-item .bullet-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  margin-top: 7px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--gold-bright);
+}
+
+/* Sofia Facilitator Spotlight in Page */
+.experience-sofia-quote-card {
+  background: linear-gradient(135deg, rgba(16, 10, 24, 0.9), rgba(8, 5, 12, 0.95));
+  border: 1px solid var(--gold-border-highlight);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  margin-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+}
+
+@media (max-width: 768px) {
+  .experience-sofia-quote-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+}
+
+.sofia-mini-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold-bright);
+  box-shadow: 0 0 25px var(--gold-glow);
+  flex-shrink: 0;
+}
+
+.sofia-quote-text {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text-ivory);
+  margin: 0 0 0.85rem;
+}
+
+.sofia-quote-author {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+
+/* Master Ceremonial WhatsApp CTA */
+.experience-ceremonial-cta {
+  text-align: center;
+  padding: 3.5rem 2rem;
+  background: radial-gradient(circle at center, rgba(197, 168, 128, 0.08) 0%, rgba(5, 5, 8, 0.9) 75%);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 4rem;
+}
+
+.cta-sacred-glyph {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(10, 6, 16, 0.9);
+  border: 1px solid var(--gold-border-highlight);
+  color: var(--gold-bright);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.cta-ceremonial-title {
+  font-family: var(--font-serif-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  letter-spacing: 0.14em;
+  color: var(--text-ivory);
+  margin: 0 0 0.75rem;
+}
+
+.cta-ceremonial-desc {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-ivory-dim);
+  max-width: 600px;
+  margin: 0 auto 2.25rem;
+}
+
+.cta-action-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Navigation to Other Experiences (Bottom Rail) */
+.other-experiences-rail {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(197, 168, 128, 0.15);
+}
+
+.other-rail-title {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-aged);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.other-experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.other-exp-card {
+  background: rgba(12, 8, 18, 0.6);
+  border: 1px solid rgba(197, 168, 128, 0.18);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.15rem;
+  text-decoration: none;
+  transition: all var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.other-exp-card:hover {
+  background: rgba(22, 14, 32, 0.9);
+  border-color: var(--gold-bright);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px var(--gold-glow);
+}
+
+.other-exp-num {
+  font-family: var(--font-serif-display);
+  font-size: 0.65rem;
+  color: var(--gold-aged);
+  margin-bottom: 0.4rem;
+}
+
+.other-exp-name {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-ivory);
+  margin-bottom: 0.25rem;
+}
+
+.other-exp-sub {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--text-ivory-dim);
+}
