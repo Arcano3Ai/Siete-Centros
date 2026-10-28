@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="/src/styles/tokens.css">
   <link rel="stylesheet" href="/src/styles/base.css">
   <link rel="stylesheet" href="/src/styles/triptych.css">
+  <link rel="stylesheet" href="/src/styles/interactive-components.css">
   <link rel="stylesheet" href="/src/styles/footer.css">
   <link rel="stylesheet" href="/src/styles/modal.css">
 </head>
@@ -170,9 +171,6 @@
          Orden estricto top-down CORONA -> RAÍZ con unión invisible perfecta
          ==================================================================== -->
     <main class="triptych-spine-center" id="main-content">
-      <!-- Columna Dorada Central de 2px con Shimmer (Sushumna Nadi) -->
-      <div class="center-shimmer-spine" aria-hidden="true"></div>
-
       <!-- Portal Heroico de Bienvenida con Emblema de Lujo Majestuoso -->
       <header class="center-editorial-hero">
         <div class="center-hero-emblem-display">
@@ -186,56 +184,71 @@
         </div>
       </header>
 
-      <!-- Pila de 4 Videos con Solapamiento Invisible y Puentes de Fusión -->
+      <!-- Pila de 4 Videos con Solapamiento Invisible y Selectores Laterales -->
       <div class="spine-videos-stack">
 
         <!-- 1. CORONA (VII Violeta - Sahasrara) -->
         <section class="spine-video-block spine-video-block-1" id="corona" aria-label="Centro VII Corona">
           <video class="spine-video-item" src="/videos/corona.mp4" autoplay loop muted playsinline></video>
-          <!-- Orb VII Corona -->
-          <div class="center-chakra-orb highlighted" data-chakra="7" style="top: 50%; --chakra-orb-color: #C084FC;" title="Centro VII · Corona"></div>
+          <!-- Selector Lateral VII Corona -->
+          <button type="button" class="center-chakra-orb highlighted" data-chakra="7" style="top: 50%; --chakra-orb-color: #C084FC;" aria-label="Centro VII Corona">
+            <span class="orb-numeral">VII</span>
+            <span class="orb-label">Corona</span>
+          </button>
         </section>
-
-        <!-- Puente de Luz Cósmica Seam 1 -> 2 -->
-        <div class="video-seam-bridge bridge-1-2" aria-hidden="true"></div>
 
         <!-- 2. GARGANTA Y 3ER OJO (VI Índigo arriba + V Azul abajo) -->
         <section class="spine-video-block spine-video-block-2" id="tercer-ojo-garganta" aria-label="Centros VI Tercer Ojo y V Garganta">
           <video class="spine-video-item" src="/videos/garganta_3erojo.mp4" autoplay loop muted playsinline></video>
-          <!-- Orb VI Tercer Ojo -->
-          <div class="center-chakra-orb" data-chakra="6" style="top: 28%; --chakra-orb-color: #818CF8;" title="Centro VI · Tercer Ojo"></div>
-          <!-- Orb V Garganta -->
-          <div class="center-chakra-orb" data-chakra="5" style="top: 72%; --chakra-orb-color: #38BDF8;" title="Centro V · Garganta"></div>
+          <!-- Selector Lateral VI Tercer Ojo -->
+          <button type="button" class="center-chakra-orb" data-chakra="6" style="top: 28%; --chakra-orb-color: #818CF8;" aria-label="Centro VI Tercer Ojo">
+            <span class="orb-numeral">VI</span>
+            <span class="orb-label">Tercer Ojo</span>
+          </button>
+          <!-- Selector Lateral V Garganta -->
+          <button type="button" class="center-chakra-orb" data-chakra="5" style="top: 72%; --chakra-orb-color: #38BDF8;" aria-label="Centro V Garganta">
+            <span class="orb-numeral">V</span>
+            <span class="orb-label">Garganta</span>
+          </button>
         </section>
-
-        <!-- Puente de Luz Cósmica Seam 2 -> 3 -->
-        <div class="video-seam-bridge bridge-2-3" aria-hidden="true"></div>
 
         <!-- 3. SOLAR Y CORAZÓN (IV Verde Corazón arriba + III Amarillo abajo) -->
         <section class="spine-video-block spine-video-block-3" id="corazon-solar" aria-label="Centros IV Corazón y III Plexo Solar">
           <video class="spine-video-item" src="/videos/solar_corazon.mp4" autoplay loop muted playsinline></video>
-          <!-- Orb IV Corazón -->
-          <div class="center-chakra-orb" data-chakra="4" style="top: 30%; --chakra-orb-color: #34D399;" title="Centro IV · Corazón"></div>
-          <!-- Orb III Plexo Solar -->
-          <div class="center-chakra-orb" data-chakra="3" style="top: 70%; --chakra-orb-color: #FBBF24;" title="Centro III · Plexo Solar"></div>
+          <!-- Selector Lateral IV Corazón -->
+          <button type="button" class="center-chakra-orb" data-chakra="4" style="top: 30%; --chakra-orb-color: #34D399;" aria-label="Centro IV Corazón">
+            <span class="orb-numeral">IV</span>
+            <span class="orb-label">Corazón</span>
+          </button>
+          <!-- Selector Lateral III Plexo Solar -->
+          <button type="button" class="center-chakra-orb" data-chakra="3" style="top: 70%; --chakra-orb-color: #FBBF24;" aria-label="Centro III Plexo Solar">
+            <span class="orb-numeral">III</span>
+            <span class="orb-label">Plexo</span>
+          </button>
         </section>
-
-        <!-- Puente de Luz Cósmica Seam 3 -> 4 -->
-        <div class="video-seam-bridge bridge-3-4" aria-hidden="true"></div>
 
         <!-- 4. RAÍZ Y SACRO (II Naranja arriba + I Rojo abajo con Infinito Dorado final) -->
         <section class="spine-video-block spine-video-block-4" id="sacro-raiz" aria-label="Centros II Sacro y I Raíz">
           <video class="spine-video-item" src="/videos/raiz_sacro.mp4" autoplay loop muted playsinline></video>
-          <!-- Orb II Sacro -->
-          <div class="center-chakra-orb" data-chakra="2" style="top: 32%; --chakra-orb-color: #FB923C;" title="Centro II · Sacro"></div>
-          <!-- Orb I Raíz (con infinito dorado final) -->
-          <div class="center-chakra-orb" data-chakra="1" style="top: 72%; --chakra-orb-color: #F43F5E;" title="Centro I · Raíz"></div>
+          <!-- Selector Lateral II Sacro -->
+          <button type="button" class="center-chakra-orb" data-chakra="2" style="top: 32%; --chakra-orb-color: #FB923C;" aria-label="Centro II Sacro">
+            <span class="orb-numeral">II</span>
+            <span class="orb-label">Sacro</span>
+          </button>
+          <!-- Selector Lateral I Raíz -->
+          <button type="button" class="center-chakra-orb" data-chakra="1" style="top: 72%; --chakra-orb-color: #F43F5E;" aria-label="Centro I Raíz">
+            <span class="orb-numeral">I</span>
+            <span class="orb-label">Raíz</span>
+          </button>
         </section>
 
       </div>
 
-      <!-- Contenido Inferior de la Columna Centro: Sofía, Sesiones y Dedicatoria Épica -->
+      <!-- Contenido Inferior de la Columna Centro: Experiencias Interactivas, Sofía, Sesiones y Dedicatoria -->
       <div class="center-bottom-content">
+        <!-- Hub Interactivo de Servicios (Breathwork, Kriya, Tantra, Círculos, Retiros) -->
+        <div id="interactive-services-root" style="margin-bottom: 3.5rem;"></div>
+
         <!-- Showcase Sofía -->
         <article class="center-sofia-card" id="sesiones-sofia">
           <img src="/images/sofia.jpg" alt="Sofía, terapeuta y facilitadora de Siete Centros" class="center-sofia-img">

@@ -318,37 +318,10 @@ body {
   box-shadow: 0 0 70px rgba(0, 0, 0, 0.98), 0 0 40px rgba(197, 168, 128, 0.08);
 }
 
-/* 2px Central Golden Shimmer Column (Sushumna Nadi) */
-.center-shimmer-spine {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  pointer-events: none;
-  z-index: 18;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(223, 190, 144, 0.4) 4%,
-    #ffffff 20%,
-    var(--gold-bright) 40%,
-    #ffffff 60%,
-    var(--gold-bright) 80%,
-    rgba(223, 190, 144, 0.5) 96%,
-    transparent 100%
-  );
-  background-size: 100% 300%;
-  animation: sushumnaShimmer 4.5s ease-in-out infinite;
-  box-shadow: 0 0 10px var(--gold-bright), 0 0 20px var(--gold-glow);
-}
-
-@keyframes sushumnaShimmer {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 0% 100%; }
-  100% { background-position: 0% 0%; }
-}
+/* 
+ * 2px Central Golden Shimmer Column ELIMINADA a petición del usuario.
+ * El video cósmico se muestra 100% limpio y cinematográfico sin líneas divisorias.
+ */
 
 /* Grand Hero Portal at top of Center Column */
 .center-editorial-hero {
@@ -444,73 +417,45 @@ body {
   position: relative;
   width: 520px;
   height: 921.8px;
-  overflow: hidden;
+  overflow: visible; /* Permite que los selectores laterales floten elegantemente */
   background: #050508;
 }
 
-/* Solapamiento de -28px para empalme perfecto de continuidad */
+/* 
+ * Empalme continuo perfecto: Solapamiento de 65px
+ * El bloque superior se desvanece a transparente SOLO en sus últimos 65px.
+ * El bloque inferior es 100% SÓLIDO en su parte superior, eliminando cualquier banda negra.
+ */
 .spine-video-block + .spine-video-block {
-  margin-top: -28px;
+  margin-top: -65px;
 }
 
-/* Máscaras Degradadas Profundas (12% de transición suave) para unión invisible */
 .spine-video-block-1 {
-  /* Corona: fade bottom only */
-  mask-image: linear-gradient(to bottom, #000 0%, #000 86%, rgba(0,0,0,0.8) 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 86%, rgba(0,0,0,0.8) 92%, transparent 100%);
+  /* Corona: desvanecimiento suave solo en los últimos 65px */
+  mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 65px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 65px), transparent 100%);
   z-index: 14;
 }
 
 .spine-video-block-2 {
-  /* Garganta & Tercer Ojo: fade top and bottom */
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 6%, #000 12%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 6%, #000 12%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
+  /* Garganta & Tercer Ojo: sólido en el top para recibir bloque 1; desvanecimiento suave solo en últimos 65px */
+  mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 65px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 65px), transparent 100%);
   z-index: 13;
 }
 
 .spine-video-block-3 {
-  /* Solar & Corazón: fade top and bottom */
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 6%, #000 12%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 6%, #000 12%, #000 88%, rgba(0,0,0,0.7) 94%, transparent 100%);
+  /* Solar & Corazón: sólido en el top para recibir bloque 2; desvanecimiento suave solo en últimos 65px */
+  mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 65px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 65px), transparent 100%);
   z-index: 12;
 }
 
 .spine-video-block-4 {
-  /* Raíz & Sacro: fade top only */
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 6%, #000 12%, #000 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 6%, #000 12%, #000 100%);
+  /* Raíz & Sacro: sólido en el top para recibir bloque 3; sin corte */
+  mask-image: none;
+  -webkit-mask-image: none;
   z-index: 11;
-}
-
-/* Video Seam Bridge Element: Puente de Fusión Cósmica en las Uniones */
-.video-seam-bridge {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 60px;
-  pointer-events: none;
-  z-index: 17;
-  mix-blend-mode: screen;
-}
-
-.video-seam-bridge::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 65% 100% at center, rgba(223, 190, 144, 0.45) 0%, rgba(223, 190, 144, 0.15) 45%, transparent 75%);
-  filter: blur(14px);
-}
-
-.bridge-1-2 {
-  top: calc(921.8px - 44px);
-}
-
-.bridge-2-3 {
-  top: calc((921.8px * 2) - (28px) - 44px);
-}
-
-.bridge-3-4 {
-  top: calc((921.8px * 3) - (56px) - 44px);
 }
 
 /* Fixed camera, 100% loop, smooth transition */
@@ -520,7 +465,7 @@ body {
   object-fit: cover;
   object-position: center center;
   display: block;
-  filter: contrast(1.05) brightness(0.97);
+  filter: contrast(1.04) brightness(0.98);
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -529,33 +474,102 @@ body {
   transform: scale(1.02);
 }
 
-/* Center Chakra Orbs Overlay */
+/* ==========================================================================
+   SELECTORES DE CHAKRA LATERALES (FLOTANTES A UN LADO DEL VIDEO)
+   Ubicados en el flanco lateral del video para NO tapar el centro ni el ADN
+   ========================================================================== */
 .center-chakra-orb {
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 1px solid rgba(223, 190, 144, 0.5);
-  background: rgba(5, 5, 8, 0.7);
-  backdrop-filter: blur(5px);
-  z-index: 19;
-  cursor: pointer;
-  display: flex;
+  /* Posicionamiento lateral: a la derecha del video sin estorbar el centro */
+  right: 18px;
+  left: auto;
+  transform: translateY(-50%);
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  transition: all var(--transition-smooth);
+  gap: 8px;
+  padding: 5px 12px 5px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(223, 190, 144, 0.35);
+  background: rgba(8, 6, 12, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 25;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.65), 0 0 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
 
+/* Micro línea conector hacia el centro */
+.center-chakra-orb::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 1px;
+  background: linear-gradient(to left, var(--chakra-orb-color, var(--gold-bright)), transparent);
+  opacity: 0.4;
+  pointer-events: none;
+  transition: all 0.32s ease;
+}
+
+/* Gema / Orb pulsante interior */
 .center-chakra-orb::after {
   content: '';
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--chakra-orb-color, var(--gold-bright));
-  box-shadow: 0 0 12px var(--chakra-orb-color, var(--gold-bright));
-  transition: all var(--transition-smooth);
+  box-shadow: 0 0 10px var(--chakra-orb-color, var(--gold-bright)), 0 0 18px var(--chakra-orb-color, var(--gold-bright));
+  flex-shrink: 0;
+  transition: transform 0.32s ease, box-shadow 0.32s ease;
+}
+
+/* Numeral Romano y Etiqueta */
+.center-chakra-orb .orb-numeral {
+  font-family: var(--font-serif-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--text-ivory);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.center-chakra-orb .orb-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--text-ivory-dim);
+  text-transform: uppercase;
+  transition: color 0.32s ease;
+}
+
+/* Estados Hover y Highlighted */
+.center-chakra-orb:hover,
+.center-chakra-orb.highlighted {
+  border-color: var(--chakra-orb-color, var(--gold-bright));
+  background: rgba(16, 12, 24, 0.94);
+  transform: translateY(-50%) translateX(-4px) scale(1.06);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.85), 0 0 20px var(--chakra-orb-color, var(--gold-bright));
+}
+
+.center-chakra-orb:hover::before,
+.center-chakra-orb.highlighted::before {
+  width: 22px;
+  opacity: 0.9;
+}
+
+.center-chakra-orb:hover::after,
+.center-chakra-orb.highlighted::after {
+  transform: scale(1.35);
+  box-shadow: 0 0 14px var(--chakra-orb-color, var(--gold-bright)), 0 0 24px var(--chakra-orb-color, var(--gold-bright));
+}
+
+.center-chakra-orb:hover .orb-label,
+.center-chakra-orb.highlighted .orb-label {
+  color: var(--text-ivory);
 }
 
 .center-chakra-orb::before {
@@ -566,24 +580,6 @@ body {
   border: 1px solid var(--chakra-orb-color, var(--gold-bright));
   opacity: 0.35;
   animation: orbHaloPulse 3s ease-in-out infinite alternate;
-}
-
-@keyframes orbHaloPulse {
-  0% { transform: scale(0.85); opacity: 0.2; }
-  100% { transform: scale(1.35); opacity: 0.65; }
-}
-
-.center-chakra-orb:hover,
-.center-chakra-orb.highlighted {
-  border-color: var(--gold-bright);
-  box-shadow: 0 0 35px var(--gold-bright), 0 0 70px var(--gold-glow);
-  transform: translate(-50%, -50%) scale(1.5);
-}
-
-.center-chakra-orb:hover::after,
-.center-chakra-orb.highlighted::after {
-  transform: scale(1.6);
-  box-shadow: 0 0 25px #ffffff, 0 0 40px var(--gold-bright);
 }
 
 /* Center Bottom Sections: Sofía, Sesiones & Monumental Dedication */
