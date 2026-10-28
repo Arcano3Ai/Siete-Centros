@@ -38,7 +38,7 @@ const RETREATS: RetreatItem[] = [
     spotsLeft: 3,
     totalSpots: 12,
     priceTag: { es: 'Cupo Limitado', en: 'Limited Vessel' },
-    image: '/images/exp_kriya.jpg',
+    image: './images/exp_kriya.jpg',
     highlights: {
       es: [
         'Kriya Yoga matutino al amanecer en el loto',
@@ -79,7 +79,7 @@ const RETREATS: RetreatItem[] = [
     spotsLeft: 2,
     totalSpots: 10,
     priceTag: { es: 'Últimos Lugares', en: 'Last 2 Spots' },
-    image: '/images/exp_tantra.jpg',
+    image: './images/exp_tantra.jpg',
     highlights: {
       es: [
         'Desarme de corazas en el centro Anahata',
@@ -120,7 +120,7 @@ const RETREATS: RetreatItem[] = [
     spotsLeft: 4,
     totalSpots: 14,
     priceTag: { es: 'Convocatoria Abierta', en: 'Applications Open' },
-    image: '/images/community_circle.jpg',
+    image: './images/community_circle.jpg',
     highlights: {
       es: [
         'Recorrido de los 7 centros energéticos',
