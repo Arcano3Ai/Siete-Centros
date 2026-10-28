@@ -75,6 +75,7 @@ export const ServicesInteractiveHub: React.FC = () => {
                 role="tab"
                 aria-selected={isCurrent}
                 className={`hub-nav-tab-btn ${isCurrent ? 'active' : ''}`}
+                data-tab={tab.id}
                 onClick={() => setActiveTab(tab.id)}
               >
                 <div className="tab-icon-wrap">

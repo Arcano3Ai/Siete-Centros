@@ -39,14 +39,143 @@ body {
 }
 
 /* ==========================================================================
+   0. MASTER TOP NAVBAR (MENU SIMPLE ARRIBA)
+   ========================================================================== */
+.master-top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  background: rgba(5, 5, 8, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.16);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.top-nav-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.top-nav-logo-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(223, 190, 144, 0.6));
+  transition: transform 0.3s ease;
+}
+
+.top-nav-brand:hover .top-nav-logo-img {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.top-nav-brand-name {
+  font-family: var(--font-serif-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--text-ivory);
+}
+
+.top-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.top-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-ivory-dim);
+  text-decoration: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.25s ease;
+}
+
+.nav-link-num {
+  font-family: var(--font-serif-display);
+  font-size: 0.65rem;
+  color: var(--gold-aged);
+}
+
+.top-nav-link:hover {
+  color: var(--gold-bright);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.top-nav-link:hover .nav-link-num {
+  color: var(--gold-bright);
+}
+
+.top-nav-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: linear-gradient(135deg, rgba(223, 190, 144, 0.2), rgba(12, 8, 18, 0.9));
+  border: 1px solid var(--gold-border-highlight);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1.15rem;
+  color: var(--gold-bright);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(223, 190, 144, 0.15);
+}
+
+.top-nav-whatsapp-btn:hover {
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold-aged));
+  color: #050508;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(223, 190, 144, 0.45);
+}
+
+.top-nav-sacred-icon {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 900px) {
+  .top-nav-links {
+    display: none;
+  }
+}
+
+/* ==========================================================================
    2. LEFT FLANK: STICKY 7-CHAKRA VERTICAL NAVIGATION (VII -> I)
    ========================================================================== */
 
 .triptych-flank-left {
   flex: 1;
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: 54px;
+  height: calc(100vh - 54px);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   background: rgba(5, 5, 8, 0.72);
@@ -572,15 +701,7 @@ body {
   color: var(--text-ivory);
 }
 
-.center-chakra-orb::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1px solid var(--chakra-orb-color, var(--gold-bright));
-  opacity: 0.35;
-  animation: orbHaloPulse 3s ease-in-out infinite alternate;
-}
+/* Micro-halo pulso integrado en micro-línea */
 
 /* Center Bottom Sections: Sofía, Sesiones & Monumental Dedication */
 .center-bottom-content {
@@ -644,8 +765,8 @@ body {
 .triptych-flank-right {
   flex: 1;
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: 54px;
+  height: calc(100vh - 54px);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   background: rgba(5, 5, 8, 0.72);
@@ -774,45 +895,120 @@ body {
 }
 
 .magnetic-btn-wrap {
-  display: inline-block;
+  display: block;
   position: relative;
+  width: 100%;
 }
 
 .magnetic-circle-btn {
-  display: inline-flex;
+  display: flex !important;
   align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  justify-content: space-between;
+  gap: 0.85rem;
   width: 100%;
-  padding: 1.05rem 1.75rem;
+  padding: 0.85rem 1.25rem;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, var(--gold-bright), var(--gold-aged));
+  background: linear-gradient(135deg, #FAF7F2 0%, #DFBE90 35%, #C5A880 75%, #DFBE90 100%);
   color: #050508;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(223, 190, 144, 0.4), 0 0 20px rgba(223, 190, 144, 0.2);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
   border: none;
   cursor: pointer;
-  box-shadow: 0 8px 30px rgba(223, 190, 144, 0.35);
-  transition: box-shadow var(--transition-smooth), background var(--transition-smooth);
-  will-change: transform;
 }
 
-.magnetic-circle-btn:hover {
-  box-shadow: 0 12px 40px rgba(223, 190, 144, 0.6), 0 0 25px #ffffff;
-  background: linear-gradient(135deg, #ffffff, var(--gold-bright));
+.magnetic-circle-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.65) 50%, transparent 60%);
+  transform: rotate(25deg);
+  animation: shineCtaBtn 5.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes shineCtaBtn {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  25% { transform: translateX(100%) rotate(25deg); }
+  100% { transform: translateX(100%) rotate(25deg); }
+}
+
+.magnetic-niche-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(5, 5, 8, 0.92);
+  color: var(--gold-bright);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.45);
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.magnetic-circle-btn:hover .magnetic-niche-icon {
+  transform: rotate(25deg) scale(1.12);
+  color: #FAF7F2;
+  box-shadow: 0 0 15px var(--gold-glow);
+}
+
+.niche-sacred-symbol {
+  width: 20px;
+  height: 20px;
+}
+
+.magnetic-btn-text-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 1;
+}
+
+.magnetic-btn-title {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #050508;
+  line-height: 1.2;
+}
+
+.magnetic-btn-sub {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 0.72rem;
+  color: #3b2f21;
+  line-height: 1.1;
+  margin-top: 1px;
 }
 
 .magnetic-circle-icon {
-  width: 18px;
-  height: 18px;
-  transition: transform var(--transition-smooth);
+  width: 17px;
+  height: 17px;
+  color: #050508;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
 .magnetic-circle-btn:hover .magnetic-circle-icon {
-  transform: rotate(45deg);
+  transform: translate(2px, -2px);
+}
+
+.flank-footer-sub-caption {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--gold-bright);
+  text-align: center;
+  opacity: 0.9;
 }
 
 /* ==========================================================================

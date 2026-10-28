@@ -37,6 +37,61 @@
   <!-- Top Scroll Progress Bar -->
   <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
 
+  <!-- ====================================================================
+       NAVBAR SUPERIOR MINIMALISTA & EDITORIAL (MENU SIMPLE ARRIBA)
+       ==================================================================== -->
+  <header class="master-top-navbar" id="master-top-navbar" role="banner">
+    <div class="top-nav-container">
+      <!-- Logo Brand -->
+      <a href="#corona" class="top-nav-brand" aria-label="Siete Centros - Inicio">
+        <img src="/images/logo_siete_centros_luxury.png" alt="Emblema Siete Centros" class="top-nav-logo-img">
+        <span class="top-nav-brand-name">SIETE CENTROS</span>
+      </a>
+
+      <!-- Simple Nav Links -->
+      <nav class="top-nav-links" aria-label="Navegación principal">
+        <a href="#corona" class="top-nav-link">
+          <span class="nav-link-num">01</span>
+          <span>Chakras</span>
+        </a>
+        <a href="#interactive-services-root" class="top-nav-link" data-tab-target="breathwork">
+          <span class="nav-link-num">02</span>
+          <span>Prácticas</span>
+        </a>
+        <a href="#sesiones-sofia" class="top-nav-link">
+          <span class="nav-link-num">03</span>
+          <span>Sofía</span>
+        </a>
+        <a href="#sesiones-sofia" class="top-nav-link">
+          <span class="nav-link-num">04</span>
+          <span>Sesiones</span>
+        </a>
+        <a href="#interactive-services-root" class="top-nav-link" data-tab-target="retiros">
+          <span class="nav-link-num">05</span>
+          <span>Retiros 2026</span>
+        </a>
+      </nav>
+
+      <!-- Quick Action Right: WhatsApp Sagrado con Icono del Nicho -->
+      <div class="top-nav-cta-wrap">
+        <a
+          href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20informaci%C3%B3n%20sobre%20las%20sesiones%20y%20retiros%20de%20Siete%20Centros"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="top-nav-whatsapp-btn"
+          aria-label="Contactar por WhatsApp"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="top-nav-sacred-icon" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-dasharray="2 3" opacity="0.6" />
+            <path d="M12 3C8 8 7 13 12 21C17 13 16 8 12 3Z" fill="currentColor" fill-opacity="0.2" />
+            <circle cx="12" cy="12" r="3" fill="currentColor" />
+          </svg>
+          <span class="top-nav-cta-text">WhatsApp Sagrado</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
   <!-- Master Triptych 3-Column Layout -->
   <div class="triptych-master-container">
 
@@ -322,19 +377,36 @@
         <!-- Generado dinámicamente con triptych.js -->
       </div>
 
-      <!-- CTA Magnético "Entrar al círculo" -->
+      <!-- CTA Magnético "Entrar al círculo" con Icono Sagrado del Nicho a WhatsApp -->
       <div class="flank-right-footer">
         <div class="magnetic-btn-wrap">
-          <button type="button" class="magnetic-circle-btn" aria-label="Entrar al círculo sagrado de Siete Centros">
-            <span>Entrar al Círculo</span>
+          <a
+            href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20siento%20el%20llamado%20a%20entrar%20al%20c%C3%ADrculo%20sagrado%20de%20Siete%20Centros%20y%20conocer%20las%20pr%C3%B3ximas%20inmersiones."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="magnetic-circle-btn"
+            aria-label="Entrar al círculo sagrado de Siete Centros por WhatsApp"
+          >
+            <!-- Icono Sagrado Ad Hoc del Nicho: Geometría Alquímica de Comunicación y Resonancia -->
+            <span class="magnetic-niche-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="niche-sacred-symbol">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-dasharray="2 3" opacity="0.6" />
+                <path d="M12 4C9 8 8 12 12 19C16 12 15 8 12 4Z" fill="currentColor" fill-opacity="0.25" />
+                <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+              </svg>
+            </span>
+            <div class="magnetic-btn-text-group">
+              <span class="magnetic-btn-title">Entrar al Círculo</span>
+              <span class="magnetic-btn-sub">WhatsApp Sagrado · Sofía</span>
+            </div>
             <svg class="magnetic-circle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
               <line x1="7" y1="17" x2="17" y2="7"></line>
               <polyline points="7 7 17 7 17 17"></polyline>
             </svg>
-          </button>
+          </a>
         </div>
-        <div style="font-family: var(--font-sans); font-size: 0.65rem; color: var(--text-ivory-dim); text-align: center; letter-spacing: 0.12em;">
-          Sesiones Somáticas & Círculos de Conciencia
+        <div class="flank-footer-sub-caption">
+          Comunidad de Conciencia & Rondas de Palabra
         </div>
       </div>
     </aside>

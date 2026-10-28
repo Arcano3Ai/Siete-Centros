@@ -201,20 +201,51 @@ export function initTriptych() {
       magneticBtn.style.transform = 'translate(0px, 0px) scale(1)';
     });
 
-    magneticBtn.addEventListener('click', () => {
-      // Trigger modal for Sofia / Community
-      const modalTrigger = document.querySelector('[data-session="sofia"]') || document.querySelector('.modal-trigger-btn');
-      if (modalTrigger) {
-        modalTrigger.click();
-      } else {
-        const modalBackdrop = document.getElementById('interactive-modal');
-        if (modalBackdrop) {
-          modalBackdrop.classList.add('active');
-          document.body.style.overflow = 'hidden';
+    // Si el usuario hace clic en el enlace, navega a WhatsApp de forma natural
+    magneticBtn.addEventListener('click', (e) => {
+      // Abre en nueva pestaña el enlace de WhatsApp configurado
+      const href = magneticBtn.getAttribute('href');
+      if (href && !href.startsWith('#')) {
+        // Enlace natural a WhatsApp
+        return;
+      }
+      e.preventDefault();
+      window.open('https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20siento%20el%20llamado%20a%20entrar%20al%20c%C3%ADrculo%20sagrado%20de%20Siete%20Centros', '_blank');
+    });
+  }
+
+  // Interacción del Navbar Superior (Menu Simple Arriba)
+  const topNavLinks = document.querySelectorAll('.top-nav-link');
+  topNavLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const targetTab = link.dataset.tabTarget;
+      if (targetTab) {
+        // Si apunta a un tab interactivo (ej. retiros o breathwork)
+        setTimeout(() => {
+          const tabBtn = document.querySelector(`.hub-nav-tab-btn[data-tab="${targetTab}"]`);
+          if (tabBtn) {
+            tabBtn.click();
+          }
+        }, 150);
+      }
+
+      const targetId = link.getAttribute('href');
+      if (targetId && targetId.startsWith('#')) {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const navHeight = 54;
+          const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navHeight - 16;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
       }
     });
-  }
+  });
 
   // 6. Right Flank Spotlight (follows cursor)
   if (rightFlank) {

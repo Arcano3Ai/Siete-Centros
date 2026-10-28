@@ -171,22 +171,65 @@
   border-radius: 50%;
 }
 
-.breathwork-pattern-sub {
+.breathwork-pattern-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.meta-sub {
   font-family: var(--font-serif-editorial);
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--gold-bright);
-  margin-bottom: 2.5rem;
+}
+
+.meta-hz {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(197, 168, 128, 0.25);
 }
 
 .breathwork-stage {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 310px;
+  height: 310px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 2.5rem;
+  margin: 0.5rem auto 2rem;
+}
+
+/* Ripples Pránicos de Expansión Concéntrica */
+.prana-ripple {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid;
+  pointer-events: none;
+  filter: blur(2px);
+  will-change: transform, opacity;
+  transition: transform 0.08s linear, opacity 0.08s linear;
+}
+
+.prana-ripple-1 {
+  border-style: solid;
+}
+
+.prana-ripple-2 {
+  border-style: dashed;
 }
 
 .breathwork-circular-ring {
@@ -195,35 +238,62 @@
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
+  pointer-events: none;
 }
 
 .breathwork-orbe-glow-halo {
   position: absolute;
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
-  filter: blur(30px);
+  filter: blur(36px);
   pointer-events: none;
+  will-change: transform, opacity;
+  transition: transform 0.08s linear, opacity 0.08s linear;
 }
 
 .breathwork-orbe-core {
   position: relative;
-  width: 170px;
-  height: 170px;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
   border: 1.5px solid;
-  background: rgba(5, 5, 8, 0.75);
+  background: radial-gradient(circle at 40% 40%, rgba(20, 14, 30, 0.95) 0%, rgba(6, 4, 10, 0.98) 80%);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  will-change: transform, box-shadow;
+  transition: transform 0.08s linear, box-shadow 0.3s ease;
+}
+
+/* Mandala Geométrico Sagrado que Respira */
+.sacred-breathing-mandala {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: transform 0.1s linear, opacity 0.4s ease;
+}
+
+.mandala-petal {
+  position: absolute;
+  width: 3px;
+  height: 18px;
+  border-radius: 999px;
+  opacity: 0.35;
+  filter: blur(0.5px);
+  transform-origin: center 22px;
 }
 
 .orbe-sacred-center {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   filter: blur(1px);
-  box-shadow: 0 0 15px currentColor;
+  z-index: 4;
 }
 
 .breathwork-center-text {
@@ -233,70 +303,160 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  z-index: 5;
+  z-index: 6;
 }
 
 .phase-label {
   font-family: var(--font-serif-display);
-  font-size: 1.25rem;
-  letter-spacing: 0.16em;
+  font-size: 1.35rem;
+  letter-spacing: 0.22em;
   font-weight: 600;
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 0 25px rgba(0, 0, 0, 0.98), 0 0 10px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
 }
 
 .seconds-count {
   font-family: var(--font-sans);
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.55rem;
+  font-weight: 700;
   color: var(--text-ivory);
-  margin-top: 2px;
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .cycle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   font-family: var(--font-sans);
   font-size: 0.65rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold-aged);
-  margin-top: 4px;
+  color: var(--gold-bright);
+  margin-top: 5px;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(10, 6, 16, 0.8);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+}
+
+/* Caja de Guía Somática en Tiempo Real */
+.breathwork-guidance-box {
+  max-width: 540px;
+  min-height: 48px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guidance-phrase {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  margin: 0;
+  transition: color 0.4s ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .breathwork-desc {
   max-width: 520px;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--text-ivory-dim);
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 0 auto 2rem;
 }
 
 .breathwork-controls {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
+.active-sound {
+  border-color: var(--gold-bright) !important;
+  box-shadow: 0 0 15px var(--gold-glow);
+}
+
 .breathwork-footer-cta {
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(197, 168, 128, 0.12);
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(197, 168, 128, 0.14);
   width: 100%;
 }
 
-.whatsapp-contextual-link {
+/* Enlace a WhatsApp con Icono del Nicho */
+.whatsapp-niche-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  color: var(--gold-bright);
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
+  gap: 1.1rem;
+  padding: 0.85rem 1.65rem;
+  border-radius: var(--radius-full);
+  background: rgba(12, 8, 18, 0.7);
+  border: 1px solid rgba(197, 168, 128, 0.3);
   text-decoration: none;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.whatsapp-niche-link:hover {
+  background: rgba(22, 16, 32, 0.95);
+  border-color: var(--gold-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(223, 190, 144, 0.25);
+}
+
+.niche-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(223, 190, 144, 0.25), rgba(12, 8, 18, 0.8));
+  border: 1px solid var(--gold-border-highlight);
+  color: var(--gold-bright);
+  flex-shrink: 0;
+  transition: transform var(--transition-smooth);
+}
+
+.whatsapp-niche-link:hover .niche-icon-wrap {
+  transform: scale(1.15) rotate(15deg);
+  box-shadow: 0 0 15px var(--gold-glow);
+}
+
+.niche-sacred-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.niche-link-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.niche-link-title {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-ivory);
   transition: color var(--transition-smooth);
 }
 
-.whatsapp-contextual-link:hover {
-  color: #ffffff;
-  text-shadow: 0 0 10px var(--gold-bright);
+.whatsapp-niche-link:hover .niche-link-title {
+  color: var(--gold-bright);
+}
+
+.niche-link-sub {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 0.74rem;
+  color: var(--text-ivory-dim);
 }
 
 /* ==========================================================================
