@@ -40,7 +40,7 @@ export function initNavigation() {
       btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
       const label = btn.querySelector('.audio-label');
       if (label) {
-        label.textContent = playing ? title : 'Música: Silencio';
+        label.textContent = playing ? '432Hz Activo' : 'Música';
       }
     });
   });

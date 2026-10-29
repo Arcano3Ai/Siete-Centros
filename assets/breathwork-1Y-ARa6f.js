@@ -1,0 +1,1 @@
+import{c as e,d as t,f as n,l as r,n as i,p as a,s as o,u as s}from"./interactive-mount-4qh7QRf8.js";/* empty css                         */var c=a(s(),1),l=r(),u=e();t(),n();var d=document.getElementById(`breathwork-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(o,{})})),i();

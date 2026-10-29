@@ -542,4 +542,15 @@
   }
 }
 
+@media (max-width: 600px) {
+  .audio-toggle-btn .audio-label {
+    display: none !important;
+  }
+
+  .audio-toggle-btn {
+    padding: 0.38rem 0.65rem !important;
+    gap: 0 !important;
+  }
+}
+
 

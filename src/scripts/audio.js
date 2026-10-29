@@ -1,8 +1,8 @@
 /**
  * SIETE CENTROS — Meditative Soundscape Engine
  * Canción de Fondo Oficial: "Bienvenida al Silencio" (432Hz Master Ambient)
- * Implementa Web Audio API con GainNode para respiraciones de volumen (Fade In / Fade Out)
- * y loop continuo infinito. Soporta fallback armónico procedural.
+ * Implementa Web Audio API con GainNode y fallback directo HTML5 Audio con volumen suave.
+ * Optimizado para dispositivos móviles (iOS Safari, Android Chrome).
  */
 
 class SoundscapeEngine {
@@ -11,43 +11,68 @@ class SoundscapeEngine {
     this.ctx = null;
     this.sourceNode = null;
     this.gainNode = null;
+    this.hasWebAudio = false;
     this.isPlaying = false;
     this.trackTitle = 'Bienvenida al Silencio';
     this.subscribers = new Set();
     this.isInitialized = false;
+    this.candidateIndex = 0;
+    this.candidates = [];
+  }
+
+  resolveCandidatePaths() {
+    const isGhPages = typeof window !== 'undefined' && window.location.pathname.startsWith('/Siete-Centros');
+    const basePath = isGhPages ? '/Siete-Centros' : '';
+
+    return [
+      `${basePath}/audio/bienvenida-al-silencio.mp3`,
+      './audio/bienvenida-al-silencio.mp3',
+      'audio/bienvenida-al-silencio.mp3',
+      '../audio/bienvenida-al-silencio.mp3'
+    ];
   }
 
   init() {
     if (this.isInitialized) return;
 
     try {
-      // 1. Crear el elemento de audio HTML5 con loop infinito
+      this.candidates = this.resolveCandidatePaths();
+      this.candidateIndex = 0;
+
+      // 1. Elemento de audio HTML5 nativo para máxima compatibilidad móvil
       this.audioElement = new Audio();
-      this.audioElement.src = './audio/bienvenida-al-silencio.mp3';
+      this.audioElement.src = this.candidates[0];
       this.audioElement.loop = true;
-      this.audioElement.preload = 'metadata';
-      this.audioElement.crossOrigin = 'anonymous';
+      this.audioElement.preload = 'auto';
+      this.audioElement.playsInline = true;
+      this.audioElement.setAttribute('playsinline', 'true');
+      this.audioElement.setAttribute('webkit-playsinline', 'true');
 
-      // 2. Conectar a Web Audio API para fades y control milimétrico si está disponible
-      const AudioContextClass = window.AudioContext || (window).webkitAudioContext;
+      // 2. Intentar inicializar Web Audio API para fades de alta fidelidad si está disponible
+      const AudioContextClass = typeof window !== 'undefined' ? (window.AudioContext || window.webkitAudioContext) : null;
       if (AudioContextClass) {
-        this.ctx = new AudioContextClass();
-        this.gainNode = this.ctx.createGain();
-        this.gainNode.gain.setValueAtTime(0.0001, this.ctx.currentTime);
-
         try {
+          this.ctx = new AudioContextClass();
+          this.gainNode = this.ctx.createGain();
           this.sourceNode = this.ctx.createMediaElementSource(this.audioElement);
           this.sourceNode.connect(this.gainNode);
           this.gainNode.connect(this.ctx.destination);
-        } catch {
-          // Fallback a volumen directo si CORS o MediaElementSource está restringido
-          this.audioElement.volume = 0;
+          this.gainNode.gain.setValueAtTime(0.0001, this.ctx.currentTime);
+          this.hasWebAudio = true;
+        } catch (e) {
+          // Si createMediaElementSource falla por sandbox o CORS móvil, omitir Web Audio limpiamente
+          console.warn('SIETE CENTROS: Modo HTML5 Audio directo activo para compatibilidad móvil', e);
+          this.hasWebAudio = false;
+          this.gainNode = null;
+          this.sourceNode = null;
+          this.audioElement.volume = 0.75;
         }
       } else {
-        this.audioElement.volume = 0;
+        this.hasWebAudio = false;
+        this.audioElement.volume = 0.75;
       }
 
-      // Eventos de estado
+      // Ciclo y reintentos ante error de ruta
       this.audioElement.addEventListener('ended', () => {
         if (this.isPlaying) {
           this.audioElement.currentTime = 0;
@@ -56,12 +81,32 @@ class SoundscapeEngine {
       });
 
       this.audioElement.addEventListener('error', () => {
-        console.warn('SIETE CENTROS: Audio track fallback to local relative path');
+        if (this.candidateIndex < this.candidates.length - 1) {
+          this.candidateIndex++;
+          console.warn(`SIETE CENTROS: Reintentando audio con ruta alternativa: ${this.candidates[this.candidateIndex]}`);
+          this.audioElement.src = this.candidates[this.candidateIndex];
+          if (this.isPlaying) {
+            this.audioElement.play().catch(() => {});
+          }
+        }
       });
+
+      // Calentamiento del contexto de audio en la primera interacción móvil
+      if (typeof window !== 'undefined') {
+        const unlockUserGesture = () => {
+          if (this.ctx && this.ctx.state === 'suspended') {
+            this.ctx.resume().catch(() => {});
+          }
+          window.removeEventListener('click', unlockUserGesture);
+          window.removeEventListener('touchstart', unlockUserGesture);
+        };
+        window.addEventListener('click', unlockUserGesture, { passive: true, once: true });
+        window.addEventListener('touchstart', unlockUserGesture, { passive: true, once: true });
+      }
 
       this.isInitialized = true;
     } catch (err) {
-      console.warn('SIETE CENTROS: Audio init error, fallback active', err);
+      console.warn('SIETE CENTROS: Audio init error', err);
     }
   }
 
@@ -85,21 +130,22 @@ class SoundscapeEngine {
     if (!this.isInitialized) this.init();
 
     if (this.ctx && this.ctx.state === 'suspended') {
-      await this.ctx.resume();
+      try {
+        await this.ctx.resume();
+      } catch {}
     }
 
     try {
       await this.audioElement.play();
       this.isPlaying = true;
 
-      // Suave Fade In celestial de 2.2 segundos
-      if (this.ctx && this.gainNode) {
+      if (this.hasWebAudio && this.ctx && this.gainNode) {
         const now = this.ctx.currentTime;
         this.gainNode.gain.cancelScheduledValues(now);
         this.gainNode.gain.setValueAtTime(Math.max(this.gainNode.gain.value, 0.0001), now);
-        this.gainNode.gain.exponentialRampToValueAtTime(0.75, now + 2.2);
+        this.gainNode.gain.exponentialRampToValueAtTime(0.75, now + 2.0);
       } else if (this.audioElement) {
-        this.fadeVolume(0, 0.75, 2000);
+        this.fadeVolume(0.1, 0.75, 1800);
       }
 
       this.notify();
@@ -115,20 +161,19 @@ class SoundscapeEngine {
   pause() {
     if (!this.isPlaying || !this.audioElement) return false;
 
-    // Suave Fade Out celestial de 1.4 segundos antes de pausar
-    if (this.ctx && this.gainNode) {
+    if (this.hasWebAudio && this.ctx && this.gainNode) {
       const now = this.ctx.currentTime;
       this.gainNode.gain.cancelScheduledValues(now);
       this.gainNode.gain.setValueAtTime(Math.max(this.gainNode.gain.value, 0.0001), now);
-      this.gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+      this.gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
       setTimeout(() => {
-        if (!this.isPlaying) {
+        if (!this.isPlaying && this.audioElement) {
           this.audioElement.pause();
         }
-      }, 1450);
+      }, 1250);
     } else if (this.audioElement) {
-      this.fadeVolume(this.audioElement.volume, 0, 1400, () => {
-        if (!this.isPlaying) this.audioElement.pause();
+      this.fadeVolume(this.audioElement.volume, 0, 1200, () => {
+        if (!this.isPlaying && this.audioElement) this.audioElement.pause();
       });
     }
 
@@ -138,7 +183,7 @@ class SoundscapeEngine {
   }
 
   fadeVolume(from, to, duration, onComplete) {
-    const steps = 25;
+    const steps = 20;
     const intervalTime = duration / steps;
     const delta = (to - from) / steps;
     let currentStep = 0;
