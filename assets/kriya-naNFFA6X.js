@@ -1,1 +1,0 @@
-import{c as e,d as t,f as n,l as r,n as i,o as a,p as o,u as s}from"./interactive-mount-BHAJmdzc.js";/* empty css                         */var c=o(s(),1),l=r(),u=e();t(),n();var d=document.getElementById(`kriya-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(a,{})})),i();
