@@ -10,7 +10,7 @@ import { initTriptych } from './triptych.js';
 import { initDomI18n } from './i18n-dom.js';
 import { mountInteractiveServices, mountTantricBot } from '../interactive-mount';
 
-document.addEventListener('DOMContentLoaded', () => {
+function bootstrap() {
   // 0. Initialize bilingual internationalization (ES / EN)
   initDomI18n();
   // 1. Inject hand-crafted sacred geometry vectors
@@ -25,13 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Mount Tantric Concierge Bot (Oráculo de los 7 Chakras)
   mountTantricBot();
 
-  // 4. Initialize navigation & 432Hz ambient audio
+  // 5. Initialize navigation & 432Hz ambient audio
   initNavigation();
 
-  // 5. Initialize interactive modals (Sofía, Terapias, Círculo)
+  // 6. Initialize interactive modals (Sofía, Terapias, Círculo)
   initModals();
 
-  // 6. Reveal entrance
+  // 7. Reveal entrance
   document.body.classList.add('is-loaded');
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrap);
+} else {
+  bootstrap();
+}
+
 

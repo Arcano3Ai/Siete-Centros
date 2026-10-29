@@ -1,1 +1,0 @@
-import{c as e,d as t,f as n,i as r,l as i,n as a,u as o}from"./interactive-mount-BdRSuqxU.js";/* empty css                         */var s=n(o(),1),c=i(),l=e();t();var u=document.getElementById(`circulos-app-root`);u&&(0,c.createRoot)(u).render((0,l.jsx)(s.StrictMode,{children:(0,l.jsx)(r,{})})),a();

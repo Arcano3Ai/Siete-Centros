@@ -2379,6 +2379,28 @@
     display: none; /* En móvil dejamos únicamente el título radiante para máxima limpieza */
   }
 
+  @media (max-width: 440px) {
+    .tantric-bot-launcher-container {
+      bottom: 0.85rem !important;
+      left: 0.75rem !important;
+      max-width: 44vw !important;
+    }
+    .tantric-bot-trigger-btn {
+      padding: 0.2rem 0.55rem 0.2rem 0.2rem !important;
+      gap: 0.35rem !important;
+      touch-action: manipulation !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    .talisman-orb-core {
+      width: 34px !important;
+      height: 34px !important;
+    }
+    .talisman-badge-title {
+      font-size: 0.68rem !important;
+      white-space: nowrap !important;
+    }
+  }
+
   /* Modal del Bot transformado en Bottom Sheet / Drawer Nativo */
   .tantric-bot-modal-window {
     position: fixed !important;

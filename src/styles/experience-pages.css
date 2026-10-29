@@ -548,8 +548,14 @@
   }
 
   .audio-toggle-btn {
+    min-width: 42px !important;
+    min-height: 38px !important;
     padding: 0.38rem 0.65rem !important;
     gap: 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 }
 

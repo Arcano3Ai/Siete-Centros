@@ -1303,8 +1303,14 @@ body {
   }
 
   .audio-toggle-btn {
+    min-width: 42px !important;
+    min-height: 38px !important;
     padding: 0.38rem 0.65rem !important;
     gap: 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
 }
 
@@ -1316,10 +1322,25 @@ body {
   .top-nav-whatsapp-btn {
     padding: 0.4rem !important;
     border-radius: 50% !important;
-    width: 32px !important;
-    height: 32px !important;
+    width: 36px !important;
+    height: 36px !important;
     justify-content: center !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Márgenes seguros para elementos flotantes en móviles pequeños (360px - 400px) */
+  .triptych-flank-right {
+    bottom: 0.85rem !important;
+    right: 0.75rem !important;
+    max-width: 52vw !important;
+  }
+
+  .magnetic-circle-btn {
+    padding: 0.48rem 0.85rem !important;
+    font-size: 0.68rem !important;
+    white-space: nowrap !important;
   }
 }
+
 
 
