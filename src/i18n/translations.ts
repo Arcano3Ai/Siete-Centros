@@ -128,13 +128,13 @@ export const DICTIONARY: Record<Language, Translations> = {
       patternKriyaSub: '4s Inhala · 7s Sostiene · 8s Exhala · Reposo Celular'
     },
     bot: {
-      title: 'Oráculo Siete Centros',
+      title: 'Oráculo MOKKA CHAI',
       subtitle: 'Guía de Conciencia & Asistencia Sagrada',
       badge: 'EN LÍNEA',
-      welcome: 'Namasté, ser luminoso. Soy el Oráculo de Siete Centros, presencia digital al servicio de la Escuela de Conciencia. Puedo orientarte sobre nuestras prácticas somáticas, escuela, retiros 2026, boutique íntima o facilitarte contacto directo. ¿Hacia qué centro energético te llama hoy tu pulso?',
+      welcome: 'Namasté, ser luminoso. Soy el Oráculo de MOKKA CHAI, presencia digital al servicio de la Escuela de Conciencia. Puedo orientarte sobre nuestras prácticas somáticas, escuela, retiros 2026, boutique íntima o facilitarte contacto directo. ¿Hacia qué centro energético te llama hoy tu pulso?',
       inputPlaceholder: 'Pregunta sobre Escuela, Tantra, Boutique, Retiros...',
       send: 'Transmitir',
-      whatsappDirect: 'Hablar con Siete Centros en WhatsApp',
+      whatsappDirect: 'Hablar con MOKKA CHAI en WhatsApp',
       openInWhatsApp: 'Conectar por WhatsApp ↗',
       suggestionsTitle: 'Inspiración para consultar:',
       chips: [
@@ -145,7 +145,7 @@ export const DICTIONARY: Record<Language, Translations> = {
         '¿Qué productos hay en la Boutique?',
         'Quiero orientación directa por WhatsApp'
       ],
-      disclaimer: 'Espacio de orientación holística y bienestar íntimo consciente de Siete Centros.',
+      disclaimer: 'Espacio de orientación holística y bienestar íntimo consciente de MOKKA CHAI.',
       hoverGreeting: 'Namasté 🙏 Que tu respiración habite el presente. Pulsa para consultar al Oráculo',
       launcherLabel: '✦ Oráculo',
       launcherSub: 'Guía Sagrada'
@@ -207,13 +207,13 @@ export const DICTIONARY: Record<Language, Translations> = {
       patternKriyaSub: '4s Inhale · 7s Hold · 8s Exhale · Cellular Rest'
     },
     bot: {
-      title: 'Siete Centros Oracle',
+      title: 'MOKKA CHAI Oracle',
       subtitle: 'Consciousness Guide & Sacred Concierge',
       badge: 'ONLINE',
-      welcome: 'Namaste, luminous soul. I am the Siete Centros Oracle, a digital guardian serving the School of Consciousness. I can guide you through our somatic practices, 2026 retreats, intimate boutique, or connect you directly with our guides. Which energy center calls you today?',
+      welcome: 'Namaste, luminous soul. I am the MOKKA CHAI Oracle, a digital guardian serving the School of Consciousness. I can guide you through our somatic practices, 2026 retreats, intimate boutique, or connect you directly with our guides. Which energy center calls you today?',
       inputPlaceholder: 'Ask about School, Tantra, Boutique, Retreats...',
       send: 'Send',
-      whatsappDirect: 'Chat with Siete Centros on WhatsApp',
+      whatsappDirect: 'Chat with MOKKA CHAI on WhatsApp',
       openInWhatsApp: 'Connect via WhatsApp ↗',
       suggestionsTitle: 'Inspiration to ask:',
       chips: [
@@ -224,7 +224,7 @@ export const DICTIONARY: Record<Language, Translations> = {
         'Explore Intimate Wellness Boutique',
         'I want to inquire via WhatsApp'
       ],
-      disclaimer: 'Holistic guidance & conscious intimate wellness by Siete Centros.',
+      disclaimer: 'Holistic guidance & conscious intimate wellness by MOKKA CHAI.',
       hoverGreeting: 'Namaste 🙏 May your breath inhabit the present. Click to consult the Oracle',
       launcherLabel: '✦ Oracle',
       launcherSub: 'Sacred Guide'

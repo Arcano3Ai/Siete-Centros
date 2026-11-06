@@ -411,7 +411,7 @@ const PRODUCTS_DATA: Product[] = [
     originalPrice: 4100,
     badge: 'Destacado',
     shortDesc: 'Experiencia completa de iniciación tántrica: vela de masaje, pluma de ganso, aceite botánico y oráculo.',
-    fullDesc: 'La caja ceremonial de SIETE CENTROS reúne todos los elementos necesarios para consagrar una noche de conexión sin metas ni presiones. Incluye guía impresa con 5 rituales paso a paso creados por nuestros facilitadores.',
+    fullDesc: 'La caja ceremonial de MOKKA CHAI reúne todos los elementos necesarios para consagrar una noche de conexión sin metas ni presiones. Incluye guía impresa con 5 rituales paso a paso creados por nuestros facilitadores.',
     materials: 'Caja rígida con acabado terciopelo negro y estampación dorada, 5 elementos ceremoniales en su interior.',
     dimensions: '32 cm × 24 cm × 9 cm',
     specs: ['Caja de Lujo Terciopelo', '5 Elementos Ceremoniales', 'Guía Tántrica de Iniciación', 'Edición Parejas'],
@@ -601,7 +601,7 @@ export const BoutiqueStore: React.FC = () => {
       .map((item) => `• ${item.quantity}x ${item.product.name} ($${item.product.price * item.quantity} MXN)`)
       .join('\n');
 
-    const message = `✦ NUEVO PEDIDO BOUTIQUE SIETE CENTROS ✦\n\n` +
+    const message = `✦ NUEVO PEDIDO BOUTIQUE MOKKA CHAI ✦\n\n` +
       `Cliente: ${shippingForm.name}\n` +
       `Teléfono: ${shippingForm.phone}\n` +
       `Ciudad: ${shippingForm.city || 'No especificada'} (CP: ${shippingForm.postalCode || 'S/N'})\n` +
@@ -676,7 +676,7 @@ export const BoutiqueStore: React.FC = () => {
         ))}
       </nav>
 
-      {/* Sub-Filtros Especializados de Vibradores (Estilo Ddurazno · Curaduría Siete Centros) */}
+      {/* Sub-Filtros Especializados de Vibradores (Estilo Ddurazno · Curaduría MOKKA CHAI) */}
       {(selectedCategory === 'femenina' || selectedCategory === 'all') && (
         <div className="boutique-subfilters-bar" aria-label="Filtros por tipo de vibrador">
           <span className="subfilters-label">
@@ -1265,7 +1265,7 @@ export const BoutiqueStore: React.FC = () => {
                 </a>
 
                 <div style={{ marginTop: '1.5rem', fontSize: '0.76rem', color: 'rgba(255,255,255,0.5)' }}>
-                  Garantía de confidencialidad, empaque discreto e higiene total certificada de SIETE CENTROS.
+                  Garantía de confidencialidad, empaque discreto e higiene total certificada de MOKKA CHAI.
                 </div>
               </div>
             )}

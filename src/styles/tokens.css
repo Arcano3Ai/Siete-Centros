@@ -72,6 +72,12 @@
   --c7-glow: rgba(168, 85, 247, 0.5);
   --c7-bg-gradient: radial-gradient(circle at 50% 60%, rgba(168, 85, 247, 0.22) 0%, rgba(9, 6, 14, 0.95) 75%);
 
+  /* Master Chakra Spectral Harmony & Rainbow Energy Flow */
+  --chakra-spectrum-linear: linear-gradient(90deg, #F43F5E 0%, #FB923C 16.6%, #FBBF24 33.3%, #34D399 50%, #38BDF8 66.6%, #818CF8 83.3%, #C084FC 100%);
+  --chakra-spectrum-v: linear-gradient(180deg, #C084FC 0%, #818CF8 16.6%, #38BDF8 33.3%, #34D399 50%, #FBBF24 66.6%, #FB923C 83.3%, #F43F5E 100%);
+  --chakra-spectrum-soft: linear-gradient(90deg, rgba(244, 63, 94, 0.45) 0%, rgba(251, 146, 60, 0.45) 16.6%, rgba(251, 191, 36, 0.45) 33.3%, rgba(52, 211, 153, 0.45) 50%, rgba(56, 189, 248, 0.45) 66.6%, rgba(129, 140, 248, 0.45) 83.3%, rgba(192, 132, 252, 0.45) 100%);
+  --chakra-spectrum-glow: 0 0 20px rgba(192, 132, 252, 0.25), 0 0 25px rgba(56, 189, 248, 0.2), 0 0 30px rgba(244, 63, 94, 0.2);
+
   /* Typography */
   --font-serif-monumental: 'Cinzel', 'Playfair Display', Georgia, serif;
   --font-serif-editorial: 'Cormorant Garamond', Georgia, serif;
