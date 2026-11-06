@@ -221,3 +221,137 @@
   text-shadow: 0 0 12px rgba(223, 190, 144, 0.7);
 }
 
+/* ==========================================================================
+   TEMPLE FOOTER & LOGO SIZING (Páginas Dedicadas / Boutique)
+   ========================================================================== */
+.footer-logo-img {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.45));
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.temple-footer {
+  position: relative;
+  width: 100%;
+  background: #040206;
+  border-top: 1px solid rgba(197, 168, 128, 0.16);
+  padding: 4.5rem 1.5rem 3rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  color: #FAF7F2;
+}
+
+.temple-footer-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.footer-top-brand-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  gap: 0.85rem;
+}
+
+.footer-top-brand-row .footer-brand {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-top-brand-row .footer-brand-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 1.35rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-bright, #E5C07B);
+  font-weight: 600;
+  margin: 0;
+}
+
+.footer-brand-tagline {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.footer-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+  text-align: left;
+}
+
+.footer-nav-col .footer-col-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold, #C5A880);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.footer-nav-col .footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-nav-col .footer-links-list a {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.footer-nav-col .footer-links-list a:hover {
+  color: var(--gold-bright, #E5C07B);
+  transform: translateX(3px);
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footer-copyright {
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  .footer-nav-col .footer-links-list {
+    align-items: center;
+  }
+}
+

@@ -1349,3 +1349,13 @@
     gap: 1.2rem;
   }
 }
+
+/* Footer Emblem Safety Constraint */
+.footer-logo-img {
+  width: 44px !important;
+  height: 44px !important;
+  max-width: 44px !important;
+  max-height: 44px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+}
