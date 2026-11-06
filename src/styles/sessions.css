@@ -1,5 +1,5 @@
 /**
- * SIETE CENTROS — Catálogo de Terapias Sagradas, Showcase Monumental de Sofía,
+ * SIETE CENTROS — Catálogo de Terapias Sagradas, Showcase Monumental de Linaje & Maestría,
  * Manifiesto de Conciencia, Testimonios de Transformación y Preguntas Frecuentes.
  * Estética: Lujo Místico, Minimalismo Editorial, Vidrio Ahumado y Acentos Oro Sagrado.
  */
@@ -294,8 +294,7 @@
 /* ==========================================================================
    3. SHOWCASE MONUMENTAL DE LINAJE & MAESTRÍA (SANTUARIO & CONSEJO)
    ========================================================================== */
-.sanctuary-lineage-monument,
-.sanctuary-sofia-monument {
+.sanctuary-lineage-monument {
   margin-bottom: 5.5rem;
   position: relative;
   background: radial-gradient(circle at 50% 10%, rgba(32, 18, 48, 0.9) 0%, rgba(10, 6, 14, 0.98) 100%);
@@ -306,16 +305,14 @@
   text-align: center;
 }
 
-.lineage-portrait-container,
-.sofia-portrait-container {
+.lineage-portrait-container {
   position: relative;
   width: 140px;
   height: 140px;
   margin: 0 auto 1.75rem;
 }
 
-.lineage-portrait-img,
-.sofia-portrait-img {
+.lineage-portrait-img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -326,8 +323,7 @@
   z-index: 2;
 }
 
-.lineage-portrait-aura,
-.sofia-portrait-aura {
+.lineage-portrait-aura {
   position: absolute;
   inset: -8px;
   border-radius: 50%;
@@ -336,8 +332,7 @@
   pointer-events: none;
 }
 
-.lineage-monument-name,
-.sofia-monument-name {
+.lineage-monument-name {
   font-family: var(--font-serif-display);
   font-size: 2rem;
   letter-spacing: 0.18em;
@@ -345,8 +340,7 @@
   margin: 0 0 0.35rem;
 }
 
-.lineage-monument-role,
-.sofia-monument-role {
+.lineage-monument-role {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.24em;
@@ -355,8 +349,7 @@
   margin-bottom: 1.5rem;
 }
 
-.lineage-monument-quote,
-.sofia-monument-quote {
+.lineage-monument-quote {
   font-family: var(--font-serif-editorial);
   font-style: italic;
   font-size: 1.12rem;
@@ -367,8 +360,7 @@
 }
 
 /* 3 Pilares de Maestría */
-.lineage-pillars-grid,
-.sofia-pillars-grid {
+.lineage-pillars-grid {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -376,8 +368,7 @@
   text-align: left;
 }
 
-.lineage-pillar-card,
-.sofia-pillar-card {
+.lineage-pillar-card {
   background: rgba(18, 12, 26, 0.75);
   border: 1px solid rgba(223, 190, 144, 0.2);
   border-radius: var(--radius-sm);
@@ -404,8 +395,7 @@
 }
 
 /* Strip de Métricas Sagradas */
-.lineage-metrics-strip,
-.sofia-metrics-strip {
+.lineage-metrics-strip {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -417,8 +407,7 @@
   border-radius: var(--radius-sm);
 }
 
-.lineage-metric-item,
-.sofia-metric-item {
+.lineage-metric-item {
   display: flex;
   flex-direction: column;
   align-items: center;

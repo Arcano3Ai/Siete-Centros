@@ -156,5 +156,22 @@ export function initNavigation() {
     );
     mainSections.forEach((section) => sectionObserver.observe(section));
   }
+
+  // 7. Compatibilidad histórica de enlaces externos: #sesiones-sofia -> #linaje-santuario
+  function normalizeLegacyHash() {
+    if (window.location.hash === '#sesiones-sofia') {
+      const target = document.getElementById('linaje-santuario') || document.getElementById('sesiones-sofia');
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', '#linaje-santuario');
+          }
+        }, 150);
+      }
+    }
+  }
+  window.addEventListener('hashchange', normalizeLegacyHash);
+  normalizeLegacyHash();
 }
 

@@ -82,19 +82,6 @@ const EXPERIENCES_DATA = {
       'Grupos reducidos para salvaguardar la intimidad y la profundidad del trabajo.'
     ]
   },
-  sofia: {
-    tag: 'Linaje & Facilitación',
-    title: 'SIETE CENTROS — Linaje & Guías Ceremoniales',
-    lead: '«El cuerpo guarda la memoria de todo lo vivido; a través del tacto consciente y la presencia, abrimos el espacio para renacer».',
-    image: './images/community_circle.jpg',
-    desc: 'Con más de 12 años de devota trayectoria en disciplinas somáticas, tantra devocional y yoga de la energía, el colectivo de facilitadores de SIETE CENTROS ofrece un espacio de contención incondicional donde cada persona puede desarmar sus corazas y reconectar con su pulso vital primordial.',
-    bullets: [
-      'Acompañamiento individual personalizado y respetuoso de tus propios tiempos.',
-      'Integración de respiración consciente, biodinámica y tacto somático.',
-      'Marco de consentimiento riguroso, confidencialidad y reverencia sagrada.',
-      'Sesiones individuales en cabina consagrada o inmersiones privadas.'
-    ]
-  },
   linaje: {
     tag: 'Linaje & Facilitación',
     title: 'SIETE CENTROS — Linaje & Guías Ceremoniales',
