@@ -77,14 +77,43 @@ export function initTriptych() {
     }
   };
 
-  // 1. Ensure all 4 Videos are in 100% loop with camera fixed
-  const videos = document.querySelectorAll('.spine-video-item');
-  videos.forEach((v) => {
+  // 1. Senior Performance Optimizer: IntersectionObserver for videos
+  // Only play videos when visible in viewport, avoiding GPU memory overload & mobile tab crashes
+  const spineVideos = document.querySelectorAll('.spine-video-item');
+  spineVideos.forEach((v) => {
     v.muted = true;
     v.loop = true;
     v.playsInline = true;
-    v.play().catch(() => {});
   });
+
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    spineVideos.forEach((v) => videoObserver.observe(v));
+
+    // Also observe footer video if present
+    const footerVideo = document.querySelector('.mokka-footer-video');
+    if (footerVideo) {
+      footerVideo.muted = true;
+      footerVideo.loop = true;
+      footerVideo.playsInline = true;
+      videoObserver.observe(footerVideo);
+    }
+  } else {
+    // Fallback for older browsers
+    spineVideos.forEach((v) => v.play().catch(() => {}));
+  }
 
   // 2. Active Chakra Card Updater
   function updateActiveChakraUI(chakraId) {
@@ -262,7 +291,8 @@ export function initTriptych() {
     });
   }
 
-  // 7. Flank Particles Canvas (Only in left and right flanks, never over 520px center)
+  // 7. Flank Particles Canvas (Only in left and right flanks on desktop >= 1024px)
+  // On mobile (< 1024px), flanks are hidden, so we completely disable this loop to prevent OOM/tab crashes
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let width = (canvas.width = window.innerWidth);
@@ -270,10 +300,27 @@ export function initTriptych() {
 
     let mouseX = -1000;
     let mouseY = -1000;
+    let animFrameId = null;
+
+    function checkFlanksVisibility() {
+      if (window.innerWidth < 1024) {
+        canvas.style.display = 'none';
+        if (animFrameId) {
+          cancelAnimationFrame(animFrameId);
+          animFrameId = null;
+        }
+        return false;
+      }
+      canvas.style.display = 'block';
+      return true;
+    }
 
     window.addEventListener('resize', () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      if (checkFlanksVisibility() && !animFrameId) {
+        animateParticles();
+      }
     });
 
     window.addEventListener('mousemove', (e) => {
@@ -287,8 +334,9 @@ export function initTriptych() {
       }
 
       reset() {
+        if (width < 1024) return;
         // Spawn strictly in left flank or right flank
-        const centerLeft = (width - 520) / 2;
+        const centerLeft = Math.max(0, (width - 520) / 2);
         const centerRight = (width + 520) / 2;
         const isLeft = Math.random() < 0.5;
 
@@ -321,7 +369,8 @@ export function initTriptych() {
       }
 
       update() {
-        const centerLeft = (width - 520) / 2;
+        if (width < 1024) return;
+        const centerLeft = Math.max(0, (width - 520) / 2);
         const centerRight = (width + 520) / 2;
 
         // Upward float
@@ -351,6 +400,7 @@ export function initTriptych() {
       }
 
       draw() {
+        if (width < 1024) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
@@ -365,15 +415,18 @@ export function initTriptych() {
     const particles = Array.from({ length: particleCount }, () => new FlankParticle());
 
     function animateParticles() {
+      if (!checkFlanksVisibility()) return;
       ctx.clearRect(0, 0, width, height);
       particles.forEach((p) => {
         p.update();
         p.draw();
       });
-      requestAnimationFrame(animateParticles);
+      animFrameId = requestAnimationFrame(animateParticles);
     }
 
-    animateParticles();
+    if (checkFlanksVisibility()) {
+      animateParticles();
+    }
   }
 
   // Initialize FAQ Accordion for Sanctuary Questions

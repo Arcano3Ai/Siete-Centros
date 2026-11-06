@@ -592,8 +592,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: visible;
+  background: transparent;
 }
 
 .center-hero-video-glow {
@@ -625,15 +626,18 @@ body {
 .center-hero-video-logo {
   width: 100%;
   height: auto;
-  max-height: 330px;
+  max-height: 380px;
+  aspect-ratio: 1280 / 880;
   display: block;
-  border-radius: 16px;
+  border-radius: 0;
   object-fit: contain;
-  -webkit-mask-image: none;
-  mask-image: none;
+  -webkit-mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 82%, transparent 100%);
+  mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, black 82%, transparent 100%);
+  background: transparent;
   filter: drop-shadow(0 0 25px rgba(223, 190, 144, 0.45)) drop-shadow(0 0 40px rgba(192, 132, 252, 0.35));
   position: relative;
   z-index: 2;
+  box-shadow: none;
 }
 
 .center-hero-title-group {
@@ -1271,15 +1275,15 @@ body {
     padding: 1.25rem 1rem !important;
   }
 
-  /* Botón Flotante CTA en Móvil */
+  /* Botón Flotante CTA en Móvil - Posición fija discreta sin solapar el Oráculo */
   .triptych-flank-right {
     position: fixed !important;
-    bottom: 1rem !important;
-    right: 1rem !important;
+    bottom: 0.85rem !important;
+    right: 0.85rem !important;
     left: auto !important;
     top: auto !important;
     width: auto !important;
-    max-width: calc(100vw - 190px) !important;
+    max-width: 165px !important;
     height: auto !important;
     padding: 0 !important;
     border: none !important;
@@ -1289,7 +1293,7 @@ body {
     z-index: 9990 !important;
     box-shadow: none !important;
     pointer-events: none !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
   .flank-right-header,
@@ -1312,20 +1316,35 @@ body {
   }
 
   .magnetic-circle-btn {
-    padding: 0.45rem 0.85rem !important;
-    gap: 0.45rem !important;
-    border-radius: var(--radius-full) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 25px rgba(244, 63, 94, 0.5), 0 0 35px rgba(192, 132, 252, 0.5) !important;
-    white-space: nowrap !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(56, 189, 248, 0.5) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
   }
 
-  .magnetic-btn-title {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.08em !important;
+  .magnetic-circle-btn .magnetic-btn-text-group,
+  .magnetic-circle-btn .magnetic-circle-icon {
+    display: none !important;
   }
 
-  .magnetic-btn-sub {
-    font-size: 0.58rem !important;
+  .magnetic-circle-btn .magnetic-niche-icon {
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    color: #050508 !important;
+  }
+
+  .magnetic-circle-btn .niche-sacred-symbol {
+    width: 22px !important;
+    height: 22px !important;
   }
 
   /* Navbar móvil compacto */
@@ -1379,17 +1398,61 @@ body {
     touch-action: manipulation !important;
   }
 
-  /* Márgenes seguros para elementos flotantes en móviles pequeños (360px - 400px) */
+  /* Márgenes seguros para elementos flotantes en móviles: Talismán Circular Sagrado de WhatsApp */
   .triptych-flank-right {
     bottom: 0.85rem !important;
-    right: 0.75rem !important;
-    max-width: 52vw !important;
+    right: 0.85rem !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    display: block !important;
+    z-index: 9990 !important;
+  }
+
+  .flank-right-footer {
+    display: block !important;
+    width: auto !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .magnetic-btn-wrap {
+    width: auto !important;
+    display: block !important;
   }
 
   .magnetic-circle-btn {
-    padding: 0.48rem 0.85rem !important;
-    font-size: 0.68rem !important;
-    white-space: nowrap !important;
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9), 0 0 25px rgba(56, 189, 248, 0.55), 0 0 35px rgba(244, 63, 94, 0.45) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
+  }
+
+  .magnetic-circle-btn .magnetic-btn-text-group,
+  .magnetic-circle-btn .magnetic-circle-icon {
+    display: none !important; /* En móvil actúa como talismán de contacto sagrado sin texto para no colisionar */
+  }
+
+  .magnetic-circle-btn .magnetic-niche-icon {
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    color: #050508 !important;
+  }
+
+  .magnetic-circle-btn .niche-sacred-symbol {
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 
@@ -1953,25 +2016,34 @@ body {
     padding: 0.35rem 0.65rem !important;
   }
 
-  /* Hero Móvil */
+  /* Hero Móvil: Espacio libre para la navbar superior y sin recortes en el video */
   .center-editorial-hero {
-    padding: 7.2rem 0.85rem 2rem 0.85rem !important;
+    padding: 8.5rem 0.85rem 2rem 0.85rem !important;
   }
 
   .center-hero-video-logo-wrap {
-    max-width: 360px !important;
-    margin: 1.25rem auto 1rem auto !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 0.75rem auto 1.25rem auto !important;
+    padding: 0 !important;
     overflow: visible !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
   }
 
   .center-hero-video-logo {
     width: 100% !important;
     height: auto !important;
-    max-height: 260px !important;
+    max-height: none !important;
+    aspect-ratio: 1280 / 880 !important;
     object-fit: contain !important;
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-    border-radius: 14px !important;
+    -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, black 82%, transparent 100%) !important;
+    mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, black 82%, transparent 100%) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    filter: drop-shadow(0 0 25px rgba(223, 190, 144, 0.4)) drop-shadow(0 0 45px rgba(192, 132, 252, 0.35)) !important;
   }
 
   .center-hero-tagline {

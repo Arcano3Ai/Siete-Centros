@@ -1,0 +1,1 @@
+import{_ as e,h as t,i as n,l as r,m as i,p as a,r as o,v as s}from"./interactive-mount-Br2uhdx0.js";/* empty css                 *//* empty css                         */var c=s(i(),1),l=a(),u=r();t(),e();var d=document.getElementById(`boutique-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(n,{})})),o();

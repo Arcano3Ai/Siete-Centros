@@ -19,8 +19,9 @@ export function initCosmicCanvas() {
   let width = (canvas.width = window.innerWidth);
   let height = (canvas.height = window.innerHeight);
 
+  const isMobile = window.innerWidth < 768;
   const particles = [];
-  const particleCount = Math.min(85, Math.floor((width * height) / 18000));
+  const particleCount = isMobile ? 18 : Math.min(85, Math.floor((width * height) / 18000));
 
   let mouseX = width / 2;
   let mouseY = height / 2;
