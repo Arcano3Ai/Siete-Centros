@@ -18,8 +18,8 @@ const VOICES: VoiceTestimonial[] = [
     role: { es: 'Participante Círculo de Luna', en: 'Moon Circle Participant' },
     location: 'Tepoztlán, Morelos',
     text: {
-      es: 'Entrar a la ronda fue desarmarme por completo. Frente al fuego sagrado y con la contención que sostiene Sofía, pude nombrar dolores que nunca antes tuvieron voz sin sentirme juzgada ni una sola vez.',
-      en: 'Stepping into the circle stripped away all pretense. Before the sacred fire and held in Sofia\'s immaculate presence, I could name wounds that never had a voice without experiencing a shred of judgment.'
+      es: 'Entrar a la ronda fue desarmarme por completo. Frente al fuego sagrado y con la contención que sostiene el equipo de facilitadores de Siete Centros, pude nombrar dolores que nunca antes tuvieron voz sin sentirme juzgada ni una sola vez.',
+      en: 'Stepping into the circle stripped away all pretense. Before the sacred fire and held in the immaculate presence of Siete Centros facilitators, I could name wounds that never had a voice without experiencing a shred of judgment.'
     },
     highlight: {
       es: '«Un antes y un después en mi relación con el cuerpo y la presencia»',
@@ -208,7 +208,7 @@ export const WordCircle: React.FC = () => {
       {/* WhatsApp Preconfigured CTA */}
       <div className="word-circle-cta">
         <a
-          href="https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20unirme%20al%20pr%C3%B3ximo%20C%C3%ADrculo%20de%20Palabra%20y%20Presencia%20en%20Siete%20Centros%20Escuela%20de%20Conciencia"
+          href="https://wa.me/5215512345678?text=Hola%2C%20deseo%20unirme%20al%20pr%C3%B3ximo%20C%C3%ADrculo%20de%20Palabra%20y%20Presencia%20en%20Siete%20Centros%20Escuela%20de%20Conciencia"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary circle-action-btn"

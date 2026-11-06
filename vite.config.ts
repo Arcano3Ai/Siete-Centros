@@ -17,6 +17,7 @@ export default defineConfig({
         kriya: resolve(import.meta.dirname, 'kriya-yoga.html'),
         tantra: resolve(import.meta.dirname, 'tantra.html'),
         circulos: resolve(import.meta.dirname, 'circulos-de-palabra.html'),
+        boutique: resolve(import.meta.dirname, 'boutique.html'),
         retiros: resolve(import.meta.dirname, 'retiros.html')
       }
     }

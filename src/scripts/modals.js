@@ -83,11 +83,24 @@ const EXPERIENCES_DATA = {
     ]
   },
   sofia: {
-    tag: 'Terapeuta & Facilitadora',
-    title: 'Sofía — Acompañamiento Somático & Energético',
+    tag: 'Linaje & Facilitación',
+    title: 'SIETE CENTROS — Linaje & Guías Ceremoniales',
     lead: '«El cuerpo guarda la memoria de todo lo vivido; a través del tacto consciente y la presencia, abrimos el espacio para renacer».',
-    image: './images/sofia.jpg',
-    desc: 'Con más de 12 años de devota trayectoria en disciplinas somáticas, tantra devocional y yoga de la energía, Sofía ofrece un espacio de contención incondicional donde cada persona puede desarmar sus corazas y reconectar con su pulso vital primordial.',
+    image: './images/community_circle.jpg',
+    desc: 'Con más de 12 años de devota trayectoria en disciplinas somáticas, tantra devocional y yoga de la energía, el colectivo de facilitadores de SIETE CENTROS ofrece un espacio de contención incondicional donde cada persona puede desarmar sus corazas y reconectar con su pulso vital primordial.',
+    bullets: [
+      'Acompañamiento individual personalizado y respetuoso de tus propios tiempos.',
+      'Integración de respiración consciente, biodinámica y tacto somático.',
+      'Marco de consentimiento riguroso, confidencialidad y reverencia sagrada.',
+      'Sesiones individuales en cabina consagrada o inmersiones privadas.'
+    ]
+  },
+  linaje: {
+    tag: 'Linaje & Facilitación',
+    title: 'SIETE CENTROS — Linaje & Guías Ceremoniales',
+    lead: '«El cuerpo guarda la memoria de todo lo vivido; a través del tacto consciente y la presencia, abrimos el espacio para renacer».',
+    image: './images/community_circle.jpg',
+    desc: 'Con más de 12 años de devota trayectoria en disciplinas somáticas, tantra devocional y yoga de la energía, el colectivo de facilitadores de SIETE CENTROS ofrece un espacio de contención incondicional donde cada persona puede desarmar sus corazas y reconectar con su pulso vital primordial.',
     bullets: [
       'Acompañamiento individual personalizado y respetuoso de tus propios tiempos.',
       'Integración de respiración consciente, biodinámica y tacto somático.',
@@ -100,7 +113,7 @@ const EXPERIENCES_DATA = {
     title: 'Armonización Somática y Desbloqueo de Chakras',
     lead: '«Reordenamiento del campo sutil y descompresión de centros bloqueados».',
     image: './images/terapia1.jpg',
-    desc: 'Una sesión presencial íntima de 90 minutos guiada por Sofía, diseñada para diagnosticar y liberar puntos de estancamiento pránico a lo largo del eje espinal y los siete centros a través del toque suave, aceites botánicos y resonancia acústica.',
+    desc: 'Una sesión presencial íntima de 90 minutos guiada por facilitadores de Siete Centros, diseñada para diagnosticar y liberar puntos de estancamiento pránico a lo largo del eje espinal y los siete centros a través del toque suave, aceites botánicos y resonancia acústica.',
     bullets: [
       'Lectura somática del estado de tus siete vórtices energéticos.',
       'Liberación fascial suave en puntos marmas y meridianos sutiles.',
@@ -113,7 +126,7 @@ const EXPERIENCES_DATA = {
     title: 'Kriya Breathwork & Reprogramación Celular',
     lead: '«Liberación de cargas somáticas y profunda calma del sistema nervioso».',
     image: './images/terapia2.jpg',
-    desc: 'Inmersión respiratoria individual guiada por Sofía. A través de ciclos de respiración consciente conectada, desbloqueamos memorias alojadas en los tejidos, restaurando la oxigenación celular y facilitando comprensiones espirituales profundas.',
+    desc: 'Inmersión respiratoria individual guiada por facilitadores de Siete Centros. A través de ciclos de respiración consciente conectada, desbloqueamos memorias alojadas en los tejidos, restaurando la oxigenación celular y facilitando comprensiones espirituales profundas.',
     bullets: [
       'Calibración personalizada del patrón respiratorio y diagnóstico diafragmático.',
       'Descarga segura de estrés crónico y tensión psicosomática acumulada.',
@@ -139,7 +152,7 @@ const EXPERIENCES_DATA = {
     title: 'Integración del Silencio & Cierre de Ciclos',
     lead: '«Acompañamiento íntimo en umbrales de vida y transiciones del alma».',
     image: './images/terapia4.jpg',
-    desc: 'Ceremonia personalizada para integrar procesos de cambio vital, duelos, separaciones o culminación de etapas trascendentes. Sofía sostiene un altar íntimo para bendecir lo vivido y sembrar claridad para el nuevo ciclo.',
+    desc: 'Ceremonia personalizada para integrar procesos de cambio vital, duelos, separaciones o culminación de etapas trascendentes. El equipo de facilitadores de Siete Centros sostiene un altar íntimo para bendecir lo vivido y sembrar claridad para el nuevo ciclo.',
     bullets: [
       'Ritual simbólico de liberación y corte de cordones energéticos obsoletos.',
       'Unción con bálsamos de mirra, copal y rosas silvestres.',
@@ -237,7 +250,7 @@ export function initModals() {
     });
   });
 
-  // Attach to Therapy Session Cards & Sofia Profile
+  // Attach to Therapy Session Cards & Lineage Profile
   const sessionButtons = document.querySelectorAll('[data-session]');
   sessionButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {

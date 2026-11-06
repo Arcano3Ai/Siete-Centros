@@ -1,0 +1,538 @@
+/* ==========================================================================
+   SIETE CENTROS — ESTILOS DE LOS TRES UNIVERSOS, ESCUELA, TANTRA, EXPERIENCIAS & JOURNAL
+   Paleta: Oro ceremonial (#C5A880), Violeta (#9D4EDD), Negro profundo (#050508)
+   ========================================================================== */
+
+/* Tríptico de los Tres Universos en Inicio */
+.universes-triptych-section {
+  width: 100%;
+  margin: 3.5rem 0 4.5rem 0;
+  position: relative;
+}
+
+.universes-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.universes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .universes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
+.universe-card {
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.08) 0%, rgba(10, 8, 15, 0.85) 100%);
+  border: 1px solid rgba(197, 168, 128, 0.22);
+  border-radius: 16px;
+  padding: 2.2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.universe-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-accent, #C5A880), transparent);
+  opacity: 0.7;
+}
+
+.universe-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(197, 168, 128, 0.55);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px var(--card-glow, rgba(197, 168, 128, 0.2));
+}
+
+.universe-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(197, 168, 128, 0.1);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent, #C5A880);
+  margin-bottom: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.universe-card:hover .universe-card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.universe-card-number {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.universe-card-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.3;
+}
+
+.universe-card-desc {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.universe-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--card-accent, #C5A880);
+  transition: gap 0.2s ease;
+}
+
+.universe-card:hover .universe-card-cta {
+  gap: 0.8rem;
+  color: var(--gold-bright, #E5C07B);
+}
+
+/* ==========================================================================
+   SECCIÓN ESCUELA DE CONCIENCIA: CATÁLOGO DE CURSOS Y FORMACIONES
+   ========================================================================== */
+.school-courses-section {
+  width: 100%;
+  margin: 4.5rem 0;
+  padding: 3rem 0;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.course-card {
+  background: rgba(12, 10, 18, 0.75);
+  border: 1px solid rgba(197, 168, 128, 0.18);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(197, 168, 128, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.course-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.course-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.course-card:hover .course-img {
+  transform: scale(1.05);
+}
+
+.course-duration-badge {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  background: rgba(5, 5, 8, 0.85);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.68rem;
+  color: var(--gold-bright, #E5C07B);
+  letter-spacing: 0.08em;
+}
+
+.course-content {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.course-instructor {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.72rem;
+  color: var(--amethyst-light, #C084FC);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.course-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 0.6rem 0;
+  line-height: 1.35;
+}
+
+.course-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.55;
+  margin-bottom: 1.2rem;
+  flex: 1;
+}
+
+.course-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(197, 168, 128, 0.12);
+  padding-top: 1rem;
+}
+
+.course-price {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold-bright, #E5C07B);
+}
+
+.course-enroll-btn {
+  padding: 0.55rem 1rem;
+  background: rgba(197, 168, 128, 0.15);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.course-enroll-btn:hover {
+  background: var(--gold, #C5A880);
+  color: #050508;
+}
+
+/* ==========================================================================
+   SECCIÓN UNIVERSO TANTRA
+   ========================================================================== */
+.tantra-universe-section {
+  width: 100%;
+  margin: 4.5rem 0;
+  padding: 3.5rem 2rem;
+  background: radial-gradient(circle at 50% 20%, rgba(157, 78, 221, 0.12) 0%, rgba(5, 5, 8, 0.95) 75%),
+              linear-gradient(180deg, rgba(15, 12, 22, 0.8) 0%, rgba(5, 5, 8, 0.98) 100%);
+  border: 1px solid rgba(157, 78, 221, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65);
+}
+
+.tantra-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.tantra-pillar-box {
+  background: rgba(10, 8, 16, 0.65);
+  border: 1px solid rgba(157, 78, 221, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.tantra-pillar-box:hover {
+  border-color: rgba(197, 168, 128, 0.45);
+  transform: translateY(-4px);
+  background: rgba(18, 14, 28, 0.8);
+}
+
+.tantra-pillar-glyph {
+  color: var(--amethyst-light, #C084FC);
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.tantra-pillar-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.98rem;
+  color: #FFFFFF;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.tantra-pillar-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* ==========================================================================
+   SECCIÓN EXPERIENCIAS COMERCIALES
+   ========================================================================== */
+.commercial-experiences-section {
+  width: 100%;
+  margin: 4.5rem 0;
+}
+
+.commercial-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.commercial-exp-card {
+  background: rgba(12, 10, 18, 0.75);
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s ease;
+}
+
+.commercial-exp-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(197, 168, 128, 0.5);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+}
+
+.commercial-exp-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.commercial-exp-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.commercial-exp-spots {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  background: rgba(5, 5, 8, 0.85);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  color: #34D399;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+}
+
+.commercial-exp-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.commercial-exp-date-loc {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.78rem;
+  color: var(--gold, #C5A880);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+}
+
+.commercial-exp-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 0.6rem 0;
+  line-height: 1.35;
+}
+
+.commercial-exp-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.4rem;
+  flex: 1;
+}
+
+.commercial-exp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(197, 168, 128, 0.12);
+  padding-top: 1rem;
+}
+
+.commercial-exp-price {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold-bright, #E5C07B);
+}
+
+/* ==========================================================================
+   SECCIÓN PRIVACIDAD Y CONFIANZA
+   ========================================================================== */
+.trust-privacy-section {
+  width: 100%;
+  margin: 4.5rem 0;
+  padding: 3rem 2rem;
+  background: rgba(10, 8, 15, 0.65);
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  border-radius: 16px;
+}
+
+.trust-privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.trust-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(197, 168, 128, 0.08);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-bright, #E5C07B);
+}
+
+.trust-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.92rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  margin: 0;
+}
+
+.trust-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECCIÓN JOURNAL DE SIETE CENTROS (EDITORIAL & SEO)
+   ========================================================================== */
+.journal-editorial-section {
+  width: 100%;
+  margin: 4.5rem 0;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+
+.journal-card {
+  background: rgba(12, 10, 18, 0.7);
+  border: 1px solid rgba(197, 168, 128, 0.16);
+  border-radius: 14px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.journal-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(197, 168, 128, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.journal-tag {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.68rem;
+  color: var(--amethyst-light, #C084FC);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.journal-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 0.6rem 0;
+  line-height: 1.4;
+}
+
+.journal-excerpt {
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 1.2rem;
+  flex: 1;
+}
+
+.journal-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  color: rgba(197, 168, 128, 0.75);
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+}
+

@@ -54,8 +54,8 @@ const RETREATS: RetreatItem[] = [
       ]
     },
     waMessage: {
-      es: 'Hola Sofía, deseo postularme para reservar uno de los últimos 3 lugares en el Retiro Silencio & Renacer Somático de Siete Centros Escuela de Conciencia en Tepoztlán.',
-      en: 'Hello Sofia, I would like to apply for one of the last 3 spots for the Silence & Somatic Rebirth Retreat at Siete Centros Escuela de Conciencia in Tepoztlan.'
+      es: 'Hola, deseo postularme para reservar uno de los últimos 3 lugares en el Retiro Silencio & Renacer Somático de Siete Centros Escuela de Conciencia en Tepoztlán.',
+      en: 'Hello, I would like to apply for one of the last 3 spots for the Silence & Somatic Rebirth Retreat at Siete Centros Escuela de Conciencia in Tepoztlan.'
     }
   },
   {
@@ -95,8 +95,8 @@ const RETREATS: RetreatItem[] = [
       ]
     },
     waMessage: {
-      es: 'Hola Sofía, deseo solicitar información y reservar mi espacio para la Inmersión de Tantra & Polaridad de Siete Centros Escuela de Conciencia en Valle de Bravo.',
-      en: 'Hello Sofia, I would like to inquire and reserve my place for the Tantra & Heart Polarity Immersion at Siete Centros Escuela de Conciencia in Valle de Bravo.'
+      es: 'Hola, deseo solicitar información y reservar mi espacio para la Inmersión de Tantra & Polaridad de Siete Centros Escuela de Conciencia en Valle de Bravo.',
+      en: 'Hello, I would like to inquire and reserve my place for the Tantra & Heart Polarity Immersion at Siete Centros Escuela de Conciencia in Valle de Bravo.'
     }
   },
   {
@@ -125,19 +125,19 @@ const RETREATS: RetreatItem[] = [
       es: [
         'Recorrido de los 7 centros energéticos',
         'Inmersión en cenotes sagrados & sonido armónico',
-        'Sesión individual diagnóstica con Sofía',
+        'Sesión individual diagnóstica con Guía Somático',
         'Ronda de integración final al atardecer'
       ],
       en: [
         'Full journey across all 7 energy centers',
         'Sacred cenote water rebirthing & sound healing',
-        '1-on-1 diagnostic somatic intake with Sofia',
+        '1-on-1 diagnostic somatic intake with Master Guide',
         'Sunset graduation circle by the Caribbean'
       ]
     },
     waMessage: {
-      es: 'Hola Sofía, me interesa unirme al Retiro Portal Ouroboros de Siete Centros Escuela de Conciencia en Tulum.',
-      en: 'Hello Sofia, I am interested in joining the Ouroboros Portal Retreat at Siete Centros Escuela de Conciencia in Tulum.'
+      es: 'Hola, me interesa unirme al Retiro Portal Ouroboros de Siete Centros Escuela de Conciencia en Tulum.',
+      en: 'Hello, I am interested in joining the Ouroboros Portal Retreat at Siete Centros Escuela de Conciencia in Tulum.'
     }
   }
 ];

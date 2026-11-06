@@ -222,7 +222,8 @@
   box-shadow: 0 0 8px var(--gold-bright);
 }
 
-/* Sofia Facilitator Spotlight in Page */
+/* Guide & Facilitators Spotlight in Page */
+.experience-guide-quote-card,
 .experience-sofia-quote-card {
   background: linear-gradient(135deg, rgba(16, 10, 24, 0.9), rgba(8, 5, 12, 0.95));
   border: 1px solid var(--gold-border-highlight);
@@ -236,6 +237,7 @@
 }
 
 @media (max-width: 768px) {
+  .experience-guide-quote-card,
   .experience-sofia-quote-card {
     flex-direction: column;
     text-align: center;
@@ -243,6 +245,7 @@
   }
 }
 
+.guide-mini-photo,
 .sofia-mini-photo {
   width: 100px;
   height: 100px;
@@ -253,6 +256,7 @@
   flex-shrink: 0;
 }
 
+.guide-quote-text,
 .sofia-quote-text {
   font-family: var(--font-serif-editorial);
   font-style: italic;
@@ -262,6 +266,7 @@
   margin: 0 0 0.85rem;
 }
 
+.guide-quote-author,
 .sofia-quote-author {
   font-family: var(--font-sans);
   font-size: 0.75rem;

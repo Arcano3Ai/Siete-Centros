@@ -84,7 +84,7 @@ export const TantricConciergeBot: React.FC = () => {
         action: {
           type: 'whatsapp',
           label: t.bot.whatsappDirect,
-          url: 'https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
+          url: 'https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
         }
       }
     ]);
@@ -168,14 +168,14 @@ export const TantricConciergeBot: React.FC = () => {
         };
       }
 
-      // Sofía
-      if (q.includes('sofia') || q.includes('sofía') || q.includes('guia') || q.includes('guía') || q.includes('quien') || q.includes('maestra')) {
+      // Guías y Linaje
+      if (q.includes('guia') || q.includes('guía') || q.includes('quien') || q.includes('maestros') || q.includes('facilitad') || q.includes('equipo')) {
         return {
-          text: 'Sofía es la fundadora y guardiana ceremonial de Siete Centros. Ha dedicado más de una década al estudio directo de tradiciones tántricas en Rishikesh (India), chamanismo vegetal en el Amazonas y somática clínica en Europa. Sostiene el espacio desde una presencia impecable que no impone, sino que despierta tu propia soberanía.',
+          text: 'SIETE CENTROS está guiado por un colectivo de facilitadores somáticos y guardianes ceremoniales con formación rigurosa en tradiciones tántricas de Rishikesh (India), chamanismo vegetal y neurobiología polivagal aplicada. Sostenemos el espacio desde una presencia impecable que no impone dogmas, sino que despierta tu propia soberanía.',
           action: {
             type: 'whatsapp',
-            label: 'Escribir a Sofía en WhatsApp ↗',
-            url: 'https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
+            label: 'Escribir a Siete Centros en WhatsApp ↗',
+            url: 'https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
           }
         };
       }
@@ -183,22 +183,22 @@ export const TantricConciergeBot: React.FC = () => {
       // WhatsApp / Reserva
       if (q.includes('whatsapp') || q.includes('agenda') || q.includes('reserv') || q.includes('costo') || q.includes('inversion') || q.includes('contacto')) {
         return {
-          text: 'Puedes iniciar contacto privado y agendar una sesión de valoración directamente con Sofía vía WhatsApp. Su equipo te compartirá los cupos disponibles y detalles de preparación.',
+          text: 'Puedes iniciar contacto privado y agendar una sesión de valoración directamente con el equipo de SIETE CENTROS vía WhatsApp. Te compartiremos cupos disponibles, fechas y preparación.',
           action: {
             type: 'whatsapp',
             label: 'Abrir Chat de WhatsApp Directo ↗',
-            url: 'https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
+            url: 'https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
           }
         };
       }
 
       // Fallback amigable
       return {
-        text: 'Esa es una búsqueda profunda. En Siete Centros abordamos ese proceso integrando Breathwork somático, Kriya Yoga y Tantra meditativo. Puedes explorar nuestras páginas dedicadas o escribirnos directamente a WhatsApp para una orientación personalizada.',
+        text: 'Esa es una búsqueda profunda. En Siete Centros abordamos ese proceso integrando Breathwork somático, Kriya Yoga, Tantra meditativo y Boutique de bienestar íntimo. Puedes explorar nuestras secciones o escribirnos directamente a WhatsApp para una orientación personalizada.',
         action: {
           type: 'whatsapp',
           label: 'Consultar Directo por WhatsApp ↗',
-          url: `https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia:%20${encodeURIComponent(query)}`
+          url: `https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros:%20${encodeURIComponent(query)}`
         }
       };
     } else {
@@ -258,34 +258,34 @@ export const TantricConciergeBot: React.FC = () => {
         };
       }
 
-      if (q.includes('sofia') || q.includes('founder') || q.includes('guide') || q.includes('teacher')) {
+      if (q.includes('founder') || q.includes('guide') || q.includes('teacher') || q.includes('facilitator')) {
         return {
-          text: 'Sofia is the founder and space guardian of Siete Centros. With over a decade of immersion with master yogis in Rishikesh (India), Amazonian vegetal medicine, and European clinical somatics, she holds a grounded, uncompromising field of authentic transformation.',
+          text: 'Siete Centros is guided by an experienced council of certified somatic facilitators and ceremonial spaceholders trained in Rishikesh (India), vegetal medicine traditions, and clinical somatic regulation.',
           action: {
             type: 'whatsapp',
-            label: 'Chat with Sofia on WhatsApp ↗',
-            url: 'https://wa.me/5215512345678?text=Hello%20Sofia,%20I%20would%20love%20to%20learn%20more%20about%20Siete%20Centros%20Escuela%20de%20Conciencia'
+            label: 'Chat with Siete Centros on WhatsApp ↗',
+            url: 'https://wa.me/5215512345678?text=Hello,%20I%20would%20love%20to%20learn%20more%20about%20Siete%20Centros'
           }
         };
       }
 
       if (q.includes('whatsapp') || q.includes('book') || q.includes('price') || q.includes('contact') || q.includes('schedule')) {
         return {
-          text: 'You can connect directly with Sofia and her sanctuary team via WhatsApp to check session availability, exchange pricing, and receive pre-ceremony intake guidelines.',
+          text: 'You can connect directly with the Siete Centros sanctuary team via WhatsApp to check session availability, exchange pricing, and receive pre-ceremony intake guidelines.',
           action: {
             type: 'whatsapp',
             label: 'Open WhatsApp Chat Directly ↗',
-            url: 'https://wa.me/5215512345678?text=Hello%20Sofia,%20I%20would%20like%20to%20inquire%20about%20Siete%20Centros%20Escuela%20de%20Conciencia'
+            url: 'https://wa.me/5215512345678?text=Hello,%20I%20would%20like%20to%20inquire%20about%20Siete%20Centros'
           }
         };
       }
 
       return {
-        text: 'That touches a deep aspect of conscious transformation. At Siete Centros, we navigate this through Somatic Breathwork, Kriya Yoga, and Tantric integration. You can explore our dedicated portals or message Sofia directly via WhatsApp.',
+        text: 'That touches a deep aspect of conscious transformation. At Siete Centros, we navigate this through Somatic Breathwork, Kriya Yoga, Tantric integration, and our Intimate Wellness Boutique. You can explore our dedicated portals or message us directly via WhatsApp.',
         action: {
           type: 'whatsapp',
-          label: 'Ask Sofia on WhatsApp ↗',
-          url: `https://wa.me/5215512345678?text=Hello%20Sofia,%20I%20have%20a%20question%20about%20Siete%20Centros%20Escuela%20de%20Conciencia:%20${encodeURIComponent(query)}`
+          label: 'Ask on WhatsApp ↗',
+          url: `https://wa.me/5215512345678?text=Hello,%20I%20have%20a%20question%20about%20Siete%20Centros:%20${encodeURIComponent(query)}`
         }
       };
     }
@@ -335,7 +335,7 @@ export const TantricConciergeBot: React.FC = () => {
         action: {
           type: 'whatsapp',
           label: t.bot.whatsappDirect,
-          url: 'https://wa.me/5215512345678?text=Hola%20Sof%C3%ADa%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
+          url: 'https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
         }
       }
     ]);

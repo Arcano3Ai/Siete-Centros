@@ -4,3 +4,6 @@ dist/
 *.log
 .env
 .env.local
+
+scratch/
+temp_chrome_test_profile/
