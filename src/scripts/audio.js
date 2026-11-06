@@ -15,6 +15,7 @@ class SoundscapeEngine {
     this.candidateIndex = 0;
     this.candidates = [];
     this.fadeTimer = null;
+    this.unlockListenersAttached = false;
   }
 
   resolveCandidatePaths() {
@@ -101,11 +102,8 @@ class SoundscapeEngine {
     if (!this.audioElement) return false;
 
     try {
-      // 1. Marcar estado activo y notificar UI inmediatamente para respuesta táctil instantánea
-      this.isPlaying = true;
-      this.notify();
+      sessionStorage.removeItem('mokka_user_paused');
 
-      // 2. Invocar play() de forma síncrona dentro de la interacción del usuario
       const playPromise = this.audioElement.play();
 
       if (playPromise !== undefined) {
@@ -114,17 +112,22 @@ class SoundscapeEngine {
           this.fadeVolume(0.1, 0.75, 1400);
           this.notify();
         }).catch((err) => {
-          console.warn('SIETE CENTROS: Autoplay bloqueado por el navegador (requiere toque de usuario)', err);
+          console.warn('MOKKA CHAI: Autoplay esperando primer gesto del usuario...', err.message);
           this.isPlaying = false;
           this.notify();
+          this.setupFirstInteractionUnlock();
         });
+      } else {
+        this.isPlaying = true;
+        this.notify();
       }
 
       return true;
     } catch (err) {
-      console.warn('SIETE CENTROS: Excepción al ejecutar play()', err);
+      console.warn('MOKKA CHAI: Excepción al ejecutar play()', err);
       this.isPlaying = false;
       this.notify();
+      this.setupFirstInteractionUnlock();
       return false;
     }
   }
@@ -133,6 +136,7 @@ class SoundscapeEngine {
     if (!this.isPlaying || !this.audioElement) return false;
 
     this.isPlaying = false;
+    sessionStorage.setItem('mokka_user_paused', 'true');
     this.notify();
 
     this.fadeVolume(this.audioElement.volume, 0, 900, () => {
@@ -142,6 +146,42 @@ class SoundscapeEngine {
     });
 
     return false;
+  }
+
+  setupFirstInteractionUnlock() {
+    if (this.unlockListenersAttached) return;
+    this.unlockListenersAttached = true;
+
+    const unlockEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'wheel', 'keydown'];
+    const handleFirstGesture = () => {
+      if (sessionStorage.getItem('mokka_user_paused') === 'true') {
+        cleanup();
+        return;
+      }
+      cleanup();
+      this.play();
+    };
+
+    const cleanup = () => {
+      unlockEvents.forEach((evt) => {
+        window.removeEventListener(evt, handleFirstGesture, { capture: true });
+        document.removeEventListener(evt, handleFirstGesture, { capture: true });
+      });
+      this.unlockListenersAttached = false;
+    };
+
+    unlockEvents.forEach((evt) => {
+      window.addEventListener(evt, handleFirstGesture, { passive: true, capture: true, once: true });
+      document.addEventListener(evt, handleFirstGesture, { passive: true, capture: true, once: true });
+    });
+  }
+
+  attemptAutoplay() {
+    if (typeof window === 'undefined') return;
+    if (sessionStorage.getItem('mokka_user_paused') === 'true') return;
+
+    this.init();
+    this.play();
   }
 
   fadeVolume(from, to, duration, onComplete) {
@@ -188,18 +228,22 @@ class SoundscapeEngine {
 
 export const soundscape = new SoundscapeEngine();
 
-// Inicialización temprana y precalentamiento táctil en móviles
+// Inicialización de Autoplay Inmediato y Desbloqueo Pasivo
 if (typeof window !== 'undefined') {
-  // Exponer para acceso global
   window.__soundscape = soundscape;
   window.toggleSieteCentrosAudio = () => soundscape.toggle();
 
-  const warmUpAudio = () => {
-    soundscape.init();
-    window.removeEventListener('click', warmUpAudio);
-    window.removeEventListener('touchstart', warmUpAudio);
+  const startAutoplay = () => {
+    soundscape.attemptAutoplay();
   };
-  window.addEventListener('click', warmUpAudio, { passive: true, once: true });
-  window.addEventListener('touchstart', warmUpAudio, { passive: true, once: true });
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    startAutoplay();
+  } else {
+    document.addEventListener('DOMContentLoaded', startAutoplay, { once: true });
+    window.addEventListener('load', startAutoplay, { once: true });
+  }
+
+  soundscape.setupFirstInteractionUnlock();
 }
 
