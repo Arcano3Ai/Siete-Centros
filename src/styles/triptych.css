@@ -557,45 +557,9 @@ body {
   color: var(--gold-bright);
 }
 
-/* Chakra Tooltip on Hover */
+/* Chakra Tooltips eliminados para evitar solapamientos y artefactos visuales detrás de los videos */
 .chakra-nav-tooltip {
-  position: absolute;
-  left: 100%;
-  top: 50%;
-  transform: translateY(-50%) translateX(12px);
-  background: rgba(10, 6, 16, 0.96);
-  border: 1px solid var(--gold-border-highlight);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85), 0 0 20px var(--gold-glow);
-  border-radius: var(--radius-sm);
-  padding: 0.65rem 1.05rem;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-smooth);
-  z-index: 30;
-}
-
-.chakra-nav-tooltip-sanskrit {
-  font-family: var(--font-serif-editorial);
-  font-style: italic;
-  font-size: 0.78rem;
-  color: var(--gold-bright);
-  display: block;
-}
-
-.chakra-nav-tooltip-desc {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  color: var(--text-ivory-dim);
-  display: block;
-  margin-top: 2px;
-}
-
-.chakra-nav-item:hover .chakra-nav-tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%) translateX(18px);
+  display: none !important;
 }
 
 /* Left Flank Footer */
