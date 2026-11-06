@@ -577,7 +577,7 @@ body {
 /* Grand Hero Portal at top of Center Column */
 .center-editorial-hero {
   position: relative;
-  padding: 4.5rem 2rem 2.5rem;
+  padding: 6.5rem 2rem 2.5rem;
   text-align: center;
   z-index: 19;
   background: linear-gradient(to bottom, #050508 60%, transparent 100%);
@@ -587,12 +587,13 @@ body {
 .center-hero-video-logo-wrap {
   position: relative;
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto 0.75rem auto;
+  max-width: 480px;
+  margin: 1.25rem auto 1.25rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 16px;
+  overflow: visible;
 }
 
 .center-hero-video-glow {
@@ -624,12 +625,12 @@ body {
 .center-hero-video-logo {
   width: 100%;
   height: auto;
-  max-height: 290px;
+  max-height: 330px;
   display: block;
-  border-radius: 18px;
-  object-fit: cover;
-  -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 68%, transparent 100%);
-  mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 68%, transparent 100%);
+  border-radius: 16px;
+  object-fit: contain;
+  -webkit-mask-image: none;
+  mask-image: none;
   filter: drop-shadow(0 0 25px rgba(223, 190, 144, 0.45)) drop-shadow(0 0 40px rgba(192, 132, 252, 0.35));
   position: relative;
   z-index: 2;
@@ -1192,7 +1193,7 @@ body {
   }
 
   .center-editorial-hero {
-    padding: 2.75rem 0.75rem 1.5rem !important;
+    padding: 6.5rem 0.75rem 1.5rem !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -1954,12 +1955,23 @@ body {
 
   /* Hero Móvil */
   .center-editorial-hero {
-    padding: 1.5rem 0.5rem !important;
+    padding: 7.2rem 0.85rem 2rem 0.85rem !important;
   }
 
   .center-hero-video-logo-wrap {
-    max-width: 320px !important;
-    margin: 0 auto 0.75rem auto !important;
+    max-width: 360px !important;
+    margin: 1.25rem auto 1rem auto !important;
+    overflow: visible !important;
+  }
+
+  .center-hero-video-logo {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 260px !important;
+    object-fit: contain !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    border-radius: 14px !important;
   }
 
   .center-hero-tagline {
