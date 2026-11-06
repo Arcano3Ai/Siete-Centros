@@ -1,0 +1,1 @@
+import{_ as e,h as t,l as n,m as r,o as i,p as a,r as o,v as s}from"./interactive-mount-Cm7_DJI_.js";/* empty css                         */var c=s(r(),1),l=a(),u=n();t(),e();var d=document.getElementById(`tantra-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(i,{})})),o();

@@ -1,1 +1,0 @@
-import{_ as e,h as t,l as n,m as r,p as i,r as a,s as o,v as s}from"./interactive-mount-LdDLn8lC.js";/* empty css                         */var c=s(r(),1),l=i(),u=n();t(),e();var d=document.getElementById(`kriya-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(o,{})})),a();
