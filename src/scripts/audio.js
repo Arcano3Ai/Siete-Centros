@@ -1,6 +1,6 @@
 /**
- * SIETE CENTROS — Meditative Soundscape Engine
- * Canción de Fondo Oficial: "Bienvenida al Silencio" (432Hz Master Ambient)
+ * MOKKA CHAI — Meditative Soundscape Engine
+ * Canción de Fondo Oficial: "Mokka Chai" (Master Ambient)
  * Motor optimizado para ultra-estabilidad en dispositivos móviles (iOS Safari, Android Chrome).
  * Utiliza HTML5 Audio nativo para evitar bloqueos de tokens de gesto en WebKit y caídas de volumen.
  */
@@ -9,7 +9,7 @@ class SoundscapeEngine {
   constructor() {
     this.audioElement = null;
     this.isPlaying = false;
-    this.trackTitle = 'Bienvenida al Silencio';
+    this.trackTitle = 'MOKKA CHAI — Meditación & Armonización';
     this.subscribers = new Set();
     this.isInitialized = false;
     this.candidateIndex = 0;
@@ -22,13 +22,16 @@ class SoundscapeEngine {
     const basePath = isGhPages ? '/Siete-Centros' : '';
 
     return [
+      `${basePath}/audio/mokka-chai.mp3`,
+      './audio/mokka-chai.mp3',
+      '/audio/mokka-chai.mp3',
+      'audio/mokka-chai.mp3',
+      `${basePath}/audio/Mokka Chai.mp3`,
+      './audio/Mokka Chai.mp3',
+      '../audio/mokka-chai.mp3',
       `${basePath}/audio/bienvenida-al-silencio.mp3`,
       './audio/bienvenida-al-silencio.mp3',
-      '/audio/bienvenida-al-silencio.mp3',
-      'audio/bienvenida-al-silencio.mp3',
-      `${basePath}/audio/Bienvenida al Silencio.mp3`,
-      './audio/Bienvenida al Silencio.mp3',
-      '../audio/bienvenida-al-silencio.mp3'
+      '/audio/bienvenida-al-silencio.mp3'
     ];
   }
 
