@@ -209,7 +209,7 @@ export const RetreatsGrid: React.FC = () => {
         {RETREATS.map((retreat) => {
           const transformStyle = cardTransforms[retreat.id] || 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
           const encodedMessage = encodeURIComponent(retreat.waMessage[currentLang]);
-          const waUrl = `https://wa.me/5215512345678?text=${encodedMessage}`;
+          const waUrl = `https://wa.me/528121912778?text=${encodedMessage}`;
 
           return (
             <article

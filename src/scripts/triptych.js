@@ -5,6 +5,8 @@
  * Center Column: 520px fixed, 4 seamless videos, golden shimmer spine, 1.02 hover zoom
  */
 
+import { JOURNAL_ARTICLES } from './journal-articles.js';
+
 export function initTriptych() {
   const centerSpine = document.querySelector('.triptych-spine-center');
   const navItems = document.querySelectorAll('.chakra-nav-item');
@@ -210,7 +212,7 @@ export function initTriptych() {
         return;
       }
       e.preventDefault();
-      window.open('https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia', '_blank');
+      window.open('https://wa.me/528121912778?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia', '_blank');
     });
   }
 
@@ -303,8 +305,18 @@ export function initTriptych() {
         this.baseX = this.x;
         this.baseY = this.y;
         this.density = Math.random() * 20 + 5;
-        this.alpha = Math.random() * 0.5 + 0.2;
-        this.color = Math.random() > 0.3 ? '223, 190, 144' : '255, 255, 255';
+        this.alpha = Math.random() * 0.55 + 0.25;
+        // 7 Chakra Sacred Colors: Raíz, Sacro, Plexo, Corazón, Garganta, Ajna, Corona
+        const chakraColors = [
+          '244, 63, 94',   // Muladhara (Raíz - Rojo Rubí)
+          '251, 146, 60',  // Svadhisthana (Sacro - Naranja Ámbar)
+          '251, 191, 36',  // Manipura (Plexo Solar - Dorado)
+          '52, 211, 153',  // Anahata (Corazón - Esmeralda)
+          '56, 189, 248',  // Vishuddha (Garganta - Cian Celestial)
+          '129, 140, 248', // Ajna (Tercer Ojo - Índigo Sagrado)
+          '192, 132, 252'  // Sahasrara (Corona - Violeta Amatista)
+        ];
+        this.color = chakraColors[Math.floor(Math.random() * chakraColors.length)];
         this.speedY = -(Math.random() * 0.4 + 0.1);
       }
 
@@ -339,11 +351,13 @@ export function initTriptych() {
       }
 
       draw() {
-        ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
+        ctx.fillStyle = `rgba(${this.color}, ${this.alpha})`;
+        ctx.shadowBlur = this.size * 3.5;
+        ctx.shadowColor = `rgba(${this.color}, 0.7)`;
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
     }
 
@@ -387,6 +401,87 @@ export function initTriptych() {
         btn.setAttribute('aria-expanded', 'true');
       }
     });
+  });
+
+  // 8. Journal Reader Modal Orchestration
+  const journalModal = document.getElementById('journal-reader-modal');
+  const journalModalClose = document.getElementById('journal-modal-close');
+  const journalModalBackdrop = document.getElementById('journal-modal-backdrop');
+  const journalArticleMount = document.getElementById('journal-modal-body');
+
+  function openJournalArticle(articleId) {
+    if (!journalModal || !journalArticleMount) return;
+    const article = JOURNAL_ARTICLES.find((a) => a.id === articleId);
+    if (!article) return;
+
+    journalArticleMount.innerHTML = `
+      <article class="journal-full-editorial">
+        <header class="journal-editorial-header">
+          <div class="journal-editorial-badges">
+            <span class="journal-badge-cat">${article.category}</span>
+            <span class="journal-badge-reading">⏳ ${article.readingTime}</span>
+          </div>
+          <h1 class="journal-editorial-title">${article.title}</h1>
+          <div class="journal-editorial-meta">
+            <span class="journal-editorial-author">✦ ${article.author}</span>
+          </div>
+        </header>
+
+        <div class="journal-editorial-cover">
+          <img src="${article.image}" alt="${article.title}" class="journal-editorial-img" />
+        </div>
+
+        <div class="journal-editorial-body">
+          ${article.fullContent}
+        </div>
+
+        <footer class="journal-editorial-footer">
+          <div class="journal-footer-cta-box">
+            <h4>¿Deseas profundizar en esta vivencia sagrada?</h4>
+            <p>Comunícate con nuestro Concierge para resolver dudas, consultar disponibilidad de elixires o iniciar tu camino en MOKKA CHAI.</p>
+            <div class="journal-footer-btns">
+              <a href="https://wa.me/528121912778?text=Hola%2C%20le%C3%AD%20el%20art%C3%ADculo%20sobre%20${encodeURIComponent(article.title)}%20en%20MOKKA%20CHAI%20y%20deseo%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn-journal-contact-wa">
+                Consultar por WhatsApp (+52 81 2191 2778) →
+              </a>
+              <button type="button" class="btn-journal-close-footer" id="btn-journal-close-footer">Cerrar Artículo</button>
+            </div>
+          </div>
+        </footer>
+      </article>
+    `;
+
+    journalModal.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+
+    const footerCloseBtn = document.getElementById('btn-journal-close-footer');
+    if (footerCloseBtn) {
+      footerCloseBtn.addEventListener('click', closeJournalModal);
+    }
+  }
+
+  function closeJournalModal() {
+    if (!journalModal) return;
+    journalModal.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
+
+  if (journalModalClose) journalModalClose.addEventListener('click', closeJournalModal);
+  if (journalModalBackdrop) journalModalBackdrop.addEventListener('click', closeJournalModal);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && journalModal && journalModal.classList.contains('is-active')) {
+      closeJournalModal();
+    }
+  });
+
+  // Attach event delegation for read-article triggers
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-open-article]');
+    if (trigger) {
+      e.preventDefault();
+      const articleId = trigger.getAttribute('data-open-article');
+      if (articleId) openJournalArticle(articleId);
+    }
   });
 }
 

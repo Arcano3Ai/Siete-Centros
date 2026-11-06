@@ -1,0 +1,1 @@
+import{_ as e,c as t,h as n,l as r,m as i,p as a,r as o,v as s}from"./interactive-mount-CGbuH7or.js";/* empty css                         */var c=s(i(),1),l=a(),u=r();n(),e();var d=document.getElementById(`breathwork-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(t,{})})),o();

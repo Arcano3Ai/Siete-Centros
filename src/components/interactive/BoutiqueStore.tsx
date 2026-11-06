@@ -614,7 +614,7 @@ export const BoutiqueStore: React.FC = () => {
       `Nota: ${shippingForm.notes}\n` +
       `Deseo proceder con el pago y confirmación segura de mi pedido.`;
 
-    return `https://wa.me/5215512345678?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/528121912778?text=${encodeURIComponent(message)}`;
   };
 
   return (

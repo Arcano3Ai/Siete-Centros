@@ -84,7 +84,7 @@ export const TantricConciergeBot: React.FC = () => {
         action: {
           type: 'whatsapp',
           label: t.bot.whatsappDirect,
-          url: 'https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
+          url: 'https://wa.me/528121912778?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
         }
       }
     ]);
@@ -175,7 +175,7 @@ export const TantricConciergeBot: React.FC = () => {
           action: {
             type: 'whatsapp',
             label: 'Escribir a Siete Centros en WhatsApp ↗',
-            url: 'https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
+            url: 'https://wa.me/528121912778?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
           }
         };
       }
@@ -187,7 +187,7 @@ export const TantricConciergeBot: React.FC = () => {
           action: {
             type: 'whatsapp',
             label: 'Abrir Chat de WhatsApp Directo ↗',
-            url: 'https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
+            url: 'https://wa.me/528121912778?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
           }
         };
       }
@@ -198,7 +198,7 @@ export const TantricConciergeBot: React.FC = () => {
         action: {
           type: 'whatsapp',
           label: 'Consultar Directo por WhatsApp ↗',
-          url: `https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros:%20${encodeURIComponent(query)}`
+          url: `https://wa.me/528121912778?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros:%20${encodeURIComponent(query)}`
         }
       };
     } else {
@@ -264,7 +264,7 @@ export const TantricConciergeBot: React.FC = () => {
           action: {
             type: 'whatsapp',
             label: 'Chat with Siete Centros on WhatsApp ↗',
-            url: 'https://wa.me/5215512345678?text=Hello,%20I%20would%20love%20to%20learn%20more%20about%20Siete%20Centros'
+            url: 'https://wa.me/528121912778?text=Hello,%20I%20would%20love%20to%20learn%20more%20about%20Siete%20Centros'
           }
         };
       }
@@ -275,7 +275,7 @@ export const TantricConciergeBot: React.FC = () => {
           action: {
             type: 'whatsapp',
             label: 'Open WhatsApp Chat Directly ↗',
-            url: 'https://wa.me/5215512345678?text=Hello,%20I%20would%20like%20to%20inquire%20about%20Siete%20Centros'
+            url: 'https://wa.me/528121912778?text=Hello,%20I%20would%20like%20to%20inquire%20about%20Siete%20Centros'
           }
         };
       }
@@ -285,7 +285,7 @@ export const TantricConciergeBot: React.FC = () => {
         action: {
           type: 'whatsapp',
           label: 'Ask on WhatsApp ↗',
-          url: `https://wa.me/5215512345678?text=Hello,%20I%20have%20a%20question%20about%20Siete%20Centros:%20${encodeURIComponent(query)}`
+          url: `https://wa.me/528121912778?text=Hello,%20I%20have%20a%20question%20about%20Siete%20Centros:%20${encodeURIComponent(query)}`
         }
       };
     }
@@ -335,7 +335,7 @@ export const TantricConciergeBot: React.FC = () => {
         action: {
           type: 'whatsapp',
           label: t.bot.whatsappDirect,
-          url: 'https://wa.me/5215512345678?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
+          url: 'https://wa.me/528121912778?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20Siete%20Centros%20Escuela%20de%20Conciencia'
         }
       }
     ]);

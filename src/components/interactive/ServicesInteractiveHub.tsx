@@ -7,7 +7,7 @@ import { WordCircle } from './WordCircle.js';
 import { RetreatsGrid } from './RetreatsGrid.js';
 import { getStoredLanguage, DICTIONARY, Language } from '../../i18n/translations';
 
-export type ServiceTab = 'breathwork' | 'kriya' | 'tantra' | 'circulos' | 'retiros';
+export type ServiceTab = 'tantra' | 'breathwork' | 'kriya' | 'circulos';
 
 interface TabConfig {
   id: ServiceTab;
@@ -17,6 +17,12 @@ interface TabConfig {
 }
 
 const TABS: TabConfig[] = [
+  {
+    id: 'tantra',
+    label: { es: 'Tantra & Polaridad', en: 'Tantra & Polarity' },
+    sub: { es: 'Polaridad Shiva & Shakti', en: 'Shiva & Shakti Polarity' },
+    icon: InfinityIcon
+  },
   {
     id: 'breathwork',
     label: { es: 'Breathwork', en: 'Breathwork' },
@@ -30,35 +36,22 @@ const TABS: TabConfig[] = [
     icon: Activity
   },
   {
-    id: 'tantra',
-    label: { es: 'Tantra', en: 'Tantra' },
-    sub: { es: 'Polaridad Shiva & Shakti', en: 'Shiva & Shakti Polarity' },
-    icon: InfinityIcon
-  },
-  {
     id: 'circulos',
     label: { es: 'Círculos de Palabra', en: 'Word Circles' },
     sub: { es: 'El Fuego Sagrado', en: 'The Sacred Fire' },
     icon: Flame
-  },
-  {
-    id: 'retiros',
-    label: { es: 'Retiros 2026', en: 'Retreats 2026' },
-    sub: { es: 'Inmersiones & Agenda', en: 'Immersions & Schedule' },
-    icon: Calendar
   }
 ];
 
 const PAGE_URLS: Record<ServiceTab, { url: string; label: { es: string; en: string } }> = {
-  breathwork: { url: '/breathwork.html', label: { es: 'Abrir Página Separada de Breathwork ↗', en: 'Open Dedicated Breathwork Page ↗' } },
-  kriya: { url: '/kriya-yoga.html', label: { es: 'Abrir Página Separada de Kriya Yoga ↗', en: 'Open Dedicated Kriya Yoga Page ↗' } },
-  tantra: { url: '/tantra.html', label: { es: 'Abrir Página Separada de Tantra ↗', en: 'Open Dedicated Tantra Page ↗' } },
-  circulos: { url: '/circulos-de-palabra.html', label: { es: 'Abrir Página Separada de Círculos ↗', en: 'Open Dedicated Circles Page ↗' } },
-  retiros: { url: '/retiros.html', label: { es: 'Abrir Página Separada de Retiros 2026 ↗', en: 'Open Dedicated Retreats Page ↗' } }
+  tantra: { url: '/tantra.html', label: { es: 'Abrir Portal Completo de Tantra ↗', en: 'Open Full Tantra Portal ↗' } },
+  breathwork: { url: '/breathwork.html', label: { es: 'Abrir Portal de Breathwork ↗', en: 'Open Dedicated Breathwork Page ↗' } },
+  kriya: { url: '/kriya-yoga.html', label: { es: 'Abrir Portal de Kriya Yoga ↗', en: 'Open Dedicated Kriya Yoga Page ↗' } },
+  circulos: { url: '/circulos-de-palabra.html', label: { es: 'Abrir Portal de Círculos ↗', en: 'Open Dedicated Circles Page ↗' } }
 };
 
 export const ServicesInteractiveHub: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ServiceTab>('breathwork');
+  const [activeTab, setActiveTab] = useState<ServiceTab>('tantra');
   const [currentLang, setCurrentLang] = useState<Language>(getStoredLanguage());
 
   const t = DICTIONARY[currentLang];
@@ -138,11 +131,10 @@ export const ServicesInteractiveHub: React.FC = () => {
 
       {/* Dynamic Interactive Component Mount */}
       <div className="hub-content-stage">
+        {activeTab === 'tantra' && <TantraPolarity />}
         {activeTab === 'breathwork' && <BreathworkOrbe />}
         {activeTab === 'kriya' && <KriyaSpine />}
-        {activeTab === 'tantra' && <TantraPolarity />}
         {activeTab === 'circulos' && <WordCircle />}
-        {activeTab === 'retiros' && <RetreatsGrid />}
       </div>
     </section>
   );

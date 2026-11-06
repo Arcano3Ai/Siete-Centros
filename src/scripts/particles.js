@@ -43,12 +43,15 @@ export function initCosmicCanvas() {
       this.pulseSpeed = Math.random() * 0.02 + 0.005;
       this.pulseVal = Math.random() * Math.PI;
 
-      // Color tints: gold, ivory, soft violet, cyan
+      // 7 Chakra Sacred Colors
       const colors = [
-        '223, 190, 144', // Aged Gold
-        '250, 247, 242', // Warm Ivory
-        '168, 85, 247',  // Violet
-        '31, 162, 196'   // Turquoise
+        '244, 63, 94',   // Muladhara (Raíz - Rojo Rubí)
+        '251, 146, 60',  // Svadhisthana (Sacro - Naranja Ámbar)
+        '251, 191, 36',  // Manipura (Plexo Solar - Dorado)
+        '52, 211, 153',  // Anahata (Corazón - Esmeralda)
+        '56, 189, 248',  // Vishuddha (Garganta - Cian Celestial)
+        '129, 140, 248', // Ajna (Tercer Ojo - Índigo Sagrado)
+        '192, 132, 252'  // Sahasrara (Corona - Violeta Amatista)
       ];
       this.color = colors[Math.floor(Math.random() * colors.length)];
     }
