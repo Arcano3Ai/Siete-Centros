@@ -1,1 +1,0 @@
-import{d as e,f as t,h as n,m as r,p as i,r as a,s as o,u as s}from"./interactive-mount-BbTrP37W.js";/* empty css                         */var c=n(t(),1),l=e(),u=s();i(),r();var d=document.getElementById(`tantra-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(o,{})})),a();
