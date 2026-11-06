@@ -1,1 +1,0 @@
-import{d as e,f as t,h as n,m as r,o as i,p as a,r as o,u as s}from"./interactive-mount-DZh7nMIp.js";/* empty css                         */var c=n(t(),1),l=e(),u=s();a(),r();var d=document.getElementById(`circulos-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(i,{})})),o();
