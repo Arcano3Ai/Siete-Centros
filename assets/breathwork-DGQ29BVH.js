@@ -1,1 +1,0 @@
-import{d as e,f as t,h as n,l as r,m as i,p as a,r as o,u as s}from"./interactive-mount-Dxw5_Kca.js";/* empty css                         */var c=n(t(),1),l=e(),u=s();a(),i();var d=document.getElementById(`breathwork-app-root`);d&&(0,l.createRoot)(d).render((0,u.jsx)(c.StrictMode,{children:(0,u.jsx)(r,{})})),o();
