@@ -91,7 +91,7 @@ export const DICTIONARY: Record<Language, Translations> = {
     },
     hub: {
       badge: 'EXPERIENCIAS INMERSIVAS',
-      title: 'Portales de Transformación Consciente',
+      title: 'Portales de Despertar Consciente',
       desc: 'Herramientas vivas para afinar tu sistema nervioso, elevar tu energía vital y reconectar con la sabiduría no dual del cuerpo.',
       tabBreath: 'Breathwork',
       tabKriya: 'Kriya Yoga',
@@ -170,7 +170,7 @@ export const DICTIONARY: Record<Language, Translations> = {
     },
     hub: {
       badge: 'IMMERSIVE EXPERIENCES',
-      title: 'Portals of Conscious Transformation',
+      title: 'Portals of Conscious Awakening',
       desc: 'Living practices to calibrate your nervous system, awaken vital energy, and reconnect with the non-dual wisdom of your body.',
       tabBreath: 'Breathwork',
       tabKriya: 'Kriya Yoga',
