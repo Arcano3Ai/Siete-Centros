@@ -6,48 +6,66 @@
 .services-interactive-hub-section {
   position: relative;
   width: 100%;
-  padding: 5rem 1.5rem 6rem;
+  max-width: 100%;
+  padding: 4rem 1rem 5rem;
   background: #050508;
   border-top: 1px solid rgba(197, 168, 128, 0.16);
   border-bottom: 1px solid rgba(197, 168, 128, 0.16);
   z-index: 25;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .hub-header-container {
-  max-width: 960px;
-  margin: 0 auto 3.5rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 2.5rem;
   text-align: center;
+  box-sizing: border-box;
+  padding: 0 0.5rem;
 }
 
 .hub-eyebrow {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-family: var(--font-sans);
   font-size: 0.68rem;
-  letter-spacing: 0.24em;
+  letter-spacing: clamp(0.12em, 2vw, 0.24em);
   text-transform: uppercase;
   color: var(--gold-bright);
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .hub-main-title {
   font-family: var(--font-serif-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: 0.18em;
+  font-size: clamp(1.4rem, 5.2vw, 2.7rem);
+  letter-spacing: clamp(0.04em, 1.2vw, 0.14em);
   color: var(--text-ivory);
-  margin: 0 0 1rem;
+  margin: 0 auto 1rem auto;
+  text-align: center;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+  width: 100%;
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
 }
 
 .hub-subtitle {
   font-family: var(--font-serif-editorial);
   font-style: italic;
-  font-size: 1.15rem;
+  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
   color: var(--text-ivory-dim);
-  max-width: 620px;
-  margin: 0 auto 2.5rem;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto 2rem auto;
   line-height: 1.6;
+  text-align: center;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
 }
 
 /* Master Tabs Navigation Bar */
@@ -57,8 +75,10 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.65rem;
-  max-width: 880px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .hub-nav-tab-btn {
@@ -2519,6 +2539,63 @@
   .hub-active-stage-container {
     padding: 1.5rem 1rem !important;
     border-radius: var(--radius-md) !important;
+  }
+
+  /* Hub Interactivo Centrado y Optimizado en Móvil */
+  .services-interactive-hub-section {
+    padding: 3rem 0.5rem 4rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .hub-header-container {
+    padding: 0 !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+  }
+
+  .hub-main-title {
+    font-size: clamp(1.3rem, 5.8vw, 1.95rem) !important;
+    letter-spacing: clamp(0.04em, 1.5vw, 0.08em) !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    padding: 0 0.25rem !important;
+    word-break: break-word !important;
+  }
+
+  .hub-subtitle {
+    font-size: 0.95rem !important;
+    padding: 0 0.5rem !important;
+    margin: 0 auto 1.75rem auto !important;
+    text-align: center !important;
+    line-height: 1.55 !important;
+  }
+
+  .hub-tabs-navigation {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.45rem !important;
+    width: 100% !important;
+  }
+
+  .hub-nav-tab-btn {
+    padding: 0.45rem 0.85rem !important;
+    gap: 0.45rem !important;
+    border-radius: 999px !important;
+  }
+
+  .hub-nav-tab-btn .tab-icon-wrap svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .hub-nav-tab-btn .tab-label {
+    font-size: 0.75rem !important;
+  }
+
+  .hub-nav-tab-btn .tab-sub {
+    display: none !important;
   }
 }
 

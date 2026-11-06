@@ -1121,10 +1121,10 @@ body {
 }
 
 /* ==========================================================================
-   5. MOBILE & RESPONSIVE COLLAPSE (< 960px)
+   5. MOBILE & RESPONSIVE COLLAPSE (< 1180px)
    ========================================================================== */
 
-@media (max-width: 960px) {
+@media (max-width: 1180px) {
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
@@ -1138,7 +1138,7 @@ body {
     overflow-x: hidden !important;
   }
 
-  /* Ocultar flank-left en móvil para evitar colisión */
+  /* Ocultar flank-left en móvil y tablets para evitar colisiones */
   .triptych-flank-left {
     display: none !important;
   }
@@ -1147,9 +1147,9 @@ body {
   .triptych-spine-center {
     width: 100% !important;
     min-width: 0 !important;
-    max-width: 520px !important;
+    max-width: min(640px, 94vw) !important;
     margin: 54px auto 3.5rem !important;
-    padding: 0 0.5rem !important;
+    padding: 0 1rem !important;
     box-sizing: border-box !important;
     overflow-x: hidden !important;
     box-shadow: none !important;
@@ -1163,13 +1163,15 @@ body {
 
   .center-hero-title {
     font-size: clamp(1.75rem, 6.8vw, 2.35rem) !important;
-    letter-spacing: 0.14em !important;
+    letter-spacing: clamp(0.06em, 2vw, 0.14em) !important;
     word-break: break-word !important;
+    text-align: center !important;
   }
 
   .center-hero-tagline {
     font-size: 1.05rem !important;
     padding: 0 0.5rem !important;
+    text-align: center !important;
   }
 
   .spine-videos-stack {
