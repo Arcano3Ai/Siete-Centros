@@ -714,6 +714,137 @@
 }
 
 /* ==========================================================================
+   7. EL JOURNAL DE SIETE CENTROS (GRID EDITORIAL DE ARTÍCULOS)
+   ========================================================================== */
+.journal-section {
+  margin-bottom: 5.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.journal-articles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.journal-article-card {
+  background: rgba(14, 10, 20, 0.85);
+  border: 1px solid rgba(197, 168, 128, 0.22);
+  border-radius: var(--radius-md, 14px);
+  overflow: hidden;
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.journal-article-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(229, 192, 123, 0.55);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(197, 168, 128, 0.15);
+}
+
+.journal-card-cover-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #08050C;
+}
+
+.journal-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+.journal-article-card:hover .journal-card-img {
+  transform: scale(1.05);
+}
+
+.journal-card-category-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(8, 5, 12, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(223, 190, 144, 0.4);
+  color: var(--gold-bright, #E5C07B);
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.journal-card-body {
+  padding: 1.65rem 1.45rem 1.45rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: left;
+}
+
+.journal-card-title {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 1.12rem;
+  line-height: 1.35;
+  color: #FAF7F2;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.journal-card-excerpt {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--text-ivory-dim);
+  margin: 0 0 1.35rem 0;
+  flex: 1;
+}
+
+.journal-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(197, 168, 128, 0.14);
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+.journal-reading-time {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.06em;
+}
+
+.journal-read-link {
+  font-family: var(--font-cinzel, 'Cinzel', serif);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-bright, #E5C07B);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.journal-read-link:hover {
+  color: #FAF7F2;
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
    8. DIRECTORIO Y PIE DE PÁGINA MONUMENTAL
    ========================================================================== */
 .sanctuary-grand-footer {
