@@ -89,35 +89,25 @@ body {
 }
 
 .top-nav-brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
   text-decoration: none;
   flex-shrink: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.top-nav-logo-img {
-  width: 34px;
-  height: 34px;
+.top-nav-brand:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.top-nav-brand-wordmark {
+  height: 28px;
+  width: auto;
+  max-width: 220px;
   object-fit: contain;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 10px rgba(223, 190, 144, 0.6)) drop-shadow(0 0 12px rgba(192, 132, 252, 0.35));
-  transition: transform 0.3s ease;
-}
-
-.top-nav-brand:hover .top-nav-logo-img {
-  transform: rotate(8deg) scale(1.1);
-}
-
-.top-nav-brand-name {
-  font-family: var(--font-serif-display);
-  font-size: 0.98rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  background: linear-gradient(135deg, #FAF7F2 0%, #DFBE90 50%, #C084FC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  white-space: nowrap;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(223, 190, 144, 0.45));
 }
 
 .top-nav-links {
@@ -316,8 +306,9 @@ body {
 }
 
 @media (max-width: 1120px) {
-  .top-nav-brand-name {
-    display: none;
+  .top-nav-brand-wordmark {
+    height: 22px;
+    max-width: 160px;
   }
   .top-nav-links {
     gap: 0.5rem;
@@ -383,74 +374,48 @@ body {
 /* Left Flank Header: Nuevo Logo de Lujo */
 .flank-left-brand {
   display: flex;
-  align-items: center;
-  gap: 1.15rem;
+  flex-direction: column;
+  align-items: flex-start;
   text-decoration: none;
-  position: relative;
-  z-index: 2;
-}
-
-.flank-brand-emblem-wrap {
-  position: relative;
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flank-brand-emblem-wrap::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(192, 132, 252, 0.4) 0%, rgba(56, 189, 248, 0.3) 50%, transparent 75%);
-  filter: blur(8px);
-  animation: pulseBrandGlow 4s ease-in-out infinite alternate;
-}
-
-@keyframes pulseBrandGlow {
-  0% { transform: scale(0.9); opacity: 0.5; }
-  100% { transform: scale(1.25); opacity: 0.95; }
-}
-
-.flank-brand-emblem {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 14px rgba(223, 190, 144, 0.75)) drop-shadow(0 0 18px rgba(192, 132, 252, 0.4));
-  transition: transform var(--transition-smooth);
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   z-index: 2;
+  transition: opacity 0.25s ease;
 }
 
-.flank-left-brand:hover .flank-brand-emblem {
-  transform: rotate(8deg) scale(1.08);
+.flank-left-brand:hover {
+  opacity: 0.92;
 }
 
-.flank-brand-title {
-  font-family: var(--font-serif-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  background: linear-gradient(135deg, #FAF7F2 0%, #DFBE90 45%, #C084FC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.1;
+.flank-brand-wordmark-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.flank-brand-wordmark {
+  width: auto;
+  max-width: 195px;
+  height: 28px;
+  object-fit: contain;
   display: block;
+  filter: drop-shadow(0 0 10px rgba(223, 190, 144, 0.4));
 }
 
 .flank-brand-sub {
   font-family: var(--font-sans);
   font-size: 0.62rem;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--text-ivory-dim);
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .flank-brand-sub::after {
@@ -1367,9 +1332,9 @@ body {
     padding: 0 0.85rem !important;
   }
 
-  .top-nav-brand-name {
-    font-size: 0.82rem !important;
-    letter-spacing: 0.16em !important;
+  .top-nav-brand-wordmark {
+    height: 20px !important;
+    max-width: 140px !important;
   }
 
   .top-nav-cta-wrap {
